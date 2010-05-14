@@ -3,7 +3,7 @@
 // @namespace      http://userscripts.org/users/144415
 // @description    Maximizes farmville gameflash. Removes all anoying boxes and whitespaces around the flash. Works in facebook too
 // @Copyright      Sebastian Fischer
-// @version        2.0.9.1
+// @version        2.0.9.$Rev: 26 $
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
 // @include        http*facebook.com/onthefarm/*
 // @include        http*farmville.com/*
