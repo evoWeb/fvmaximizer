@@ -110,28 +110,55 @@
 </dd>
 
 <dt>v1.1.9</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Code cleanup.
+ * Moved methods into the object and changed references.
+ * Changed closures to have a cleaner signature.
+</dd>
 
 <dt>v1.1.8</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Changed variable assignment for css from native string to e4x convention.
+ * Addes sizzle mct wizzle update checker. Now the script notivies you if any update is available. To make use of it you need to uninstall and reinstall this script completly.
+</dd>
 
 <dt>v1.1.7</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Fixed Resizing to cope with changes on Farmville.com. Farmville in Facebook is not affected.
+</dd>
 
 <dt>v1.1.6</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Changed noticebox handling. Now it checks if a notice is available and creates then the slideout. If no notice could be shown the complete slideout doesn't get rendered.
+</dd>
 
 <dt>v1.1.5</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Moved the notices into a open- and closeable box and positioned it beneath the linkmenu
+ * Cleanup styles
+ * Changes color of linkmenu
+ * Added createCloser
+ * Modified creation for closer buttons
+</dd>
 
 <dt>v1.1.4</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Modified the CSS so Farmville.com and Facebook.com share as much as possible the same styles.
+</dd>
 
 <dt>v1.1.3</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Now the linkmenu is hidden by default and can be opened and closed with an arrow on the left side of the screen.
+ * Removed shoutbar<br/>
+ * Added fvvm_menu<br/>
+</dd>
 
 <dt>v1.1.2</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Modified the css for farmville.com to align the links left in the shoutbar.
+</dd>
 
 <dt>v1.1.1</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Modified the css for farmville.com to remove 2 br that cause the scrolling and whitespace at the bottom.
+</dd>
