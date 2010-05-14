@@ -21,16 +21,22 @@
 </dd>
 
 <dt>v2.0.6</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Add some filter for new pages that were introduced by Farmville where the maximizing should not happen (lonelycow.php).
+</dd>
 
 <dt>v2.0.5</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Add some filter for new pages that were introduced by Farmville where the maximizing should not happen.
+</dd>
 
 <dt>v2.0.3</dt>
-<dd></dd>
+<dd>
+</dd>
 
 <dt>v2.0.2</dt>
-<dd></dd>
+<dd>
+</dd>
 
 <dt>v2.0.1</dt>
 <dd></dd>
