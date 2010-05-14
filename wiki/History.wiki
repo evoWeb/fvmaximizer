@@ -15,7 +15,10 @@
 </dd>
 
 <dt>v2.0.7</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Removed a method to check if an unwanted page called the script.<br/>This is possible because Google Chrome has something corresponding to the @exclude,<br/> which enabled the script to be still identical for both Firefox and Chrome.
+ * Fixed the whitespace on top that was cause by a change in Farmville
+</dd>
 
 <dt>v2.0.6</dt>
 <dd></dd>
