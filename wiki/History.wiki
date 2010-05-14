@@ -11,7 +11,8 @@ Fixed menu container overlapping the message button
 <dd>*Maintenance release.*
 * Fixed display of message icon
 * Cleanup in initialization.
-* Changed from bind resize to stylesheets for settings the height to 100%</dd>
+* Changed from bind resize to stylesheets for settings the height to 100%
+</dd>
 
 <dt>v2.0.7</dt>
 <dd></dd>
