@@ -78,19 +78,36 @@
 </dd>
 
 <dt>v1.2.4</dt>
-<dd></dd>
+<dd>*Maintenance release.*
+ * Added exclude filter string<br/>
+ * Added hasMessage method and call it on init<br/>
+ * Refactored some methods<br/>
+ * Moved styling related method to corresponding object<br/>
+ * Added readiness calculator object without using it
+</dd>
 
 <dt>v1.2.3</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Cleanup of the @exclude headers. They should be more generalize now.
+ * Changed Menubutton. Removed the mouseenter open behaviour. Now the menu opens on click like every other item in farmville does.
+</dd>
 
 <dt>v1.2.2</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Cleanup the style code mess. Now styles come from its own object.<br/>
+ * Redesigned noticebox. As currently no real message is given a test message is still inserted. This will get removed the next release. The message button is click sensitiv and the message will disappear when the mouse leaves the button.
+</dd>
 
 <dt>v1.2.1</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Complete revised menubutton. This time the menu buttons resides below the playersnamebox. So open the menu you have to hover "Menu" longer than 0.5seconds. Menu will close only if mouse leaves the button or the menu longer than 0.5 seconds.
+</dd>
 
 <dt>v1.2.0</dt>
-<dd></dd>
+<dd>*Workover release.*
+ * Code Cleanup.
+ * Again some methods went into others to use more closures to reduce the signature.
+</dd>
 
 <dt>v1.1.9</dt>
 <dd></dd>
