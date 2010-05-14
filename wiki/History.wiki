@@ -43,27 +43,38 @@
 </dd>
 
 <dt>v2.0.1</dt>
-<dd>
+<dd>*Maintenance release.*
+ * Fixed an issue in chrome where innerHTML broke the insert css.
 </dd>
 
 <dt>v2.0.0</dt>
-<dd>
+<dd>*Refactoring release.*
+ * Complete rewrite of maximizer. Reduces the amount of methods. Cleanup of the code to have a better readablity.
 </dd>
 
 <dt>v1.2.8</dt>
-<dd>
+<dd>*Workover release.*
+ * Added jquery directly in the scriptfile.
+ * Removed require to external jquery file.
+ * Added sizing fix for Google Chrome.
 </dd>
 
 <dt>v1.2.7</dt>
-<dd>
+<dd>*Maintenance release.*
+ * Fixed a styling bug on farmville.com
+ * Changed CSS from e4x to multiline strings as preparation for a chrome version
 </dd>
 
 <dt>v1.2.6</dt>
-<dd>
+<dd>*Maintenance release.*
+ * Added Styles for icon and gift frame
+ * Added fix for request icon. Now you are able to accept gifts even when you continued to the game first.
 </dd>
 
 <dt>v1.2.5</dt>
-<dd>
+<dd>*Maintenance release.*
+ * Changed CSS
+ * Addes a jquery selector and delete an new iframe found in that result.
 </dd>
 
 <dt>v1.2.4</dt>
