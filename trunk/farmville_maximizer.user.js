@@ -26,7 +26,7 @@
 // @exclude        */wishlist_give.*
 // @require        http://www.fischer.im/fileadmin/farmville/jquery.gmfix.js
 // @require        http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js
-// @require        http://www.fischer.im/fileadmin/farmville/autoupdater.js
+// @require        http://sizzlemctwizzle.com/updater.php?id=73361&days=1
 // ==/UserScript==
 
 var SCRIPT = {
