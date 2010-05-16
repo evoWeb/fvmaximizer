@@ -1,45 +1,178 @@
 // ==UserScript==
-// @name           Farmville maximizer
+// @name           FlashGames Maximizer
 // @namespace      http://userscripts.org/users/144415
-// @description    Maximizes farmville gameflash. Removes all anoying boxes and whitespaces around the flash. Works in facebook too
+// @description    Maximizes Zynga flashgames. Removes all anoying boxes and whitespaces around the flash. Works in facebook too.
 // @Copyright      Sebastian Fischer
-// @version        2.0.9.$Rev$
+// @version        3.0.0
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
-// @include        http*facebook.com/onthefarm/*
-// @include        http*farmville.com/*
-// @exclude        */askmats.*
-// @exclude        */exchange.*
-// @exclude        */fans.*
-// @exclude        */giftaccept.*
-// @exclude        */gifts.*
-// @exclude        */gifts_send.*
-// @exclude        */invite.*
-// @exclude        */lonelycow.*
-// @exclude        */message_center.*
-// @exclude        */money.*
-// @exclude        */neighbors.*
-// @exclude        */reward.*
-// @exclude        */sendcredits.*
-// @exclude        */sendmats.*
-// @exclude        */sentthankyougift.*
-// @exclude        */thankyougift.*
-// @exclude        */wishlist_give.*
-// @require        http://www.fischer.im/fileadmin/farmville/jquery.gmfix.js
+// @include        *facebook.com/black_jack/*
+// @include        *facebook.com/cafeworld/*
+// @include        *facebook.com/onthefarm/*
+// @include        *facebook.com/fishville/*
+// @include        *facebook.com/pathwords/*
+// @include        *facebook.com/petvillegame/*
+// @include        *facebook.com/coasterkingdom/*
+// @include        *facebook.com/treasureisle/*
+// @include        *facebook.com/wordtwist/*
+// @include        *facebook.com/yoville/*
+// @include        *farmville.com/*
+// @include        *yoville.com/*
+// @require        http://fvmaximizer.googlecode.com/files/jquerygmfix.js
 // @require        http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js
 // @require        http://sizzlemctwizzle.com/updater.php?id=73361&days=1
 // ==/UserScript==
 
 var SCRIPT = {
-	title: 'Farmville maximizer',
-	appNo: '102452128776',
+	title: 'FlashGames Maximizer',
 	presentationurl: 'http://userscripts.org/scripts/show/73361',
+	games: {
+		bj: {
+			name: 'Blackjack',
+			selector: '#app_content_5803363687',
+			iframesrc: '',
+			flashobj: 'embed#swf_5803363687_fbswf_4bf007cc610e5482e8871',
+			flashsrc: 'http://63.251.100.214/blackjack/blackjack0029.swf',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/black_jack/
+		},
+		cw: {
+			name: 'Cafe World',
+			selector: '#app_content_101539264719 iframe',
+			iframesrc: 'http://fb-0.cafe.zynga.com/current/fb//iframe.php?ref=games_my_recent&autopopmc=true&autopopmc=true&autopopmc=true&autopopmc=true&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274021606.6015&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274025600&fb_sig_user=100001095836253&fb_sig_session_key=2.WaIl1KeteEirIfYr_4YqWg__.3600.1274025600-100001095836253&fb_sig_ss=4V0gS5nH2OlAtq2Mpd_1aw__&fb_sig_cookie_sig=56fdfc38e16dc681a5958df1b2023a03&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=356eef8a12fcb7ede4c480062b325a88&fb_sig_app_id=101539264719&fb_sig=ee14f4c732f6ffbbecc5c24b617f1bc9',
+			flashobj: 'object#game_div',
+			flashsrc: 'http://facebook.cafe.static.zynga.com/79815/flash/YoCafe.swf',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/cafeworld/
+		},
+		favfb: {
+			name: 'FarmVille in Facebook',
+			selector: '#app_content_102452128776 iframe:eq(1)',
+			iframesrc: 'http://fb-1.farmville.com/flash.php?ref=bookmarks&showFeaturePromoFooter=1&&type=&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_is_admin=0&fb_sig_type=APPLICATION&fb_sig_is_fan=0&fb_sig_base_domain=farmville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024149.2992&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.jDfH1iit0YdV_rHoHPvXZw__.3600.1274029200-100001095836253&fb_sig_ss=qw7EamsMsg2iWMyttf5asg__&fb_sig_cookie_sig=a630c821ad42ef2a2224dfdf794f5e90&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=80c6ec6628efd9a465dd223190a65bbc&fb_sig_app_id=102452128776&fb_sig=12e7ed9f5ef29f3f739cccf8ae796d09',
+			flashobj: 'object#flashapp',
+			flashsrc: 'http://static.farmville.com/embeds/v27392/FV_Preloader.swf',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/onthefarm/,
+			exclude: new Array(
+				/askmats\.php/,
+				/exchange\.php/,
+				/fans\.php/,
+				/giftaccept\.php/,
+				/gifts\.php/,
+				/gifts_send\.php/,
+				/invite\.php/,
+				/lonelycow\.php/,
+				/message_center\.php/,
+				/money\.php/,
+				/neighbors\.php/,
+				/reward\.php/,
+				/sendcredits\.php/,
+				/sendmats\.php/,
+				/sentthankyougift\.php/,
+				/thankyougift\.php/,
+				/wishlist_give\.php/
+			)
+		},
+		favfv: {
+			name: 'FarmVille in farmville.com',
+			selector: '#app_content_102452128776 iframe:eq(1)',
+			iframesrc: 'http://fb-1.farmville.com/flash.php?ref=bookmarks&showFeaturePromoFooter=1&&type=&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_is_admin=0&fb_sig_type=APPLICATION&fb_sig_is_fan=0&fb_sig_base_domain=farmville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024149.2992&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.jDfH1iit0YdV_rHoHPvXZw__.3600.1274029200-100001095836253&fb_sig_ss=qw7EamsMsg2iWMyttf5asg__&fb_sig_cookie_sig=a630c821ad42ef2a2224dfdf794f5e90&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=80c6ec6628efd9a465dd223190a65bbc&fb_sig_app_id=102452128776&fb_sig=12e7ed9f5ef29f3f739cccf8ae796d09',
+			flashobj: 'object#flashapp',
+			flashsrc: 'http://static.farmville.com/embeds/v27392/FV_Preloader.swf',
+			hostname: /farmville\.com/,
+			pathname: /\/+/,
+			exclude: new Array(
+				/flash\.php/,
+				/promo_bar\.php/,
+				/xd_receiver\.htm/,
+				/populateFbCache\.php/
+			)
+		},
+		fiv: {
+			name: 'FishVille',
+			selector: '#app_content_151044809337 iframe:eq(1)',
+			iframesrc: 'http://fb-client-1.fish.zynga.com/public/flash.php?showFeaturePromoFooter=1&&type=&pageRef=bookmarks&appRef=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024277.8297&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2._0v7gK9ArI5CzEUMZdeYGA__.3600.1274029200-100001095836253&fb_sig_ss=jk6HdQJ_3257HwvJGanJ1g__&fb_sig_cookie_sig=c38d2ea1934b82c7688041bdb6e0e7c7&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eb8e427ee25fb4450026d5d00c41e5a8',
+			flashobj: 'object#flashapp',
+			flashsrc: 'http://facebook.fishville.static.zynga.com/production/assets/flash/FishGame.swf?rev=78794',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/fishville/
+		},
+		pw: {
+			name: 'Path Words',
+			selector: '#app_content_12271981887 iframe:eq(1)',
+			iframesrc: 'http://74.201.93.95/pathwords/liveplayframe.php?navsrc=2385&ref=games_my_recent&fa=1&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024430.579&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.Fhuuy9N2_unNwV16dHUhHQ__.3600.1274029200-100001095836253&fb_sig_ss=9K63NYc958CA6zPtMs4yUQ__&fb_sig_cookie_sig=dd0c6260d6ab8e3a379a394eac2463a9&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=9087a7bece1b56eca13016292edf7bda&fb_sig_app_id=12271981887&fb_sig=d70f9a6611fdd42d1fb36506aecef864',
+			flashobj: 'object#TumbleWords',
+			flashsrc: 'http://74.201.93.95/pathwords/swf/TumbleWordsLadder_20.swf',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/pathwords/
+		},
+		pv: {
+			name: 'PetVille',
+			selector: '#app_content_163576248142 iframe:eq(2)',
+			iframesrc: 'http://fb-0.petville.zynga.com/current/flash.php?&type=&refbm=0&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024508.2114&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.CLLmd2xPiLUVFQ6L9XeTIw__.3600.1274029200-100001095836253&fb_sig_ss=OPO_4GyPnIkbhm_S4tk_zg__&fb_sig_cookie_sig=ccddd67e0d83bd05c193e5f64ec523cb&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=a3d9760442b59fa8f534df8cadcea670&fb_sig_app_id=163576248142&fb_sig=2d6b979521dec5639e6bc5e9e04b1fd8',
+			flashobj: 'object#flashapp',
+			flashsrc: 'http://assets.petville.zynga.com/prod/embeds/Preloader.19705.swf',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/petvillegame/
+		},
+		rck: {
+			name: 'Roller Coaster Kingdom',
+			selector: '#app_content_89771452035 iframe#app89771452035_eventtest',
+			iframesrc: 'http://fb.coaster.zynga.com/fb/play.php?fb_access=1&canemail=0&proxy=0&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024577.1838&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.9j7qyT_p0aVyrAY_ou0b8Q__.3600.1274029200-100001095836253&fb_sig_ss=z2wCb_tq2OEAIGnjYqo9zw__&fb_sig_cookie_sig=6d84f9c40c5451e34b89c88565220d37&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=790dc5c5daead3c37936313576792d23&fb_sig_app_id=89771452035&fb_sig=ea21216e454b6cb5671a989e10cf63f6',
+			flashobj: 'embed#flash_game',
+			flashsrc: 'http://facebook.coaster.static.zynga.com/140/core/game.swf?v=140',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/coasterkingdom/
+		},
+		ti: {
+			name: 'Treasure Isle',
+			selector: '#app_content_234860566661 iframe',
+			iframesrc: 'http://fb-0.treasure.zynga.com/flash.php?isOuterIframe=1&ref=games_my_recent&autopopmc=true&fa=1&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=fb-0.treasure.zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024880.4972&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.loTkE1iKn5fIJhLI9j4qbg__.3600.1274029200-100001095836253&fb_sig_ss=LXLRQpJKtnJZdx0mdrOsHw__&fb_sig_cookie_sig=428a3f3df229959bdb05613deac4e888&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=a7eee53e37bab1f8036dd2754e833ea4&fb_sig_app_id=234860566661&fb_sig=c9999ae487cee6090d0f2d58393a9f23',
+			flashobj: 'object#flashapp',
+			flashsrc: 'http://assets.treasure.zynga.com/embeds/v10178/Preloader.swf',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/treasureisle/
+		},
+		wt: {
+			name: 'Word Twist',
+			selector: '#app_content_8567719845 iframe:eq(1)',
+			iframesrc: 'http://74.201.93.101/wordtwist/liveplayframe.php?navsrc=50&ref=games_my_recent&fa=1&navsrc=56&r=1282942497&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274025146.9562&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.hJOaWLkH4hE0YlBMWHRHpw__.3600.1274029200-100001095836253&fb_sig_ss=JAd6_9KrweAzddlOtbk83Q__&fb_sig_cookie_sig=51659cc0e475717560858a80bab624fd&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=b2efe072c99c07892c5d0554566977a4&fb_sig_app_id=8567719845&fb_sig=817088e229f182bee54b6e735ac0b99f',
+			flashobj: 'embed#WordTwist',
+			flashsrc: 'http://74.201.93.101/wordtwist/swf/WordTwistLadder_16.swf',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/wordtwist/
+		},
+		yvfb: {
+			name: 'YoVille in Facebook',
+			selector: '#app_content_21526880407 iframe.canvas_iframe_util',
+			iframesrc: 'http://app2.yoville.com/fb/indexnew.php?poe=1&src=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=yoville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274025352.8571&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.ZywAAz4W4LKcdWjgH_PHMA__.3600.1274029200-100001095836253&fb_sig_ss=M9__KKhaedd3bic3uYZipg__&fb_sig_cookie_sig=445f23b4198c0f55c0b5a8e84d19b2f8&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=d95c9e91f6a1291f74150fd86cf2533c&fb_sig_app_id=21526880407&fb_sig=5ca89be1833d1e8b7ed63140bd7ddca8',
+			flashobj: 'embed#mylife',
+			flashsrc: 'http://app2.static.yoville.com/fb/YoVilleApp.swf?v=1236',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/yoville/
+		},
+		yvyv: {
+			name: 'YoVille in yoville.com',
+			selector: '#app_content_21526880407 iframe.canvas_iframe_util',
+			iframesrc: 'http://app2.yoville.com/fb/indexnew.php?poe=1&src=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=yoville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274025352.8571&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.ZywAAz4W4LKcdWjgH_PHMA__.3600.1274029200-100001095836253&fb_sig_ss=M9__KKhaedd3bic3uYZipg__&fb_sig_cookie_sig=445f23b4198c0f55c0b5a8e84d19b2f8&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=d95c9e91f6a1291f74150fd86cf2533c&fb_sig_app_id=21526880407&fb_sig=5ca89be1833d1e8b7ed63140bd7ddca8',
+			flashobj: 'embed#mylife',
+			flashsrc: 'http://app2.static.yoville.com/fb/YoVilleApp.swf?v=1236',
+			hostname: /yoville\.com/,
+			pathname: /\/+/,
+			exclude: new Array(
+				/fb\/blank\.html/,
+				/fb\/\/blank\.html/,
+				/fbapp\/play\.php/,
+				/xd_receiver\.htm/
+			)
+		}
+	}
 };
 
 
 
-var isGM = (typeof(GM_getValue) != 'undefined' && typeof(GM_getValue('a', 'b')) != 'undefined');
-
-var active = true;
+var active = true,
+	isGM = (typeof(GM_getValue) != 'undefined' &&
+	typeof(GM_getValue('a', 'b')) != 'undefined');
 
 if (isGM) {
 	active = GM_getValue('active', true);
@@ -47,9 +180,11 @@ if (isGM) {
 	function activate() {
 		storeState(true);
 	}
+
 	function deactivate() {
 		storeState(false);
 	}
+
 	function storeState(state) {
 		GM_setValue('active', state);
 		window.location.reload();
@@ -64,7 +199,7 @@ if (isGM) {
 
 if (active) {
 	(function($){
-		$(document).ready(function(){
+		$(document).ready(function() {
 			var maximizer = new Maximizer();
 		});
 	})(jQuery);
@@ -77,29 +212,27 @@ if (active) {
  *
  * @return	void
  */
-function Maximizer(){
-	this.facebook = null;
-	this.farmville = null;
-	this.flashframe = null;
+function Maximizer() {
+	this.windowType = null;
 
 	this.timeout_close = null;
-
 
 	/**
 	 * Initialization of the object
 	 *
 	 * @return	boolean
 	 */
-	this.init = function(){
-		var styles = new Styles();
+	this.init = function() {
+		var styles = new Styles(),
+			windowType = this.getWindowType();
 
-		if (this.isFacebook()) {
+		/*if (this.isFacebook()) {
 			initFacebook(this);
 		} else if (this.isFarmville()) {
 			initFarmville(this);
 		} else if (this.isFlashframe()) {
 			initFlashframe(this);
-		}
+		}*/
 
 		return true;
 
@@ -207,7 +340,6 @@ function Maximizer(){
 		}
 	};
 
-
 	/**
 	 * Creates a menu of links with a button which clicked opens the menu
 	 *
@@ -298,42 +430,46 @@ function Maximizer(){
 		}
 	};
 
-
 	/**
-	 * checks if the url contains .facebook.com/
+	 * Get the window type depending on the location of the current window
 	 *
-	 * @return	boolean
+	 * @return	string
 	 */
-	this.isFacebook = function() {
-		if (this.facebook == null) {
-			this.facebook = false;
+	this.getWindowType = function() {
+		if (this.windowType == null) {
+			var hostname = window.location.hostname,
+				pathname = window.location.pathname,
+				href = window.location.href;
+console.log(hostname + " " + pathname);
+				// loop over games to find need values
+			for (var key in SCRIPT.games) {
+				var current = SCRIPT.games[key];
 
-			if (document.URL.match(/apps\.facebook\.com\//)) {
-				this.facebook = true;
+					// host and path match found
+				if (hostname.match(current.hostname) &&
+						current.pathname != null &&
+						pathname.match(current.pathname)) {
+console.log('jub ' + hostname + " " + pathname);
+					this.windowType = key;
+
+						// look if there are excludes and loop over it
+					if (typeof(current.exclude) == 'object') {
+						var excludeLength = current.exclude.length;
+
+						for (var i = 0; i < excludeLength; i++) {
+							if (pathname.match(current.exclude[i])) {
+								this.windowType = null;
+								break;
+							}
+						}
+					}
+				}
 			}
 		}
-		return this.facebook;
+console.log(this.windowType);
+		return this.windowType;
 	};
 
-	/**
-	 * checks if the url contains .farmville.com/
-	 *
-	 * @return	boolean
-	 */
-	this.isFarmville = function() {
-		if (this.farmville == null) {
-			this.farmville = false;
-
-			if (document.URL.match(/farmville\.com\//) &&
-					!document.URL.match(/\/flash.php/) &&
-					!document.URL.match(/promo_bar/) &&
-					!document.URL.match(/xd_receiver/) &&
-					!document.URL.match(/populateFbCache/)) {
-				this.farmville = true;
-			}
-		}
-		return this.farmville;
-	};
 
 	/**
 	 * checks if the url contains /flash.php
@@ -344,7 +480,7 @@ function Maximizer(){
 		if (this.flashframe == null) {
 			this.flashframe = false;
 
-			if (document.URL.match(/\/flash.php/)) {
+			if (this.pathname == '/flash.php') {
 				this.flashframe = true;
 			}
 		}
