@@ -17,10 +17,13 @@
 // @include        *facebook.com/petvillegame/*
 // @include        *petville.zynga.com*
 // @include        *facebook.com/coasterkingdom/*
+// @include        *coaster.zynga.com*
 // @include        *facebook.com/texas_holdem/*
+// @include        *poker.zynga.com*
 // @include        *facebook.com/treasureisle/*
 // @include        *treasure.zynga.com/*
 // @include        *facebook.com/wordtwist/*
+// @include        *74.201.93.101*
 // @include        *facebook.com/yoville/*
 // @include        *yoville.com/*
 // @exclude        *facebook.com/onthefarm/track.php*
@@ -119,7 +122,9 @@ var SCRIPT = {
 			name: 'FishVille',
 			selector: '#app151044809337_iframe_canvas',
 			hostname: /apps\.facebook\.com/,
-			pathname: /\/fishville/
+			pathname: /\/fishville/,
+			exclude: new Array(
+			)
 		},
 		fiv_iframe: {
 			selector: '#flashapp',
@@ -134,18 +139,24 @@ var SCRIPT = {
 			name: 'Path Words',
 			selector: '#app_content_12271981887 iframe[src*=/liveplayframe.php]',
 			hostname: /apps\.facebook\.com/,
-			pathname: /\/pathwords/
+			pathname: /\/pathwords/,
+			exclude: new Array(
+			)
 		},
 		pw_iframe: {
 			selector: '#TumbleWords',
 			hostname: /74\.201\.93\.95/,
-			pathname: /\/pathwords\/liveplayframe\.php/
+			pathname: /\/pathwords\/liveplayframe\.php/,
+			exclude: new Array(
+			)
 		},
 		pv: {
 			name: 'PetVille',
 			selector: '#app_content_163576248142 iframe[src*=/flash.php]',
 			hostname: /apps\.facebook\.com/,
-			pathname: /\/petvillegame/
+			pathname: /\/petvillegame/,
+			exclude: new Array(
+			)
 		},
 		pv_iframe: {
 			selector: '#flashapp',
@@ -158,30 +169,42 @@ var SCRIPT = {
 		},
 		rck: {
 			name: 'Roller Coaster Kingdom',
-				selector: '#app_content_89771452035 iframe#app89771452035_eventtest',
-				iframesrc: 'http://fb.coaster.zynga.com/fb/play.php?fb_access=1&canemail=0&proxy=0&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024577.1838&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.9j7qyT_p0aVyrAY_ou0b8Q__.3600.1274029200-100001095836253&fb_sig_ss=z2wCb_tq2OEAIGnjYqo9zw__&fb_sig_cookie_sig=6d84f9c40c5451e34b89c88565220d37&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=790dc5c5daead3c37936313576792d23&fb_sig_app_id=89771452035&fb_sig=ea21216e454b6cb5671a989e10cf63f6',
-				flashobj: 'embed#flash_game',
-			flashsrc: 'http://facebook.coaster.static.zynga.com/140/core/game.swf?v=140',
+			selector: '#app_content_89771452035 iframe#app89771452035_eventtest',
 			hostname: /apps\.facebook\.com/,
-			pathname: /\/coasterkingdom/
+			pathname: /\/coasterkingdom/,
+			exclude: new Array(
+			)
+		},
+		rck_iframe: {
+			selector: '#flash_game',
+			hostname: /coaster\.zynga\.com/,
+			pathname: /\/play\.php/,
+			exclude: new Array(
+			)
 		},
 		th: {
 			name: 'Texas HoldEm',
 			selector: '#app2389801228_zyPokerSWF iframe',
-				iframesrc: 'http://facebook.poker.zynga.com/poker/launch.php?achievement_rank=1&firstTimePlayer=0&firstTimePlaying=0&newbie=0&buyPromo=0&vipPromo=0&isVip=0&friend_join_uid=-1&connection_id=497d828eb163c4b3dd29f51af25cb3f0&goToShootouts=0&ach_num=0&ach_count=64&pokergrams=0&showdownRoomName=&swfType=table&AS3Em=1&BdayActive=0&load_id=0.061846084250146&newUserPopup=2000&prePopID=NewUser&hideGifts=0%2C0%2C0%2C0%2C0%2C0&fb_sig_in_iframe=1&fb_sig_iframe_key=70efdf2ec9b086079795c442636b55fb&fb_sig_base_domain=zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274083795.1586&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274090400&fb_sig_user=100001095836253&fb_sig_session_key=2.ZJzJSjF05VBuI6RFaOI79A__.3600.1274090400-100001095836253&fb_sig_ss=K2eeviKPbgTCvL3uI9_V9w__&fb_sig_cookie_sig=e3d8f5f2d62f33c6115cad3aaa00533a&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=965dc598471b823e0da74090bfe054bc&fb_sig_app_id=2389801228&fb_sig=9e23470bccde18b4edf8abcd376c2b45',
-				flashobj: 'embed#pokerSwfId',
-				flashsrc: 'http://statics.poker.static.zynga.com/poker/client/texas140t.swf',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/texas_holdem/,
 			exclude: new Array(
 				/new_invite\.php/
 			)
 		},
+		th_iframe: {
+			selector: '#pokerSwfId',
+			hostname: /poker\.zynga\.com/,
+			pathname: /poker\/launch\.php/,
+			exclude: new Array(
+			)
+		},
 		ti: {
 			name: 'Treasure Isle',
 			selector: '#app_content_234860566661 iframe[src*=/flash.php]',
 			hostname: /apps\.facebook\.com/,
-			pathname: /\/treasureisle/
+			pathname: /\/treasureisle/,
+			exclude: new Array(
+			)
 		},
 		ti_iframe: {
 			selector: '#flashapp',
@@ -199,7 +222,16 @@ var SCRIPT = {
 				flashobj: 'embed#WordTwist',
 				flashsrc: 'http://74.201.93.101/wordtwist/swf/WordTwistLadder_16.swf',
 			hostname: /apps\.facebook\.com/,
-			pathname: /\/wordtwist/
+			pathname: /\/wordtwist/,
+			exclude: new Array(
+			)
+		},
+		wt_iframe: {
+			selector: '#WordTwist',
+			hostname: /74\.201\.93\.101/,
+			pathname: /wordtwist\/liveplayframe\.php/,
+			exclude: new Array(
+			)
 		},
 		yvfb: {
 			name: 'YoVille in Facebook',
@@ -208,13 +240,14 @@ var SCRIPT = {
 				flashobj: 'embed#mylife',
 				flashsrc: 'http://app2.static.yoville.com/fb/YoVilleApp.swf?v=1236',
 			hostname: /apps\.facebook\.com/,
-			pathname: /\/yoville/
+			pathname: /\/yoville/,
+			exclude: new Array(
+			)
 		},
 		yvyv: {
 			name: 'YoVille in yoville.com',
 			selector: '#maincontent iframe[src*=play.php]',
 				iframesrc: 'http://app2.yoville.com/fb/indexnew.php?poe=1&src=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=yoville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274025352.8571&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.ZywAAz4W4LKcdWjgH_PHMA__.3600.1274029200-100001095836253&fb_sig_ss=M9__KKhaedd3bic3uYZipg__&fb_sig_cookie_sig=445f23b4198c0f55c0b5a8e84d19b2f8&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=d95c9e91f6a1291f74150fd86cf2533c&fb_sig_app_id=21526880407&fb_sig=5ca89be1833d1e8b7ed63140bd7ddca8',
-				flashobj: 'embed#mylife',
 				flashsrc: 'http://app2.static.yoville.com/fb/YoVilleApp.swf?v=1236',
 			hostname: /yoville\.com/,
 			pathname: /\/app\.php/,
@@ -223,6 +256,13 @@ var SCRIPT = {
 				/fb\/\/blank\.html/,
 				/fbapp\/play\.php/,
 				/xd_receiver\.htm/
+			)
+		},
+		yv_frame: {
+			selector: '#mylife',
+			hostname: /yoville.com/,
+			pathname: /indexnew\.php|play\.php/,
+			exclude: new Array(
 			)
 		}
 	}
@@ -322,18 +362,9 @@ function Maximizer() {
 						.appendTo(document.body);
 				}, 1000);
 				break;
-			case 'cw':
-			case 'favfb':
-			case 'fiv':
-			case 'pw':
-			case 'pv':
-			case 'rck':
-			case 'th':
 			case 'ti':
 				styles.addStyles(styles.getCommonStyles());
 				$iframe = initFacebook(SCRIPT.games[self.windowType]);
-
-				var tiactive = true;
 				$iframe.bind(
 					'stylesChanged',
 					{height: '100%', width: '100%'},
@@ -346,24 +377,39 @@ function Maximizer() {
 					}
 				);
 				break;
+			case 'yvyv':
+				styles.addStyles(styles.getCommonStyles() + styles.getYovilleStyles());
+				initFacebook(SCRIPT.games[self.windowType]);
+				break;
+			case 'cw':
+			case 'favfb':
+			case 'favfv':
+			case 'fiv':
+			case 'pw':
+			case 'pv':
+			case 'rck':
+			case 'th':
 			case 'wt':
 			case 'yvfb':
 				styles.addStyles(styles.getCommonStyles());
 				initFacebook(SCRIPT.games[self.windowType]);
 				break;
-			case 'favfv':
-				styles.addStyles(styles.getCommonStyles());
-				initFacebook(SCRIPT.games[self.windowType]);
-				break;
-			case 'yvyv':
-				styles.addStyles(styles.getCommonStyles() + styles.getYovilleStyles());
-				initFacebook(SCRIPT.games[self.windowType]);
+			case 'cw_iframe':
+				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
+				window.setTimeout(function() {
+					$flash = initFacebook(SCRIPT.games[self.windowType]);
+					$flash.css('visibility', 'visible');
+				}, 3000);
 				break;
 			case 'fav_iframe':
 			case 'fiv_iframe':
 			case 'pw_iframe':
 			case 'pv_iframe':
+			case 'rck_iframe':
+			case 'th_iframe':
 			case 'ti_iframe':
+			case 'wt_iframe':
+			case 'yv_frame':
 				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
 				window.setTimeout(function() {
 					initFlashframe(SCRIPT.games[self.windowType]);
