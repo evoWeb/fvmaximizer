@@ -14,10 +14,12 @@
 // @include        *facebook.com/coasterkingdom/*
 // @include        *facebook.com/texas_holdem/*
 // @include        *facebook.com/treasureisle/*
+// @include        *treasure.zynga.com/*
 // @include        *facebook.com/wordtwist/*
 // @include        *facebook.com/yoville/*
 // @include        *farmville.com/*
 // @include        *yoville.com/*
+// @exclude        *facebook.com/onthefarm/track.php*
 // @require        http://fvmaximizer.googlecode.com/files/jquerygmfix.js
 // @require        http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js
 // @require        http://sizzlemctwizzle.com/updater.php?id=73361&days=1
@@ -42,6 +44,7 @@ var SCRIPT = {
 				/playa\.php/
 			)
 		},
+		bj_flash: {},
 		cw: {
 			name: 'Cafe World',
 			selector: '#app_content_101539264719 iframe[src*=/fb//iframe.php]',
@@ -155,10 +158,18 @@ var SCRIPT = {
 			name: 'Treasure Isle',
 			selector: '#app_content_234860566661 iframe[src*=/flash.php]',
 				iframesrc: 'http://fb-0.treasure.zynga.com/flash.php?isOuterIframe=1&ref=games_my_recent&autopopmc=true&fa=1&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=fb-0.treasure.zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024880.4972&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.loTkE1iKn5fIJhLI9j4qbg__.3600.1274029200-100001095836253&fb_sig_ss=LXLRQpJKtnJZdx0mdrOsHw__&fb_sig_cookie_sig=428a3f3df229959bdb05613deac4e888&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=a7eee53e37bab1f8036dd2754e833ea4&fb_sig_app_id=234860566661&fb_sig=c9999ae487cee6090d0f2d58393a9f23',
-				flashobj: 'object#flashapp',
-				flashsrc: 'http://assets.treasure.zynga.com/embeds/v10178/Preloader.swf',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/treasureisle/
+		},
+		ti_iframe: {
+			selector: '#flashapp',
+				flashsrc: 'http://assets.treasure.zynga.com/embeds/v10178/Preloader.swf',
+			hostname: /treasure\.zynga\.com/,
+			pathname: /\/flash.php/,
+			exclude: new Array(
+				/populateFbCache\.php/,
+				/xd_receiver\.htm/
+			)
 		},
 		wt: {
 			name: 'Word Twist',
@@ -253,7 +264,8 @@ function Maximizer() {
 	this.init = function() {
 		var styles = new Styles(),
 			windowType = this.getWindowType()
-			self = this;
+			self = this,
+			$iframe = null;
 
 		switch(windowType) {
 			case 'bj':
@@ -270,6 +282,18 @@ function Maximizer() {
 			case 'rck':
 			case 'th':
 			case 'ti':
+				styles.addStyles(styles.getCommonStyles() + styles.getFacebookStyles());
+				$iframe = initFacebook(SCRIPT.games[self.windowType]);
+
+				var tiactive = true;
+				$iframe[0].addEventListener('DOMAttrModified', function(e) {
+					if (e.attrName === 'style' && tiactive) {
+						tiactive = false;
+						$iframe.css('height', '100%');
+						tiactive = true;
+					}
+				}, false);
+				break;
 			case 'wt':
 			case 'yvfb':
 				styles.addStyles(styles.getCommonStyles() + styles.getFacebookStyles());
@@ -283,6 +307,12 @@ function Maximizer() {
 				styles.addStyles(styles.getCommonStyles() + styles.getYovilleStyles());
 				initFacebook(SCRIPT.games[self.windowType]);
 				break;
+			case 'ti_iframe':
+				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
+				window.setTimeout(function() {
+					initFlashframe(SCRIPT.games[self.windowType]);
+				}, 100);
+				break;
 		}
 
 		return true;
@@ -291,6 +321,7 @@ function Maximizer() {
 		 * Finds the embed Element hides the siblings and all parents siblings.
 		 * Detaches the element and attached at the end of the body
 		 *
+		 * @param	array
 		 * @return	void
 		 */
 		function initBlackjack(settings) {
@@ -316,10 +347,11 @@ function Maximizer() {
 		}
 
 		/**
+		 * @param	array
 		 * @return	void
 		 */
 		function initFacebook(settings) {
-			var $flash = jQuery(settings.selector)
+			var $iframe = jQuery(settings.selector)
 				.removeAttr('height')
 				.removeAttr('width')
 				.removeAttr('style')
@@ -349,16 +381,15 @@ function Maximizer() {
 			);*/
 
 			//parent.createNoticebox();
-			console.log($flash);
+			return $iframe;
 		}
 
 		/**
+		 * @param	array
 		 * @return	void
 		 */
-		function initFlashframe(parent) {
-			styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
-
-			jQuery('#message_center_button')
+		function initFlashframe(settings) {
+			/*jQuery('#message_center_button')
 				.eq(0)
 					.parent()
 						.siblings()
@@ -366,16 +397,19 @@ function Maximizer() {
 							.end()
 						.end()
 					.parents()
-						.css('display', 'block');
+						.css('display', 'block');*/
+			jQuery(document.body)
+				.children()
+					.css('display', 'none');
 
-			jQuery('#flashapp')
-				.eq(0)
-					.removeAttr('height')
-					.removeAttr('width')
-					.removeAttr('style')
-					.removeAttr('class')
-					.detach()
-					.appendTo(document.body);
+			jQuery(settings.selector)
+				.removeAttr('height')
+				.removeAttr('width')
+				.removeAttr('style')
+				.removeAttr('class')
+				.css('display', 'block')
+				.detach()
+				.appendTo(document.body);
 		}
 	};
 
