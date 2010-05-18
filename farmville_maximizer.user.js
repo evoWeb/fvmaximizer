@@ -7,9 +7,11 @@
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
 // @include        *facebook.com/black_jack/*
 // @include        *facebook.com/cafeworld/*
+// @include        *cafe.zynga.com/*
 // @include        *facebook.com/onthefarm/*
 // @include        *farmville.com/*
 // @include        *facebook.com/fishville/*
+// @include        *fish.zynga.com/*
 // @include        *facebook.com/pathwords/*
 // @include        *facebook.com/petvillegame/*
 // @include        *facebook.com/coasterkingdom/*
@@ -45,9 +47,6 @@ var SCRIPT = {
 		cw: {
 			name: 'Cafe World',
 			selector: '#app_content_101539264719 iframe[src*=/fb//iframe.php]',
-				iframesrc: 'http://fb-0.cafe.zynga.com/current/fb//iframe.php?ref=games_my_recent&autopopmc=true&autopopmc=true&autopopmc=true&autopopmc=true&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274021606.6015&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274025600&fb_sig_user=100001095836253&fb_sig_session_key=2.WaIl1KeteEirIfYr_4YqWg__.3600.1274025600-100001095836253&fb_sig_ss=4V0gS5nH2OlAtq2Mpd_1aw__&fb_sig_cookie_sig=56fdfc38e16dc681a5958df1b2023a03&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=356eef8a12fcb7ede4c480062b325a88&fb_sig_app_id=101539264719&fb_sig=ee14f4c732f6ffbbecc5c24b617f1bc9',
-				flashobj: 'object#game_div',
-				flashsrc: 'http://facebook.cafe.static.zynga.com/79815/flash/YoCafe.swf',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/cafeworld/,
 			exclude: new Array(
@@ -57,6 +56,14 @@ var SCRIPT = {
 				/money\//,
 				/neighbors\.php/,
 				/view_gift\.php/
+			)
+		},
+		cw_iframe: {
+			selector: '#game_div',
+			hostname: /cafe\.zynga\.com/,
+			pathname: /\/iframe\.php/,
+			exclude: new Array(
+				/xd_receiver\.htm/
 			)
 		},
 		favfb: {
@@ -108,12 +115,21 @@ var SCRIPT = {
 		},
 		fiv: {
 			name: 'FishVille',
-			selector: '#app_content_151044809337 iframe[src*=/flash.php]',
+			selector: '#app151044809337_iframe_canvas',
 				iframesrc: 'http://fb-client-1.fish.zynga.com/public/flash.php?showFeaturePromoFooter=1&&type=&pageRef=bookmarks&appRef=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024277.8297&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2._0v7gK9ArI5CzEUMZdeYGA__.3600.1274029200-100001095836253&fb_sig_ss=jk6HdQJ_3257HwvJGanJ1g__&fb_sig_cookie_sig=c38d2ea1934b82c7688041bdb6e0e7c7&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eb8e427ee25fb4450026d5d00c41e5a8',
 				flashobj: 'object#flashapp',
 				flashsrc: 'http://facebook.fishville.static.zynga.com/production/assets/flash/FishGame.swf?rev=78794',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/fishville/
+		},
+		fiv_iframe: {
+			selector: '#flashapp',
+			hostname: /fishville\.zynga\.com/,
+			pathname: /public\/index\.php/,
+			exclude: new Array(
+				/populateFbCache\.php/,
+				/xd_receiver\.htm/
+			)
 		},
 		pw: {
 			name: 'Path Words',
@@ -243,6 +259,7 @@ if (active) {
 }
 
 
+
 var $stylesChanged = jQuery.event.special.stylesChanged = {
 	property: {},
 	active: true,
@@ -337,6 +354,7 @@ function Maximizer() {
 				initFacebook(SCRIPT.games[self.windowType]);
 				break;
 			case 'fav_iframe':
+			case 'fiv_iframe':
 			case 'ti_iframe':
 				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
 				window.setTimeout(function() {
@@ -403,13 +421,15 @@ function Maximizer() {
 				.children()
 					.css('display', 'none');
 
-			jQuery(settings.selector)
+			var $flash = jQuery(settings.selector)
 				.removeAttr('height')
 				.removeAttr('width')
 				.removeAttr('style')
 				.removeAttr('class')
+				.css('display', 'block')
 				.detach()
 				.appendTo(document.body);
+console.log($flash);
 		}
 	};
 
