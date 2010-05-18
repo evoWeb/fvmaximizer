@@ -8,6 +8,7 @@
 // @include        *facebook.com/black_jack/*
 // @include        *facebook.com/cafeworld/*
 // @include        *facebook.com/onthefarm/*
+// @include        *farmville.com/*
 // @include        *facebook.com/fishville/*
 // @include        *facebook.com/pathwords/*
 // @include        *facebook.com/petvillegame/*
@@ -17,7 +18,6 @@
 // @include        *treasure.zynga.com/*
 // @include        *facebook.com/wordtwist/*
 // @include        *facebook.com/yoville/*
-// @include        *farmville.com/*
 // @include        *yoville.com/*
 // @exclude        *facebook.com/onthefarm/track.php*
 // @require        http://fvmaximizer.googlecode.com/files/jquerygmfix.js
@@ -66,8 +66,6 @@ var SCRIPT = {
 			name: 'FarmVille in Facebook',
 			selector: '#app_content_102452128776 iframe[src*=/flash.php]',
 				iframesrc: 'http://fb-1.farmville.com/flash.php?ref=bookmarks&showFeaturePromoFooter=1&&type=&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_is_admin=0&fb_sig_type=APPLICATION&fb_sig_is_fan=0&fb_sig_base_domain=farmville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024149.2992&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.jDfH1iit0YdV_rHoHPvXZw__.3600.1274029200-100001095836253&fb_sig_ss=qw7EamsMsg2iWMyttf5asg__&fb_sig_cookie_sig=a630c821ad42ef2a2224dfdf794f5e90&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=80c6ec6628efd9a465dd223190a65bbc&fb_sig_app_id=102452128776&fb_sig=12e7ed9f5ef29f3f739cccf8ae796d09',
-				flashobj: 'object#flashapp',
-				flashsrc: 'http://static.farmville.com/embeds/v27392/FV_Preloader.swf',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/onthefarm/,
 			exclude: new Array(
@@ -94,8 +92,6 @@ var SCRIPT = {
 			name: 'FarmVille in farmville.com',
 			selector: '#flashIframeWrapper iframe',
 				iframesrc: 'http://fb-1.farmville.com/flash.php?ref=bookmarks&showFeaturePromoFooter=1&&type=&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_is_admin=0&fb_sig_type=APPLICATION&fb_sig_is_fan=0&fb_sig_base_domain=farmville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024149.2992&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.jDfH1iit0YdV_rHoHPvXZw__.3600.1274029200-100001095836253&fb_sig_ss=qw7EamsMsg2iWMyttf5asg__&fb_sig_cookie_sig=a630c821ad42ef2a2224dfdf794f5e90&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=80c6ec6628efd9a465dd223190a65bbc&fb_sig_app_id=102452128776&fb_sig=12e7ed9f5ef29f3f739cccf8ae796d09',
-				flashobj: 'object#flashapp',
-				flashsrc: 'http://static.farmville.com/embeds/v27392/FV_Preloader.swf',
 			hostname: /farmville\.com/,
 			pathname: /\/+/,
 			exclude: new Array(
@@ -103,6 +99,16 @@ var SCRIPT = {
 				/flash\.php/,
 				/populateFbCache\.php/,
 				/promo_bar\.php/,
+				/xd_receiver\.htm/
+			)
+		},
+		fav_iframe: {
+			selector: '#flashapp',
+				flashsrc: 'http://static.farmville.com/embeds/v27392/FV_Preloader.swf',
+			hostname: /farmville\.com/,
+			pathname: /\/flash.php/,
+			exclude: new Array(
+				/populateFbCache\.php/,
 				/xd_receiver\.htm/
 			)
 		},
@@ -307,6 +313,7 @@ function Maximizer() {
 				styles.addStyles(styles.getCommonStyles() + styles.getYovilleStyles());
 				initFacebook(SCRIPT.games[self.windowType]);
 				break;
+			case 'fav_iframe':
 			case 'ti_iframe':
 				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
 				window.setTimeout(function() {
@@ -514,7 +521,7 @@ function Maximizer() {
 			var hostname = window.location.hostname,
 				pathname = window.location.pathname,
 				href = window.location.href;
-console.log(hostname + " " + pathname);
+
 				// loop over games to find need values
 			for (var key in SCRIPT.games) {
 				var current = SCRIPT.games[key];
@@ -523,7 +530,7 @@ console.log(hostname + " " + pathname);
 				if (hostname.match(current.hostname) &&
 						current.pathname != null &&
 						pathname.match(current.pathname)) {
-console.log('jub ' + hostname + " " + pathname);
+console.log('found ' + hostname + " " + pathname);
 					this.windowType = key;
 
 						// look if there are excludes and loop over it
@@ -532,6 +539,7 @@ console.log('jub ' + hostname + " " + pathname);
 
 						for (var i = 0; i < excludeLength; i++) {
 							if (pathname.match(current.exclude[i])) {
+console.log('exclude ' + hostname + " " + pathname);
 								this.windowType = null;
 								break;
 							}
@@ -542,23 +550,6 @@ console.log('jub ' + hostname + " " + pathname);
 		}
 console.log(this.windowType);
 		return this.windowType;
-	};
-
-
-	/**
-	 * checks if the url contains /flash.php
-	 *
-	 * @return	boolean
-	 */
-	this.isFlashframe = function() {
-		if (this.flashframe == null) {
-			this.flashframe = false;
-
-			if (this.pathname == '/flash.php') {
-				this.flashframe = true;
-			}
-		}
-		return this.flashframe;
 	};
 
 
