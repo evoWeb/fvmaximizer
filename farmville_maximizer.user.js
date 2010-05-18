@@ -31,10 +31,7 @@ var SCRIPT = {
 	games: {
 		bj: {
 			name: 'Blackjack',
-			selector: '#app_content_5803363687 embed[src*=blackjack/blackjack0029.swf]',
-				iframesrc: '',
-				flashobj: '',
-				flashsrc: 'http://63.251.100.214/blackjack/blackjack0029.swf',
+			selector: '#app_content_5803363687 .__fbswf embed',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/black_jack/,
 			exclude: new Array(
@@ -65,7 +62,6 @@ var SCRIPT = {
 		favfb: {
 			name: 'FarmVille in Facebook',
 			selector: '#app_content_102452128776 iframe[src*=/flash.php]',
-				iframesrc: 'http://fb-1.farmville.com/flash.php?ref=bookmarks&showFeaturePromoFooter=1&&type=&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_is_admin=0&fb_sig_type=APPLICATION&fb_sig_is_fan=0&fb_sig_base_domain=farmville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024149.2992&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.jDfH1iit0YdV_rHoHPvXZw__.3600.1274029200-100001095836253&fb_sig_ss=qw7EamsMsg2iWMyttf5asg__&fb_sig_cookie_sig=a630c821ad42ef2a2224dfdf794f5e90&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=80c6ec6628efd9a465dd223190a65bbc&fb_sig_app_id=102452128776&fb_sig=12e7ed9f5ef29f3f739cccf8ae796d09',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/onthefarm/,
 			exclude: new Array(
@@ -91,7 +87,6 @@ var SCRIPT = {
 		favfv: {
 			name: 'FarmVille in farmville.com',
 			selector: '#flashIframeWrapper iframe',
-				iframesrc: 'http://fb-1.farmville.com/flash.php?ref=bookmarks&showFeaturePromoFooter=1&&type=&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_is_admin=0&fb_sig_type=APPLICATION&fb_sig_is_fan=0&fb_sig_base_domain=farmville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024149.2992&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.jDfH1iit0YdV_rHoHPvXZw__.3600.1274029200-100001095836253&fb_sig_ss=qw7EamsMsg2iWMyttf5asg__&fb_sig_cookie_sig=a630c821ad42ef2a2224dfdf794f5e90&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=80c6ec6628efd9a465dd223190a65bbc&fb_sig_app_id=102452128776&fb_sig=12e7ed9f5ef29f3f739cccf8ae796d09',
 			hostname: /farmville\.com/,
 			pathname: /\/+/,
 			exclude: new Array(
@@ -104,7 +99,6 @@ var SCRIPT = {
 		},
 		fav_iframe: {
 			selector: '#flashapp',
-				flashsrc: 'http://static.farmville.com/embeds/v27392/FV_Preloader.swf',
 			hostname: /farmville\.com/,
 			pathname: /\/flash.php/,
 			exclude: new Array(
@@ -163,13 +157,11 @@ var SCRIPT = {
 		ti: {
 			name: 'Treasure Isle',
 			selector: '#app_content_234860566661 iframe[src*=/flash.php]',
-				iframesrc: 'http://fb-0.treasure.zynga.com/flash.php?isOuterIframe=1&ref=games_my_recent&autopopmc=true&fa=1&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=fb-0.treasure.zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024880.4972&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.loTkE1iKn5fIJhLI9j4qbg__.3600.1274029200-100001095836253&fb_sig_ss=LXLRQpJKtnJZdx0mdrOsHw__&fb_sig_cookie_sig=428a3f3df229959bdb05613deac4e888&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=a7eee53e37bab1f8036dd2754e833ea4&fb_sig_app_id=234860566661&fb_sig=c9999ae487cee6090d0f2d58393a9f23',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/treasureisle/
 		},
 		ti_iframe: {
 			selector: '#flashapp',
-				flashsrc: 'http://assets.treasure.zynga.com/embeds/v10178/Preloader.swf',
 			hostname: /treasure\.zynga\.com/,
 			pathname: /\/flash.php/,
 			exclude: new Array(
@@ -251,6 +243,30 @@ if (active) {
 }
 
 
+var $stylesChanged = jQuery.event.special.stylesChanged = {
+	property: {},
+	active: true,
+
+	setup: function(data, namespaces) {
+		jQuery(this).bind('DOMAttrModified', $stylesChanged.handler);
+	},
+
+	teardown: function(namespaces) {
+		jQuery(this).unbind('DOMAttrModified');
+	},
+
+	handler: function(event) {
+		if (event.attrName === 'style' && $stylesChanged.active) {
+			$stylesChanged.active = false;
+
+			jQuery(this).triggerHandler('stylesChanged');
+
+			$stylesChanged.active = true;
+		}
+	}
+};
+
+
 
 /**
  * Maximizer object
@@ -275,10 +291,13 @@ function Maximizer() {
 
 		switch(windowType) {
 			case 'bj':
-				styles.addStyles(styles.getCommonStyles() + styles.getFacebookStyles());
+				styles.addStyles(styles.getCommonStyles());
 				window.setTimeout(function() {
-					initBlackjack(SCRIPT.games[self.windowType]);
-				}, 100);
+					$flash = initFacebook(SCRIPT.games[self.windowType]);
+					$flash
+						.detach()
+						.appendTo(document.body);
+				}, 1000);
 				break;
 			case 'cw':
 			case 'favfb':
@@ -288,25 +307,29 @@ function Maximizer() {
 			case 'rck':
 			case 'th':
 			case 'ti':
-				styles.addStyles(styles.getCommonStyles() + styles.getFacebookStyles());
+				styles.addStyles(styles.getCommonStyles());
 				$iframe = initFacebook(SCRIPT.games[self.windowType]);
 
 				var tiactive = true;
-				$iframe[0].addEventListener('DOMAttrModified', function(e) {
-					if (e.attrName === 'style' && tiactive) {
-						tiactive = false;
-						$iframe.css('height', '100%');
-						tiactive = true;
+				$iframe.bind(
+					'stylesChanged',
+					{height: '100%', width: '100%'},
+					function(event, property) {
+						for (var key in event.data) {
+							if ($(this).css(key) != event.data[key]) {
+								$(this).css(key, event.data[key]);
+							}
+						}
 					}
-				}, false);
+				);
 				break;
 			case 'wt':
 			case 'yvfb':
-				styles.addStyles(styles.getCommonStyles() + styles.getFacebookStyles());
+				styles.addStyles(styles.getCommonStyles());
 				initFacebook(SCRIPT.games[self.windowType]);
 				break;
 			case 'favfv':
-				styles.addStyles(styles.getCommonStyles() + styles.getFarmvilleStyles());
+				styles.addStyles(styles.getCommonStyles());
 				initFacebook(SCRIPT.games[self.windowType]);
 				break;
 			case 'yvyv':
@@ -323,35 +346,6 @@ function Maximizer() {
 		}
 
 		return true;
-
-		/**
-		 * Finds the embed Element hides the siblings and all parents siblings.
-		 * Detaches the element and attached at the end of the body
-		 *
-		 * @param	array
-		 * @return	void
-		 */
-		function initBlackjack(settings) {
-			jQuery(settings.selector)
-				.removeAttr('height')
-				.removeAttr('width')
-				.removeAttr('style')
-				.removeAttr('class')
-				.siblings()
-					.css('display', 'none')
-					.end()
-				.css('display', 'block')
-				.parents()
-					.siblings()
-						.css('display', 'none')
-						.end()
-					.removeAttr('style')
-					.removeAttr('class')
-					.css('display', 'block')
-					.end()
-				.detach()
-				.appendTo(document.body);
-		}
 
 		/**
 		 * @param	array
@@ -414,7 +408,6 @@ function Maximizer() {
 				.removeAttr('width')
 				.removeAttr('style')
 				.removeAttr('class')
-				.css('display', 'block')
 				.detach()
 				.appendTo(document.body);
 		}
@@ -580,6 +573,18 @@ function Styles() {
 				width: 100%;\n\
 			}\n\
 \n\
+			iframe,\n\
+			embed {\n\
+				height: 100%;\n\
+				margin: 0;\n\
+				padding: 0;\n\
+				width: 100%;\n\
+				position: absolute;\n\
+				top: 0;\n\
+				left: 0;\n\
+			}\n\
+\n\
+\n\
 			#fvmm_menu {\n\
 				margin-right: 100px;\n\
 				position: absolute;\n\
@@ -659,45 +664,6 @@ function Styles() {
 	};
 
 	/**
-	 * General styles for facebook
-	 *
-	 * @return	string
-	 */
-	this.getFacebookStyles = function() {
-		return this.trim('\n\
-			iframe,\n\
-			embed {\n\
-				height: 100%;\n\
-				margin: 0;\n\
-				padding: 0;\n\
-				width: 100%;\n\
-				position: absolute;\n\
-				top: 0;\n\
-				left: 0;\n\
-			}\n\
-		');
-	};
-
-	/**
-	 * General styles for FarmVille
-	 *
-	 * @return	string
-	 */
-	this.getFarmvilleStyles = function() {
-		return this.trim('\n\
-			iframe {\n\
-				height: 100%;\n\
-				margin: 0;\n\
-				padding: 0;\n\
-				width: 100%;\n\
-				position: absolute;\n\
-				top: 0;\n\
-				left: 0;\n\
-			}\n\
-		');
-	};
-
-	/**
 	 * Styles for Yoville
 	 *
 	 * @return	string
@@ -708,16 +674,6 @@ function Styles() {
 			#maincontent {\n\
 				height: 100%;\n\
 				width: 100%;\n\
-			}\n\
-\n\
-			iframe {\n\
-				height: 100%;\n\
-				margin: 0;\n\
-				padding: 0;\n\
-				width: 100%;\n\
-				position: absolute;\n\
-				top: 0;\n\
-				left: 0;\n\
 			}\n\
 		');
 	};
