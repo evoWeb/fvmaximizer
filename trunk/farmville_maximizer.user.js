@@ -13,7 +13,9 @@
 // @include        *facebook.com/fishville/*
 // @include        *fish.zynga.com/*
 // @include        *facebook.com/pathwords/*
+// @include        *74.201.93.95/*
 // @include        *facebook.com/petvillegame/*
+// @include        *petville.zynga.com*
 // @include        *facebook.com/coasterkingdom/*
 // @include        *facebook.com/texas_holdem/*
 // @include        *facebook.com/treasureisle/*
@@ -43,7 +45,7 @@ var SCRIPT = {
 				/playa\.php/
 			)
 		},
-		bj_flash: {},
+		bj_iframe: {},
 		cw: {
 			name: 'Cafe World',
 			selector: '#app_content_101539264719 iframe[src*=/fb//iframe.php]',
@@ -116,9 +118,6 @@ var SCRIPT = {
 		fiv: {
 			name: 'FishVille',
 			selector: '#app151044809337_iframe_canvas',
-				iframesrc: 'http://fb-client-1.fish.zynga.com/public/flash.php?showFeaturePromoFooter=1&&type=&pageRef=bookmarks&appRef=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024277.8297&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2._0v7gK9ArI5CzEUMZdeYGA__.3600.1274029200-100001095836253&fb_sig_ss=jk6HdQJ_3257HwvJGanJ1g__&fb_sig_cookie_sig=c38d2ea1934b82c7688041bdb6e0e7c7&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eb8e427ee25fb4450026d5d00c41e5a8',
-				flashobj: 'object#flashapp',
-				flashsrc: 'http://facebook.fishville.static.zynga.com/production/assets/flash/FishGame.swf?rev=78794',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/fishville/
 		},
@@ -134,20 +133,28 @@ var SCRIPT = {
 		pw: {
 			name: 'Path Words',
 			selector: '#app_content_12271981887 iframe[src*=/liveplayframe.php]',
-				iframesrc: 'http://74.201.93.95/pathwords/liveplayframe.php?navsrc=2385&ref=games_my_recent&fa=1&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024430.579&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.Fhuuy9N2_unNwV16dHUhHQ__.3600.1274029200-100001095836253&fb_sig_ss=9K63NYc958CA6zPtMs4yUQ__&fb_sig_cookie_sig=dd0c6260d6ab8e3a379a394eac2463a9&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=9087a7bece1b56eca13016292edf7bda&fb_sig_app_id=12271981887&fb_sig=d70f9a6611fdd42d1fb36506aecef864',
-				flashobj: 'object#TumbleWords',
-				flashsrc: 'http://74.201.93.95/pathwords/swf/TumbleWordsLadder_20.swf',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/pathwords/
+		},
+		pw_iframe: {
+			selector: '#TumbleWords',
+			hostname: /74\.201\.93\.95/,
+			pathname: /\/pathwords\/liveplayframe\.php/
 		},
 		pv: {
 			name: 'PetVille',
 			selector: '#app_content_163576248142 iframe[src*=/flash.php]',
-				iframesrc: 'http://fb-0.petville.zynga.com/current/flash.php?&type=&refbm=0&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=zynga.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274024508.2114&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.CLLmd2xPiLUVFQ6L9XeTIw__.3600.1274029200-100001095836253&fb_sig_ss=OPO_4GyPnIkbhm_S4tk_zg__&fb_sig_cookie_sig=ccddd67e0d83bd05c193e5f64ec523cb&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=a3d9760442b59fa8f534df8cadcea670&fb_sig_app_id=163576248142&fb_sig=2d6b979521dec5639e6bc5e9e04b1fd8',
-				flashobj: 'object#flashapp',
-				flashsrc: 'http://assets.petville.zynga.com/prod/embeds/Preloader.19705.swf',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/petvillegame/
+		},
+		pv_iframe: {
+			selector: '#flashapp',
+			hostname: /petville\.zynga\.com/,
+			pathname: /\/current\/flash\.php/,
+			exclude: new Array(
+				/current\/button\.php/,
+				/xd_receiver\.htm/
+			)
 		},
 		rck: {
 			name: 'Roller Coaster Kingdom',
@@ -261,7 +268,6 @@ if (active) {
 
 
 var $stylesChanged = jQuery.event.special.stylesChanged = {
-	property: {},
 	active: true,
 
 	setup: function(data, namespaces) {
@@ -355,6 +361,8 @@ function Maximizer() {
 				break;
 			case 'fav_iframe':
 			case 'fiv_iframe':
+			case 'pw_iframe':
+			case 'pv_iframe':
 			case 'ti_iframe':
 				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
 				window.setTimeout(function() {
@@ -543,7 +551,6 @@ console.log($flash);
 				if (hostname.match(current.hostname) &&
 						current.pathname != null &&
 						pathname.match(current.pathname)) {
-console.log('found ' + hostname + " " + pathname);
 					this.windowType = key;
 
 						// look if there are excludes and loop over it
@@ -552,7 +559,6 @@ console.log('found ' + hostname + " " + pathname);
 
 						for (var i = 0; i < excludeLength; i++) {
 							if (pathname.match(current.exclude[i])) {
-console.log('exclude ' + hostname + " " + pathname);
 								this.windowType = null;
 								break;
 							}
@@ -561,7 +567,7 @@ console.log('exclude ' + hostname + " " + pathname);
 				}
 			}
 		}
-console.log(this.windowType);
+console.log(this.windowType + " ( " + hostname + " : " + pathname + " )");
 		return this.windowType;
 	};
 
