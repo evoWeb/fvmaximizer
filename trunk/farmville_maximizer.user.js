@@ -94,6 +94,13 @@ var SCRIPT = {
 				/sentthankyougift\.php/,
 				/thankyougift\.php/,
 				/wishlist_give\.php/
+			),
+			menu: new Array(
+				{href: 'http://apps.facebook.com/onthefarm/gifts.php', label: 'Gifts'},
+				{href: 'http://apps.facebook.com/onthefarm/neighbors.php', label: 'Neighbors'},
+				{href: 'http://apps.facebook.com/onthefarm/money.php', label: 'Coins & Cash'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			//	{click: function() {new FarmvilleTool();}, label: 'Seed Calc'},
 			)
 		},
 		favfv: {
@@ -218,9 +225,6 @@ var SCRIPT = {
 		wt: {
 			name: 'Word Twist',
 			selector: '#app_content_8567719845 iframe[src*=liveplayframe.php]',
-				iframesrc: 'http://74.201.93.101/wordtwist/liveplayframe.php?navsrc=50&ref=games_my_recent&fa=1&navsrc=56&r=1282942497&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274025146.9562&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.hJOaWLkH4hE0YlBMWHRHpw__.3600.1274029200-100001095836253&fb_sig_ss=JAd6_9KrweAzddlOtbk83Q__&fb_sig_cookie_sig=51659cc0e475717560858a80bab624fd&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=b2efe072c99c07892c5d0554566977a4&fb_sig_app_id=8567719845&fb_sig=817088e229f182bee54b6e735ac0b99f',
-				flashobj: 'embed#WordTwist',
-				flashsrc: 'http://74.201.93.101/wordtwist/swf/WordTwistLadder_16.swf',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/wordtwist/,
 			exclude: new Array(
@@ -236,9 +240,6 @@ var SCRIPT = {
 		yvfb: {
 			name: 'YoVille in Facebook',
 			selector: '#app_content_21526880407 iframe[src*=/indexnew.php]',
-				iframesrc: 'http://app2.yoville.com/fb/indexnew.php?poe=1&src=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=yoville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274025352.8571&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.ZywAAz4W4LKcdWjgH_PHMA__.3600.1274029200-100001095836253&fb_sig_ss=M9__KKhaedd3bic3uYZipg__&fb_sig_cookie_sig=445f23b4198c0f55c0b5a8e84d19b2f8&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=d95c9e91f6a1291f74150fd86cf2533c&fb_sig_app_id=21526880407&fb_sig=5ca89be1833d1e8b7ed63140bd7ddca8',
-				flashobj: 'embed#mylife',
-				flashsrc: 'http://app2.static.yoville.com/fb/YoVilleApp.swf?v=1236',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/yoville/,
 			exclude: new Array(
@@ -247,8 +248,6 @@ var SCRIPT = {
 		yvyv: {
 			name: 'YoVille in yoville.com',
 			selector: '#maincontent iframe[src*=play.php]',
-				iframesrc: 'http://app2.yoville.com/fb/indexnew.php?poe=1&src=bookmark&ref=bookmarks&fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_base_domain=yoville.com&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1274025352.8571&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1274029200&fb_sig_user=100001095836253&fb_sig_session_key=2.ZywAAz4W4LKcdWjgH_PHMA__.3600.1274029200-100001095836253&fb_sig_ss=M9__KKhaedd3bic3uYZipg__&fb_sig_cookie_sig=445f23b4198c0f55c0b5a8e84d19b2f8&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=d95c9e91f6a1291f74150fd86cf2533c&fb_sig_app_id=21526880407&fb_sig=5ca89be1833d1e8b7ed63140bd7ddca8',
-				flashsrc: 'http://app2.static.yoville.com/fb/YoVilleApp.swf?v=1236',
 			hostname: /yoville\.com/,
 			pathname: /\/app\.php/,
 			exclude: new Array(
@@ -272,7 +271,7 @@ var SCRIPT = {
 
 var active = true,
 	isGM = (typeof(GM_getValue) != 'undefined' &&
-	typeof(GM_getValue('a', 'b')) != 'undefined');
+		typeof(GM_getValue('a', 'b')) != 'undefined');
 
 if (isGM) {
 	active = GM_getValue('active', true);
@@ -298,9 +297,12 @@ if (isGM) {
 }
 
 if (active) {
-	(function($){
-		$(document).ready(function() {
-			var maximizer = new Maximizer();
+	(function($) {
+		var mmObj = new Maximizer();
+		mmObj.injectDefaultStyles();
+
+		jQuery(document).ready(function() {
+			mmObj.maximizeWindow();
 		});
 	})(jQuery);
 }
@@ -329,6 +331,22 @@ var $stylesChanged = jQuery.event.special.stylesChanged = {
 	}
 };
 
+$elementCreated = jQuery.event.special.elementCreated = {
+	setup: function(data, namespaces) {
+		jQuery(this).bind('DOMNodeInserted', $elementCreated.handler);
+		console.log('bound');
+	},
+
+	teardown: function(namespaces) {
+		jQuery(this).unbind('DOMNodeInserted');
+	},
+
+	handler: function(event) {
+		console.log('event catched');
+		console.log(event.target );
+	}
+};
+
 
 
 /**
@@ -337,6 +355,8 @@ var $stylesChanged = jQuery.event.special.stylesChanged = {
  * @return	void
  */
 function Maximizer() {
+	this.styles = null;
+
 	this.windowType = null;
 
 	this.timeout_close = null;
@@ -347,24 +367,38 @@ function Maximizer() {
 	 * @return	boolean
 	 */
 	this.init = function() {
-		var styles = new Styles(),
-			windowType = this.getWindowType()
-			self = this,
+		this.windowType = this.getWindowType();
+		this.styles = new Styles();
+		this.settings = SCRIPT.games[this.windowType];
+	};
+
+	/**
+	 * Inject the common styles into the head node
+	 *
+	 * @return	void
+	 */
+	this.injectDefaultStyles = function() {
+		this.styles.addStyles(this.styles.getCommonStyles());
+	};
+
+	/**
+	 * Maximize the content element in the window with current windows settings
+	 *
+	 * @return true
+	 */
+	this.maximizeWindow = function() {
+		var configuration = this.settings,
 			$iframe = null;
 
-		switch(windowType) {
+		switch(this.windowType) {
 			case 'bj':
-				styles.addStyles(styles.getCommonStyles());
 				window.setTimeout(function() {
-					$flash = initFacebook(SCRIPT.games[self.windowType]);
-					$flash
-						.detach()
-						.appendTo(document.body);
+					$flash = initFlashframe(configuration);
 				}, 1000);
 				break;
+
 			case 'ti':
-				styles.addStyles(styles.getCommonStyles());
-				$iframe = initFacebook(SCRIPT.games[self.windowType]);
+				$iframe = initFacebook(configuration);
 				$iframe.bind(
 					'stylesChanged',
 					{height: '100%', width: '100%'},
@@ -377,13 +411,19 @@ function Maximizer() {
 					}
 				);
 				break;
+
 			case 'yvyv':
-				styles.addStyles(styles.getCommonStyles() + styles.getYovilleStyles());
-				initFacebook(SCRIPT.games[self.windowType]);
+				this.styles.addStyles(this.styles.getYovilleStyles());
+				initFacebook(configuration);
 				break;
-			case 'cw':
+
 			case 'favfb':
 			case 'favfv':
+				this.styles.addStyles(this.styles.getFarmVilleMenuStyles());
+				initFacebook(configuration);
+				break;
+
+			case 'cw':
 			case 'fiv':
 			case 'pw':
 			case 'pv':
@@ -391,16 +431,15 @@ function Maximizer() {
 			case 'th':
 			case 'wt':
 			case 'yvfb':
-				styles.addStyles(styles.getCommonStyles());
-				initFacebook(SCRIPT.games[self.windowType]);
+				initFacebook(configuration);
 				break;
+
 			case 'cw_iframe':
-				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
-				window.setTimeout(function() {
-					$flash = initFacebook(SCRIPT.games[self.windowType]);
-					$flash.css('visibility', 'visible');
-				}, 3000);
+				this.styles.addStyles(this.styles.getFlashframeStyles());
+				$flash = initFacebook(configuration);
+				$flash.css('visibility', 'visible');
 				break;
+
 			case 'fav_iframe':
 			case 'fiv_iframe':
 			case 'pw_iframe':
@@ -410,51 +449,58 @@ function Maximizer() {
 			case 'ti_iframe':
 			case 'wt_iframe':
 			case 'yv_frame':
-				styles.addStyles(styles.getCommonStyles() + styles.getFlashframeStyles());
-				window.setTimeout(function() {
-					initFlashframe(SCRIPT.games[self.windowType]);
-				}, 100);
+				this.styles.addStyles(this.styles.getFlashframeStyles());
+
+				if (jQuery(configuration.selector).length > 0) {
+					initFlashframe(configuration);
+				} else {
+					jQuery(document.body).bind('elementCreated', {
+						selector: configuration.selector
+					}, function(event){
+						console.log('added triggert');
+					});
+				}
 				break;
 		}
 
+			// create menu if menuitems are available
+		if (this.windowType != null && typeof(configuration.menu) != 'undefined') {
+			this.createMenu(configuration.menu);
+		}
+
+		if (this.windowType != null) {
+			this.createNoticebox();
+		}
+
 		return true;
+
 
 		/**
 		 * @param	array
 		 * @return	void
 		 */
 		function initFacebook(settings) {
-			var $iframe = jQuery(settings.selector)
+			var $element = jQuery(settings.selector)
 				.removeAttr('height')
 				.removeAttr('width')
 				.removeAttr('style')
 				.removeAttr('class')
 				.siblings()
-					.css('display', 'none')
+					.removeAttr('style')
+					.css({position: 'absolute', display: 'none', height: '100%', width: '100%'})
 					.end()
 				.css('display', 'block')
 				.parents()
 					.siblings()
 						.css('display', 'none')
 						.end()
+					.css('display', 'block')
 					.removeAttr('style')
 					.removeAttr('class')
 					.removeAttr('style')
 					.end();
 
-			/*parent.createMenu(
-				Array(
-					{href: 'http://apps.facebook.com/onthefarm/gifts.php', label: 'Gifts'},
-					{href: 'http://apps.facebook.com/onthefarm/neighbors.php', label: 'Neighbors'},
-					{href: 'http://apps.facebook.com/onthefarm/money.php', label: 'Coins & Cash'},
-					{href: 'http://www.facebook.com/', label: 'Facebook'},
-				//	{click: function() {new FarmvilleTool();}, label: 'Seed Calc'},
-					{href: SCRIPT.presentationurl, label: 'Userscripts', target: '_blank', style: 'border-top: 2px solid black'}
-				)
-			);*/
-
-			//parent.createNoticebox();
-			return $iframe;
+			return $element;
 		}
 
 		/**
@@ -462,29 +508,59 @@ function Maximizer() {
 		 * @return	void
 		 */
 		function initFlashframe(settings) {
-			/*jQuery('#message_center_button')
-				.eq(0)
-					.parent()
-						.siblings()
-							.css('display', 'none')
-							.end()
-						.end()
-					.parents()
-						.css('display', 'block');*/
-			jQuery(document.body)
-				.children()
-					.css('display', 'none');
+			var $element = initFacebook(settings);
 
-			var $flash = jQuery(settings.selector)
-				.removeAttr('height')
-				.removeAttr('width')
-				.removeAttr('style')
-				.removeAttr('class')
-				.css('display', 'block')
-				.detach()
-				.appendTo(document.body);
-console.log($flash);
+			jQuery('#message_center_button')
+				.css('display', 'block');
+				//.detach()
+				//.appendTo(document.body);
 		}
+	};
+
+	/**
+	 * Get the window type depending on the location of the current window
+	 *
+	 * @return	string
+	 */
+	this.getWindowType = function() {
+		if (this.windowType == null) {
+			var hostname = window.location.hostname,
+				pathname = window.location.pathname,
+				href = window.location.href;
+
+				// get every game settings and set them as current
+			for (var key in SCRIPT.games) {
+				var current = SCRIPT.games[key];
+
+					/**
+					 * If hostname and pathname is set compare them with current
+					 * game settings. If they match use the key as windowType
+					 */
+				if (hostname != undefined &&
+						pathname != undefined &&
+						hostname.match(current.hostname) &&
+						pathname.match(current.pathname)) {
+					this.windowType = key;
+
+						/**
+						 * If some exclude path are defined look if they match.
+						 * Remove the path and end the check
+						 */
+					if (typeof(current.exclude) == 'object') {
+						var excludeLength = current.exclude.length;
+
+						for (var i = 0; i < excludeLength; i++) {
+							if (pathname.match(current.exclude[i])) {
+								this.windowType = null;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return this.windowType;
 	};
 
 
@@ -578,45 +654,6 @@ console.log($flash);
 		}
 	};
 
-	/**
-	 * Get the window type depending on the location of the current window
-	 *
-	 * @return	string
-	 */
-	this.getWindowType = function() {
-		if (this.windowType == null) {
-			var hostname = window.location.hostname,
-				pathname = window.location.pathname,
-				href = window.location.href;
-
-				// loop over games to find need values
-			for (var key in SCRIPT.games) {
-				var current = SCRIPT.games[key];
-
-					// host and path match found
-				if (hostname.match(current.hostname) &&
-						current.pathname != null &&
-						pathname.match(current.pathname)) {
-					this.windowType = key;
-
-						// look if there are excludes and loop over it
-					if (typeof(current.exclude) == 'object') {
-						var excludeLength = current.exclude.length;
-
-						for (var i = 0; i < excludeLength; i++) {
-							if (pathname.match(current.exclude[i])) {
-								this.windowType = null;
-								break;
-							}
-						}
-					}
-				}
-			}
-		}
-console.log(this.windowType + " ( " + hostname + " : " + pathname + " )");
-		return this.windowType;
-	};
-
 
 	this.init();
 }
@@ -647,16 +684,35 @@ function Styles() {
 \n\
 			iframe,\n\
 			embed {\n\
-				height: 100%;\n\
 				margin: 0;\n\
 				padding: 0;\n\
-				width: 100%;\n\
-				position: absolute;\n\
 				top: 0;\n\
 				left: 0;\n\
 			}\n\
 \n\
-\n\
+		');
+	};
+
+	/**
+	 * Styles for Yoville
+	 *
+	 * @return	string
+	 */
+	this.getYovilleStyles = function() {
+		return this.trim('\n\
+			#mainbox,\n\
+			#maincontent {\n\
+				height: 100%;\n\
+				width: 100%;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * @return	string
+	 */
+	this.getFarmVilleMenuStyles = function() {
+		return this.trim('\n\
 			#fvmm_menu {\n\
 				margin-right: 100px;\n\
 				position: absolute;\n\
@@ -736,28 +792,14 @@ function Styles() {
 	};
 
 	/**
-	 * Styles for Yoville
-	 *
-	 * @return	string
-	 */
-	this.getYovilleStyles = function() {
-		return this.trim('\n\
-			#mainbox,\n\
-			#maincontent {\n\
-				height: 100%;\n\
-				width: 100%;\n\
-			}\n\
-		');
-	};
-
-	/**
 	 * General styles for farmville
 	 *
 	 * @return	string
 	 */
 	this.getFlashframeStyles = function() {
 		return this.trim('\n\
-			object {\n\
+			object,\n\
+			embed {\n\
 				border: none;\n\
 				height: 100%;\n\
 				padding-bottom: -2px;\n\
@@ -827,6 +869,7 @@ function Styles() {
 			}\
 		');
 	};
+
 
 
 	/**
