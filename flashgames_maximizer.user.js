@@ -214,7 +214,15 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/petvillegame/,
 			exclude: new Array(
-			)
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=live', label: 'Play Solo'},
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=tb', label: 'My Games'},
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=join', label: 'Play Anyone'},
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=invite', label: 'Invite Friends'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			),
+			styles: 'PetVille'
 		},
 		pv_iframe: {
 			selector: '#flashapp',
@@ -1012,6 +1020,31 @@ function Styles() {
 			#fvmm_menubutton {\n\
 				background-color: #fff;\n\
 				border: 1px solid #ccc;\n\
+				color: #000;\n\
+				height: 24px;\n\
+			}\n\
+\n\
+			.clearfix {\n\
+				display: none;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * Styles for PetVille
+	 *
+	 * @return	string
+	 */
+	this.getPetVilleStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 5px;\n\
+				top: 50px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #b68f59;\n\
+				border: 1px solid #775839;\n\
 				color: #000;\n\
 				height: 24px;\n\
 			}\n\
