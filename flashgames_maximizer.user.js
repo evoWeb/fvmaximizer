@@ -11,7 +11,7 @@
 // @include        *facebook.com/onthefarm/*
 // @include        *farmville.com/*
 // @include        *facebook.com/fishville/*
-// @include        *fish.zynga.com/*
+// @include        *fishville.zynga.com/*
 // @include        *facebook.com/pathwords/*
 // @include        *74.201.93.95/*
 // @include        *facebook.com/petvillegame/*
@@ -164,7 +164,16 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/fishville/,
 			exclude: new Array(
-			)
+			),
+			menuitems: new Array(
+				{href: 'http://facebook.fishville.zynga.com/public/gifts.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Free Gifts'},
+				{href: 'http://facebook.fishville.zynga.com/public/neighbors.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Neighbors'},
+				{href: 'http://facebook.fishville.zynga.com/public/invite.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Invite Friends'},
+				{href: 'http://facebook.fishville.zynga.com/public/money.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Add Sand Dollars'},
+				{href: 'http://facebook.fishville.zynga.com/public/help.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Help'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			),
+			styles: 'FishVille'
 		},
 		fiv_iframe: {
 			selector: '#flashapp',
@@ -173,7 +182,8 @@ var SCRIPT = {
 			exclude: new Array(
 				/populateFbCache\.php/,
 				/xd_receiver\.htm/
-			)
+			),
+			styles: 'FishVille'
 		},
 		pw: {
 			name: 'Path Words',
@@ -430,6 +440,7 @@ function Maximizer() {
 			settings = self.settings;
 
 		switch(this.windowType) {
+			case 'fiv':
 			case 'ti':
 				var $iframe = this.initMainwindow(settings);
 				$iframe.bind(
@@ -449,7 +460,6 @@ function Maximizer() {
 			case 'cw':
 			case 'favfb':
 			case 'favfv':
-			case 'fiv':
 			case 'pw':
 			case 'pv':
 			case 'rck':
@@ -506,7 +516,7 @@ function Maximizer() {
 
 				// inject specific styles
 			if (typeof(settings.styles) != 'undefined') {
-				this.styles.injectStyles(this.styles['get' + settings.styles + 'Styles']());
+				this.styles.appendStyles(this.styles['get' + settings.styles + 'Styles']());
 			}
 		}
 
@@ -802,6 +812,80 @@ function Styles() {
 		');
 	}
 
+	/**
+	 * General styles for farmville
+	 *
+	 * @return	string
+	 */
+	this.getFlashframeStyles = function() {
+		return this.trim('\n\
+			object,\n\
+			embed {\n\
+				border: none;\n\
+				height: 100%;\n\
+				padding-bottom: -2px;\n\
+				margin: 0;\n\
+				width: 100%;\n\
+				position: absolute;\n\
+				top: 0;\n\
+				left: 0;\n\
+			}\n\
+\n\
+			#message_center_button {\n\
+				display: block;\n\
+				position: absolute;\n\
+				top: 44px;\n\
+				right: 13px;\n\
+				z-index: 1000002;\n\
+			}\n\
+\n\
+			#social_exchange {\n\
+				margin-top: 100px;\n\
+			}\n\
+\n\
+			#message_center_div {\n\
+				margin-top: 30px;\n\
+			}\n\
+\n\
+			#fvmm_notice {\n\
+				display: block;\n\
+				position: absolute;\n\
+				right: 236px;\n\
+				top: 41px;\n\
+				width: 300px;\n\
+				z-index: 1000000;\n\
+			}\n\
+			#fvmm_notice * {\n\
+				display: block;\n\
+			}\n\
+			#fvmm_notice .messages {\n\
+				background-color: #FFF4BF;\n\
+				border: 1px solid #FFD100;\n\
+				clear: right;\n\
+				display: none;\n\
+				padding: 2px 5px 4px 4px;\n\
+				text-align: left;\n\
+				width: 289px;\n\
+			}\n\
+			#fvmm_notice .messages.show {\n\
+				display: block;\n\
+			}\n\
+\n\
+			#fvmm_notice .messages center {\n\
+				text-align: left;\n\
+			}\n\
+			#fvmm_notice .messages b {\n\
+				font-weight: normal;\n\
+			}\n\
+\n\
+			#fvmm_noticebutton {\n\
+				float: right;\n\
+				height: 29px;\n\
+				width: 34px;\n\
+			}\n\
+		');
+	};
+
 
 	/**
 	 * @return	string
@@ -809,8 +893,7 @@ function Styles() {
 	this.getBlackjackStyles = function() {
 		return this.trim('\n\
 			#fvmm_menu {\n\
-				margin-right: 179px;\n\
-				right: 50%;\n\
+				left: 4px;\n\
 				top: 4px;\n\
 			}\n\
 \n\
@@ -882,75 +965,25 @@ function Styles() {
 	};
 
 	/**
-	 * General styles for farmville
+	 * Styles for FishVille
 	 *
 	 * @return	string
 	 */
-	this.getFlashframeStyles = function() {
+	this.getFishVilleStyles = function() {
 		return this.trim('\n\
-			object,\n\
-			embed {\n\
-				border: none;\n\
-				height: 100%;\n\
-				padding-bottom: -2px;\n\
-				margin: 0;\n\
-				width: 100%;\n\
-				position: absolute;\n\
-				top: 0;\n\
-				left: 0;\n\
+			#fvmm_menu {\n\
+				left: 5px;\n\
+				top: 5px;\n\
 			}\n\
 \n\
-			#message_center_button {\n\
-				display: block;\n\
-				position: absolute;\n\
-				top: 44px;\n\
-				right: 13px;\n\
-				z-index: 1000002;\n\
+			#fvmm_menubutton {\n\
+				background-color: #208386;\n\
+				border: 1px solid white;\n\
+				height: 24px;\n\
 			}\n\
 \n\
-			#social_exchange {\n\
-				margin-top: 100px;\n\
-			}\n\
-\n\
-			#message_center_div {\n\
-				margin-top: 30px;\n\
-			}\n\
-\n\
-			#fvmm_notice {\n\
-				display: block;\n\
-				position: absolute;\n\
-				right: 236px;\n\
-				top: 41px;\n\
-				width: 300px;\n\
-				z-index: 1000000;\n\
-			}\n\
-			#fvmm_notice * {\n\
-				display: block;\n\
-			}\n\
-			#fvmm_notice .messages {\n\
-				background-color: #FFF4BF;\n\
-				border: 1px solid #FFD100;\n\
-				clear: right;\n\
+			.clearfix {\n\
 				display: none;\n\
-				padding: 2px 5px 4px 4px;\n\
-				text-align: left;\n\
-				width: 289px;\n\
-			}\n\
-			#fvmm_notice .messages.show {\n\
-				display: block;\n\
-			}\n\
-\n\
-			#fvmm_notice .messages center {\n\
-				text-align: left;\n\
-			}\n\
-			#fvmm_notice .messages b {\n\
-				font-weight: normal;\n\
-			}\n\
-\n\
-			#fvmm_noticebutton {\n\
-				float: right;\n\
-				height: 29px;\n\
-				width: 34px;\n\
 			}\n\
 		');
 	};
@@ -1038,6 +1071,22 @@ function Styles() {
 			node['type'] = 'text/css';
 			node.appendChild(document.createTextNode(css));
 			heads[0].appendChild(node);
+		}
+	};
+
+	/**
+	 * add styles to head
+	 *
+	 * @param	css		string
+	 * @return	object
+	 */
+	this.appendStyles = function(css) {
+		var bodys = document.getElementsByTagName('body');
+		if (bodys.length > 0) {
+			var node = document.createElement('style');
+			node['type'] = 'text/css';
+			node.appendChild(document.createTextNode(css));
+			bodys[0].appendChild(node);
 		}
 	};
 }
