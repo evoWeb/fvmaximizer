@@ -191,7 +191,15 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/pathwords/,
 			exclude: new Array(
-			)
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=live', label: 'Play Solo'},
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=tb', label: 'My Games'},
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=join', label: 'Play Anyone'},
+				{href: 'http://apps.facebook.com/pathwords/index.php?mode=invite', label: 'Invite Friends'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			),
+			styles: 'PathWords'
 		},
 		pw_iframe: {
 			selector: '#TumbleWords',
@@ -254,6 +262,7 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/treasureisle/,
 			exclude: new Array(
+				/reward\.php/
 			)
 		},
 		ti_iframe: {
@@ -979,6 +988,31 @@ function Styles() {
 			#fvmm_menubutton {\n\
 				background-color: #208386;\n\
 				border: 1px solid white;\n\
+				height: 24px;\n\
+			}\n\
+\n\
+			.clearfix {\n\
+				display: none;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * Styles for Path Words
+	 *
+	 * @return	string
+	 */
+	this.getPathWordsStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 5px;\n\
+				top: 5px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #fff;\n\
+				border: 1px solid #ccc;\n\
+				color: #000;\n\
 				height: 24px;\n\
 			}\n\
 \n\
