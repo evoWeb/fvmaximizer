@@ -63,12 +63,8 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/cafeworld/,
 			exclude: new Array(
-				/fan\.php/,
-				/help\.php/,
-				/invite\.php/,
-				/money\//,
-				/neighbors\.php/,
-				/view_gift\.php/
+				/accept_chef_special\.php/,
+				/accept_request\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/cafeworld/view_gift.php', label: 'Free Gifts'},
@@ -239,7 +235,16 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/coasterkingdom/,
 			exclude: new Array(
-			)
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/coasterkingdom/view_gifts.php', label: 'Free Gifts'},
+				{href: 'http://apps.facebook.com/coasterkingdom/neighbors', label: 'My Neighbors'},
+				{href: 'http://apps.facebook.com/coasterkingdom/invite.php', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/coasterkingdom/money', label: 'Get More Coaster Cash'},
+				{href: 'http://apps.facebook.com/coasterkingdom/help.php', label: 'Help'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			),
+			styles: 'RCKingdom'
 		},
 		rck_iframe: {
 			selector: '#flash_game',
@@ -255,7 +260,18 @@ var SCRIPT = {
 			pathname: /\/texas_holdem/,
 			exclude: new Array(
 				/new_invite\.php/
-			)
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/texas_holdem/dmz_link_landing.php?src_track_str=Poker+FB+Invite_Page+Other+%25ACTION%25+o%3AHelp%3A2009-02-11&url=http%3A%2F%2Fapps.facebook.com%2Ftexas_holdem%2Fhelpframe.php', label: 'Help'},
+				{href: 'http://apps.facebook.com/texas_holdem/dmz_link_landing.php?src_track_str=Poker+FB+Invite_Page+Other+%25ACTION%25+o%3ASettings%3A2009-02-11&url=http%3A%2F%2Fapps.facebook.com%2Ftexas_holdem%2Fsettings.php', label: 'Settings'},
+				{href: 'http://apps.facebook.com/texas_holdem/dmz_link_landing.php?src_track_str=Poker+FB+Invite_Page+Other+%25ACTION%25+o%3ATOS%3A2009-02-11&url=http%3A%2F%2Fwww.zynga.com%2Flegal%2Fterms_of_service.php', label: 'Terms of Service'},
+				{href: 'http://zynga.custhelp.com/app/home/gameid/1/sn/1', label: 'Support'},
+				{href: 'http://apps.facebook.com/texas_holdem/dmz_link_landing.php?src_track_str=Poker+FB+Invite_Page+Other+%25ACTION%25+o%3AGuidelines%3A2009-02-11&url=http%3A%2F%2Fapps.facebook.com%2Ftexas_holdem%2Fguidelines.php', label: 'Guidelines'},
+				{href: 'http://apps.facebook.com/texas_holdem/dmz_link_landing.php?src_track_str=Poker+FB+Invite_Page+Other+%25ACTION%25+o%3APrivacy%3A2009-02-11&url=http%3A%2F%2Fwww.zynga.com%2FprivacyPolicy%2F', label: 'Privacy Info'},
+				{href: 'http://forums.zynga.com/forumdisplay.php?f=60', label: 'Forum'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			),
+			styles: 'TexasHoldEm'
 		},
 		th_iframe: {
 			selector: '#pokerSwfId',
@@ -271,7 +287,16 @@ var SCRIPT = {
 			pathname: /\/treasureisle/,
 			exclude: new Array(
 				/reward\.php/
-			)
+			),
+			menuitems: new Array(
+				{href: 'http://fb-0.treasure.zynga.com/gifts.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Free Gifts'},
+				{href: 'http://fb-0.treasure.zynga.com/neighbors.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'My Neighbors'},
+				{href: 'http://fb-0.treasure.zynga.com/invite.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Invite Friends'},
+				{href: 'http://fb-0.treasure.zynga.com/help.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Help'},
+				{href: 'http://fb-0.treasure.zynga.com/money.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Add Coins & Cash'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			),
+			styles: 'TreasureIsle'
 		},
 		ti_iframe: {
 			selector: '#flashapp',
@@ -288,7 +313,16 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/wordtwist/,
 			exclude: new Array(
-			)
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=create', label: 'Start a Game'},
+				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=tb', label: 'My Games'},
+				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=invite', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=live', label: 'Ladder Mode'},
+				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=games', label: 'Other Games'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			),
+			styles: 'WordTwist'
 		},
 		wt_iframe: {
 			selector: '#WordTwist',
@@ -303,7 +337,8 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/yoville/,
 			exclude: new Array(
-			)
+			),
+			styles: 'Yoville'
 		},
 		yvyv: {
 			name: 'YoVille in yoville.com',
@@ -508,12 +543,12 @@ function Maximizer() {
 				this.styles.injectStyles(this.styles.getFlashframeStyles());
 
 				if (jQuery(settings.selector).length > 0) {
-					this.initFlashframe(settings);
+					this.initMainwindow(settings);
 				} else {
 					jQuery(document.body).bind('elementCreated', {
 						selector: settings.selector
 					}, function(event){
-						self.initFlashframe(settings);
+						self.initMainwindow(settings);
 					});
 				}
 				break;
@@ -535,6 +570,12 @@ function Maximizer() {
 			if (typeof(settings.styles) != 'undefined') {
 				this.styles.appendStyles(this.styles['get' + settings.styles + 'Styles']());
 			}
+
+			// trash to clean up
+			jQuery('#message_center_button')
+				.css('display', 'block');
+				//.detach()
+				//.appendTo(document.body);
 		}
 
 		return this;
@@ -558,25 +599,13 @@ function Maximizer() {
 				position: 'absolute'
 			})
 			.parents()
+				.removeAttr('id')
 				.removeAttr('style')
 				.removeAttr('class')
 				.css('display', 'block')
 				.end();
 
 		return $element;
-	};
-
-	/**
-	 * @param	array
-	 * @return	void
-	 */
-	this.initFlashframe = function(settings) {
-		var $element = this.initMainwindow(settings);
-
-		jQuery('#message_center_button')
-			.css('display', 'block');
-			//.detach()
-			//.appendTo(document.body);
 	};
 
 
@@ -1045,6 +1074,108 @@ function Styles() {
 			#fvmm_menubutton {\n\
 				background-color: #b68f59;\n\
 				border: 1px solid #775839;\n\
+				color: #000;\n\
+				height: 24px;\n\
+			}\n\
+\n\
+			.clearfix {\n\
+				display: none;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * Styles for Roller Coaster Kingdom
+	 *
+	 * @return	string
+	 */
+	this.getRCKingdomStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 50%;\n\
+				margin-left: -370px;\n\
+				top: 55px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #5b5b5b;\n\
+				border: 1px solid #77933f;\n\
+				color: #fff;\n\
+				height: 24px;\n\
+			}\n\
+\n\
+			.clearfix {\n\
+				display: none;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * Styles for Texas HoldEm
+	 *
+	 * @return	string
+	 */
+	this.getTexasHoldEmStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 5px;\n\
+				top: 5px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #c5981b;\n\
+				border: 1px solid #232526;\n\
+				color: #000;\n\
+				height: 24px;\n\
+			}\n\
+\n\
+			.clearfix {\n\
+				display: none;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * Styles for Treasure Isle
+	 *
+	 * @return	string
+	 */
+	this.getTreasureIsleStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 50%;\n\
+				margin-left: 250px;\n\
+				top: 7px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #f5e69d;\n\
+				border: 1px solid #efb64e;\n\
+				color: #000;\n\
+				height: 24px;\n\
+			}\n\
+\n\
+			.clearfix {\n\
+				display: none;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * Styles for Word Twist
+	 *
+	 * @return	string
+	 */
+	this.getWordTwistStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 5px;\n\
+				top: 5px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #c6ccf9;\n\
+				border: 1px solid #c5c5c5;\n\
 				color: #000;\n\
 				height: 24px;\n\
 			}\n\
