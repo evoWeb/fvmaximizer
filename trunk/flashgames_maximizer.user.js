@@ -38,13 +38,15 @@ var SCRIPT = {
 	games: {
 		bj: {
 			name: 'Blackjack',
+			styles: 'Blackjack',
 			selector: '#app_content_5803363687 .__fbswf embed',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/black_jack/,
 			exclude: new Array(
 				/helpframe\.php/,
-				/invite\.php/,
+				/invite_condensed\.php/,
 				/leader_board\.php/,
+				/new_invite_post\.php/,
 				/playa\.php/
 			),
 			menuitems: new Array(
@@ -53,18 +55,25 @@ var SCRIPT = {
 				{href: 'http://apps.facebook.com/black_jack/leader_board.php', label: 'Leaderboard'},
 				{href: 'http://apps.facebook.com/black_jack/helpframe.php', label: 'How To Play'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'Blackjack'
+			)
 		},
 		bj_iframe: {},
 		cw: {
 			name: 'Cafe World',
+			styles: 'CafeWorld',
 			selector: '#app_content_101539264719 iframe[src*=/fb//iframe.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/cafeworld/,
 			exclude: new Array(
 				/accept_chef_special\.php/,
-				/accept_request\.php/
+				/accept_request\.php/,
+				/gift_cards\.php/,
+				/help\.php/,
+				/invite\.php/,
+				/money\//,
+				/neighbors\.php/,
+				/send_gift\.php/,
+				/view_gift\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/cafeworld/view_gift.php', label: 'Free Gifts'},
@@ -76,42 +85,31 @@ var SCRIPT = {
 				{href: 'http://apps.facebook.com/cafeworld/help.php', label: 'Help'},
 				{href: 'http://apps.facebook.com/cafeworld/gift_cards.php', label: 'Game Card'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'CafeWorld'
+			)
 		},
 		cw_iframe: {
 			selector: '#game_div',
+			styles: 'CafeWorld',
 			notice: '#game_shoutout',
 			hostname: /cafe\.zynga\.com/,
 			pathname: /\/iframe\.php/,
 			exclude: new Array(
-				/xd_receiver\.htm/
-			),
-			styles: 'CafeWorld'
+			)
 		},
 		favfb: {
 			name: 'FarmVille in Facebook',
+			styles: 'FarmVille',
 			selector: '#app_content_102452128776 iframe[src*=/flash.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/onthefarm/,
 			exclude: new Array(
-				/askmats\.php/,
-				/exchange\.php/,
 				/fans\.php/,
-				/giftaccept\.php/,
 				/gifts\.php/,
 				/gifts_send\.php/,
 				/invite\.php/,
-				/lonelycow\.php/,
-				/message_center\.php/,
 				/money\.php/,
 				/neighbors\.php/,
-				/reward\.php/,
-				/sendcredits\.php/,
-				/sendmats\.php/,
-				/sentthankyougift\.php/,
-				/thankyougift\.php/,
-				/wishlist_give\.php/
+				/reward\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/onthefarm/gifts.php', label: 'Gifts'},
@@ -121,28 +119,27 @@ var SCRIPT = {
 				{href: 'http://apps.facebook.com/onthefarm/fans.php', label: 'Love FarmVille?'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
 			//	{click: function() {new FarmvilleTool();}, label: 'Seed Calc'},
-			),
-			styles: 'FarmVille'
+			)
 		},
 		favfv: {
 			name: 'FarmVille in farmville.com',
+			styles: 'FarmVille',
 			selector: '#flashIframeWrapper iframe',
 			hostname: /farmville\.com/,
 			pathname: /\/+/,
 			exclude: new Array(
-				/button\.php/,
-				/flash\.php/,
-				/populateFbCache\.php/,
-				/promo_bar\.php/,
-				/xd_receiver\.htm/
+				/gifts\.php/,
+				/gifts_send\.php/,
+				/invite\.php/,
+				/money\.php/,
+				/neighbors\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://www.farmville.com/gifts.php', label: 'Gifts'},
-				{href: 'http://www.farmville.com/invite.php', label: 'Neighbors'},
-				{href: 'http://www.farmville.com/money.php', label: 'Invite Friends'},
+				{href: 'http://www.farmville.com/neighbors.php', label: 'Neighbors'},
+				{href: 'http://www.farmville.com/invite.php', label: 'Invite Friends'},
 				{href: 'http://www.farmville.com/money.php', label: 'Coins & Cash'}
-			),
-			styles: 'FarmVille'
+			)
 		},
 		fav_iframe: {
 			selector: '#flashapp',
@@ -150,16 +147,21 @@ var SCRIPT = {
 			hostname: /farmville\.com/,
 			pathname: /\/flash.php/,
 			exclude: new Array(
-				/populateFbCache\.php/,
-				/xd_receiver\.htm/
 			)
 		},
 		fiv: {
 			name: 'FishVille',
+			styles: 'FishVille',
 			selector: '#app151044809337_iframe_canvas',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/fishville/,
 			exclude: new Array(
+				/gifts\.php/,
+				/gifts_send\.php/,
+				/help\.php/,
+				/invite\.php/,
+				/money\.php/,
+				/neighbors\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://facebook.fishville.zynga.com/public/gifts.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Free Gifts'},
@@ -168,34 +170,33 @@ var SCRIPT = {
 				{href: 'http://facebook.fishville.zynga.com/public/money.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Add Sand Dollars'},
 				{href: 'http://facebook.fishville.zynga.com/public/help.php?appRef=tab&fb_sig_in_iframe=1&fb_sig_iframe_key=c16a5320fa475530d9583c34fd356ef5&fb_sig_base_domain=zynga.com&fb_sig_locale=de_DE&fb_sig_in_new_facebook=1&fb_sig_time=1275371913.8534&fb_sig_added=1&fb_sig_profile_update_time=1274007175&fb_sig_expires=1275375600&fb_sig_user=100001095836253&fb_sig_session_key=2.yLNAoNbvqhPDEeaZCZDSIw__.3600.1275375600-100001095836253&fb_sig_ss=KyGYbgcsnv00OUjPCLhALQ__&fb_sig_cookie_sig=035a56300f75f545d2e44582c92c7652&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_country=de&fb_sig_api_key=35ce387ed7e8e0aace333fbc5e76cf0f&fb_sig_app_id=151044809337&fb_sig=eeb9c5ea1afac36656c98ecb05511292', label: 'Help'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'FishVille'
+			)
 		},
 		fiv_iframe: {
+			styles: 'FishVille',
 			selector: '#flashapp',
 			hostname: /fishville\.zynga\.com/,
 			pathname: /public\/index\.php/,
 			exclude: new Array(
-				/populateFbCache\.php/,
-				/xd_receiver\.htm/
-			),
-			styles: 'FishVille'
+			)
 		},
 		pw: {
 			name: 'Path Words',
+			styles: 'PathWords',
 			selector: '#app_content_12271981887 iframe[src*=/liveplayframe.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/pathwords/,
 			exclude: new Array(
+				/mode\=invite/,
+				/mode\=join/,
+				/mode\=tb/
 			),
 			menuitems: new Array(
-				{href: 'http://apps.facebook.com/pathwords/index.php?mode=live', label: 'Play Solo'},
 				{href: 'http://apps.facebook.com/pathwords/index.php?mode=tb', label: 'My Games'},
 				{href: 'http://apps.facebook.com/pathwords/index.php?mode=join', label: 'Play Anyone'},
 				{href: 'http://apps.facebook.com/pathwords/index.php?mode=invite', label: 'Invite Friends'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'PathWords'
+			)
 		},
 		pw_iframe: {
 			selector: '#TumbleWords',
@@ -206,35 +207,46 @@ var SCRIPT = {
 		},
 		pv: {
 			name: 'PetVille',
+			styles: 'PetVille',
 			selector: '#app_content_163576248142 iframe[src*=/flash.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/petvillegame/,
 			exclude: new Array(
+				/gifts\.php/,
+				/help\.php/,
+				/invite\.php/,
+				/money\.php/,
+				/neighbors\.php/
 			),
 			menuitems: new Array(
-				{href: 'http://apps.facebook.com/pathwords/index.php?mode=live', label: 'Play Solo'},
-				{href: 'http://apps.facebook.com/pathwords/index.php?mode=tb', label: 'My Games'},
-				{href: 'http://apps.facebook.com/pathwords/index.php?mode=join', label: 'Play Anyone'},
-				{href: 'http://apps.facebook.com/pathwords/index.php?mode=invite', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/petvillegame/gifts.php', label: 'Free Gifts'},
+				{href: 'http://apps.facebook.com/petvillegame/neighbors.php', label: 'My Neighbors'},
+				{href: 'http://apps.facebook.com/petvillegame/invite.php', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/petvillegame/becomeFan.php', label: 'Fan Page'},
+				{href: 'http://apps.facebook.com/petvillegame/help.php', label: 'Help'},
+				{href: 'http://apps.facebook.com/petvillegame/money.php', label: 'Get Pet Coins & Cash'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'PetVille'
+			)
 		},
 		pv_iframe: {
 			selector: '#flashapp',
 			hostname: /petville\.zynga\.com/,
 			pathname: /\/current\/flash\.php/,
 			exclude: new Array(
-				/current\/button\.php/,
-				/xd_receiver\.htm/
 			)
 		},
 		rck: {
 			name: 'Roller Coaster Kingdom',
+			styles: 'RCKingdom',
 			selector: '#app_content_89771452035 iframe#app89771452035_eventtest',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/coasterkingdom/,
 			exclude: new Array(
+				/help\.php/,
+				/invite\.php/,
+				/money/,
+				/neighbors/,
+				/view_gifts\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/coasterkingdom/view_gifts.php', label: 'Free Gifts'},
@@ -243,8 +255,7 @@ var SCRIPT = {
 				{href: 'http://apps.facebook.com/coasterkingdom/money', label: 'Get More Coaster Cash'},
 				{href: 'http://apps.facebook.com/coasterkingdom/help.php', label: 'Help'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'RCKingdom'
+			)
 		},
 		rck_iframe: {
 			selector: '#flash_game',
@@ -254,12 +265,15 @@ var SCRIPT = {
 			)
 		},
 		th: {
-			name: 'Texas HoldEm',
+			name: 'Texas HoldEm Poker',
+			styles: 'TexasHoldEm',
 			selector: '#app2389801228_zyPokerSWF iframe',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/texas_holdem/,
 			exclude: new Array(
-				/new_invite\.php/
+				/guidelines\.php/,
+				/helpframe\.php/,
+				/settings\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/texas_holdem/dmz_link_landing.php?src_track_str=Poker+FB+Invite_Page+Other+%25ACTION%25+o%3AHelp%3A2009-02-11&url=http%3A%2F%2Fapps.facebook.com%2Ftexas_holdem%2Fhelpframe.php', label: 'Help'},
@@ -270,8 +284,7 @@ var SCRIPT = {
 				{href: 'http://apps.facebook.com/texas_holdem/dmz_link_landing.php?src_track_str=Poker+FB+Invite_Page+Other+%25ACTION%25+o%3APrivacy%3A2009-02-11&url=http%3A%2F%2Fwww.zynga.com%2FprivacyPolicy%2F', label: 'Privacy Info'},
 				{href: 'http://forums.zynga.com/forumdisplay.php?f=60', label: 'Forum'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'TexasHoldEm'
+			)
 		},
 		th_iframe: {
 			selector: '#pokerSwfId',
@@ -282,21 +295,15 @@ var SCRIPT = {
 		},
 		ti: {
 			name: 'Treasure Isle',
+			styles: 'TreasureIsle',
 			selector: '#app_content_234860566661 iframe[src*=/flash.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/treasureisle/,
 			exclude: new Array(
-				/reward\.php/
 			),
 			menuitems: new Array(
-				{href: 'http://fb-0.treasure.zynga.com/gifts.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Free Gifts'},
-				{href: 'http://fb-0.treasure.zynga.com/neighbors.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'My Neighbors'},
-				{href: 'http://fb-0.treasure.zynga.com/invite.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Invite Friends'},
-				{href: 'http://fb-0.treasure.zynga.com/help.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Help'},
-				{href: 'http://fb-0.treasure.zynga.com/money.php?ref=tab&zySnid=1&zySnuid=100001095836253&zyUid=1:100001095836253&zySig=c2def9487194d68864cc0c2f1d08df7b', label: 'Add Coins & Cash'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'TreasureIsle'
+			)
 		},
 		ti_iframe: {
 			selector: '#flashapp',
@@ -309,20 +316,22 @@ var SCRIPT = {
 		},
 		wt: {
 			name: 'Word Twist',
+			styles: 'WordTwist',
 			selector: '#app_content_8567719845 iframe[src*=liveplayframe.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/wordtwist/,
 			exclude: new Array(
+				/mode\=create/,
+				/mode\=invite/,
+				/mode\=tb/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=create', label: 'Start a Game'},
 				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=tb', label: 'My Games'},
 				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=invite', label: 'Invite Friends'},
 				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=live', label: 'Ladder Mode'},
-				{href: 'http://apps.facebook.com/wordtwist/index.php?mode=games', label: 'Other Games'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			),
-			styles: 'WordTwist'
+			)
 		},
 		wt_iframe: {
 			selector: '#WordTwist',
@@ -333,25 +342,42 @@ var SCRIPT = {
 		},
 		yvfb: {
 			name: 'YoVille in Facebook',
+			styles: 'Yoville',
 			selector: '#app_content_21526880407 iframe[src*=/indexnew.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/yoville/,
 			exclude: new Array(
+				/game_cards\.php/,
+				/invites\.php/,
+				/my_crew\.php/,
+				/send_gifts\.php/,
+				/view_gifts\.php/
 			),
-			styles: 'Yoville'
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/yoville/view_gifts.php?bypass_reminder=1&', label: 'Free Gifts'},
+				{href: 'http://apps.facebook.com/yoville/my_crew.php?', label: 'Neighbors'},
+				{href: 'http://apps.facebook.com/yoville/invites.php?ref=topnav&', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/yoville/game_cards.php?', label: 'Game Cards'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
 		},
 		yvyv: {
 			name: 'YoVille in yoville.com',
+			styles: 'Yoville',
 			selector: '#maincontent iframe[src*=play.php]',
 			hostname: /yoville\.com/,
 			pathname: /\/app\.php/,
 			exclude: new Array(
-				/fb\/blank\.html/,
-				/fb\/\/blank\.html/,
-				/fbapp\/play\.php/,
-				/xd_receiver\.htm/
 			),
-			styles: 'Yoville'
+			menuitems: new Array(
+				{href: 'http://www.yoville.com/profile/', label: 'Profile'},
+				{href: 'http://www.yoville.com/items/', label: 'Items'},
+				{href: 'http://www.yoville.com/contests/', label: 'Contests'},
+				{href: 'http://www.yoville.com/clubs/', label: 'Clubs'},
+				{href: 'http://www.yoville.com/forum/', label: 'Forum'},
+				{href: 'http://www.yoville.com/blog/', label: 'Blog'},
+				{href: 'http://www.yoville.com/home/', label: 'Home'}
+			)
 		},
 		yv_frame: {
 			selector: '#mylife',
@@ -602,7 +628,7 @@ function Maximizer() {
 				.removeAttr('id')
 				.removeAttr('style')
 				.removeAttr('class')
-				.css('display', 'block')
+				.addClass('block')
 				.end();
 
 		return $element;
@@ -638,11 +664,12 @@ function Maximizer() {
 						 * If some exclude path are defined look if they match.
 						 * Remove the path and end the check
 						 */
-					if (typeof(current.exclude) == 'object') {
+					if (typeof(current.exclude) == 'object' &&
+							current.exclude.length > 0) {
 						var excludeLength = current.exclude.length;
 
 						for (var i = 0; i < excludeLength; i++) {
-							if (pathname.match(current.exclude[i])) {
+							if (href.match(current.exclude[i])) {
 								this.windowType = null;
 								break;
 							}
@@ -782,6 +809,7 @@ function Styles() {
 			}\n\
 \n\
 			body * { display: none; }\n\
+			.block { display: block; }\n\
 \n\
 			iframe,\n\
 			embed {\n\
@@ -856,7 +884,7 @@ function Styles() {
 				padding: 3px 3px 9px 13px;\n\
 			}\n\
 		');
-	}
+	};
 
 	/**
 	 * General styles for farmville
@@ -1077,10 +1105,6 @@ function Styles() {
 				color: #000;\n\
 				height: 24px;\n\
 			}\n\
-\n\
-			.clearfix {\n\
-				display: none;\n\
-			}\n\
 		');
 	};
 
@@ -1103,10 +1127,6 @@ function Styles() {
 				color: #fff;\n\
 				height: 24px;\n\
 			}\n\
-\n\
-			.clearfix {\n\
-				display: none;\n\
-			}\n\
 		');
 	};
 
@@ -1127,10 +1147,6 @@ function Styles() {
 				border: 1px solid #232526;\n\
 				color: #000;\n\
 				height: 24px;\n\
-			}\n\
-\n\
-			.clearfix {\n\
-				display: none;\n\
 			}\n\
 		');
 	};
@@ -1154,10 +1170,6 @@ function Styles() {
 				color: #000;\n\
 				height: 24px;\n\
 			}\n\
-\n\
-			.clearfix {\n\
-				display: none;\n\
-			}\n\
 		');
 	};
 
@@ -1179,10 +1191,6 @@ function Styles() {
 				color: #000;\n\
 				height: 24px;\n\
 			}\n\
-\n\
-			.clearfix {\n\
-				display: none;\n\
-			}\n\
 		');
 	};
 
@@ -1197,6 +1205,18 @@ function Styles() {
 			#maincontent {\n\
 				height: 100%;\n\
 				width: 100%;\n\
+			}\n\
+\n\
+			#fvmm_menu {\n\
+				left: 635px;\n\
+				top: 4px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #c6ccf9;\n\
+				border: 1px solid #c5c5c5;\n\
+				color: #000;\n\
+				height: 24px;\n\
 			}\n\
 		');
 	};
