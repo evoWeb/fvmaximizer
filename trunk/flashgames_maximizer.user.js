@@ -109,7 +109,8 @@ var SCRIPT = {
 				/invite\.php/,
 				/money\.php/,
 				/neighbors\.php/,
-				/reward\.php/
+				/reward\.php/,
+				/sendmats\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/onthefarm/gifts.php', label: 'Gifts'},
@@ -307,6 +308,7 @@ var SCRIPT = {
 		},
 		ti_iframe: {
 			selector: '#flashapp',
+			styles: 'TreasureIsle',
 			hostname: /treasure\.zynga\.com/,
 			pathname: /\/flash.php/,
 			exclude: new Array(
@@ -625,7 +627,6 @@ function Maximizer() {
 				position: 'absolute'
 			})
 			.parents()
-				.removeAttr('id')
 				.removeAttr('style')
 				.removeAttr('class')
 				.addClass('block')
@@ -1169,6 +1170,17 @@ function Styles() {
 				border: 1px solid #efb64e;\n\
 				color: #000;\n\
 				height: 24px;\n\
+			}\n\
+\n\
+			#socialBarCallout {\n\
+				margin-top: -30000px;\n\
+			}\n\
+			#socialBar {\n\
+				margin-top: -30000px;\n\
+			}\n\
+			#appFrame,\n\
+			#flashFrame {\n\
+				position: static;\n\
 			}\n\
 		');
 	};
