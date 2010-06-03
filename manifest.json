@@ -1,6 +1,6 @@
 {
 	"name": "Farmville maximizer",
-	"version": "2.0.9.$Rev$",
+	"version": "3.0.0.$Rev$",
 	"description": "This script maximizes the game to the complete browser window. Both on facebook and farmville.com it removes all unwanted boxes.",
 	"minimum_chrome_version": "4.1.249.1045",
 	"content_scripts": [
@@ -10,35 +10,36 @@
 				"jquery/jquery.gmfix.js",
 				"jquery/jquery-ui.min.js",
 				"gm/substitute.js",
-				"farmville_maximizer.user.js"
+				"flashgames_maximizer.user.js"
 			],
 			"matches": [
-				"http://*.facebook.com/onthefarm/*",
-				"https://*.facebook.com/onthefarm/*",
-				"http://*.farmville.com/*",
-				"https://*.farmville.com/*"
+				"http://*/*",
+				"https://*/*"
 			],
 			"include_globs": [
-				"http*facebook.com/onthefarm/*",
-				"http*farmville.com/*"
+				"*facebook.com/black_jack/*",
+				"*facebook.com/cafeworld/*",
+				"*cafe.zynga.com/*",
+				"*facebook.com/onthefarm/*",
+				"*farmville.com/*",
+				"*facebook.com/fishville/*",
+				"*fishville.zynga.com/*",
+				"*facebook.com/pathwords/*",
+				"*74.201.93.95/*",
+				"*facebook.com/petvillegame/*",
+				"*petville.zynga.com*",
+				"*facebook.com/coasterkingdom/*",
+				"*coaster.zynga.com*",
+				"*facebook.com/texas_holdem/*",
+				"*poker.zynga.com*",
+				"*facebook.com/treasureisle/*",
+				"*treasure.zynga.com/*",
+				"*facebook.com/wordtwist/*",
+				"*74.201.93.101*",
+				"*facebook.com/yoville/*",
+				"*yoville.com/*"
 			],
-			"exclude_globs": [
-				"*/askmats.*",
-				"*/exchange.*",
-				"*/fans.*",
-				"*/giftaccept.*",
-				"*/gifts.*",
-				"*/gifts_send.*",
-				"*/invite.*",
-				"*/lonelycow.*",
-				"*/money.*",
-				"*/neighbors.*",
-				"*/reward.*",
-				"*/sendcredits.*",
-				"*/sendmats.*",
-				"*/sentthankyougift.*",
-				"*/wishlist_give.*"
-			],
+			"exclude_globs": [],
 			"run_at": "document_end"
 		}
 	]
