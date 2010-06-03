@@ -26,7 +26,6 @@
 // @include        *74.201.93.101*
 // @include        *facebook.com/yoville/*
 // @include        *yoville.com/*
-// @exclude        *facebook.com/onthefarm/track.php*
 // @require        http://fvmaximizer.googlecode.com/files/jquerygmfix.js
 // @require        http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js
 // @require        http://sizzlemctwizzle.com/updater.php?id=73361&days=1
@@ -110,7 +109,8 @@ var SCRIPT = {
 				/money\.php/,
 				/neighbors\.php/,
 				/reward\.php/,
-				/sendmats\.php/
+				/sendmats\.php/,
+				/track\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/onthefarm/gifts.php', label: 'Gifts'},
