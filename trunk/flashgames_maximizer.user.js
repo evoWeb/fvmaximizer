@@ -3,7 +3,7 @@
 // @namespace      http://userscripts.org/users/144415
 // @description    Maximizes Zynga flashgames. Removes all anoying boxes and whitespaces around the flash. Works in facebook too.
 // @Copyright      Sebastian Fischer
-// @version        3.0.0
+// @version        3.0.0.$Rev$
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
 // @include        *facebook.com/black_jack/*
 // @include        *facebook.com/cafeworld/*
