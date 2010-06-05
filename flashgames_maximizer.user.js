@@ -103,6 +103,7 @@ var SCRIPT = {
 			pathname: /\/onthefarm/,
 			exclude: new Array(
 				/fans\.php/,
+				/giftaccept.php/,
 				/gifts\.php/,
 				/gifts_send\.php/,
 				/invite\.php/,
@@ -110,7 +111,8 @@ var SCRIPT = {
 				/neighbors\.php/,
 				/reward\.php/,
 				/sendmats\.php/,
-				/track\.php/
+				/track\.php/,
+				/wishlist_give\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/onthefarm/gifts.php', label: 'Gifts'},
@@ -301,6 +303,8 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/treasureisle/,
 			exclude: new Array(
+				/gift_accept\.php/,
+				/reward\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
@@ -615,6 +619,10 @@ function Maximizer() {
 	 */
 	this.initMainwindow = function(settings) {
 		var $element = jQuery(settings.selector)
+			.siblings()
+				.removeAttr('style')
+				.addClass('none')
+				.end()
 			.removeAttr('height')
 			.removeAttr('width')
 			.removeAttr('style')
@@ -627,6 +635,10 @@ function Maximizer() {
 				position: 'absolute'
 			})
 			.parents()
+				.siblings()
+					.removeAttr('style')
+					.addClass('none')
+					.end()
 				.removeAttr('style')
 				.removeAttr('class')
 				.addClass('block')
@@ -809,7 +821,7 @@ function Styles() {
 				width: 100%;\n\
 			}\n\
 \n\
-			body * { display: none; }\n\
+			.none { display: none; }\n\
 			.block { display: block; }\n\
 \n\
 			iframe,\n\
@@ -904,6 +916,12 @@ function Styles() {
 				position: absolute;\n\
 				top: 0;\n\
 				left: 0;\n\
+			}\n\
+\n\
+			.fb_resetstyles *,\n\
+			.fb_popupContainer *,\n\
+			#FB_HiddenContainer *\n\ {\n\
+				display: block;\n\
 			}\n\
 \n\
 			#message_center_button {\n\
