@@ -12,6 +12,8 @@
 // @include        *farmville.com/*
 // @include        *facebook.com/fishville/*
 // @include        *fishville.zynga.com/*
+// @include        *facebook.com/frontierville/*
+// @include        *frontier.zynga.com/*
 // @include        *facebook.com/pathwords/*
 // @include        *74.201.93.95/*
 // @include        *facebook.com/petvillegame/*
@@ -102,6 +104,7 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/onthefarm/,
 			exclude: new Array(
+				/askmats\.php/,
 				/fans\.php/,
 				/giftaccept.php/,
 				/gifts\.php/,
@@ -131,11 +134,18 @@ var SCRIPT = {
 			hostname: /farmville\.com/,
 			pathname: /\/+/,
 			exclude: new Array(
+				/askmats\.php/,
+				/fans\.php/,
+				/giftaccept.php/,
 				/gifts\.php/,
 				/gifts_send\.php/,
 				/invite\.php/,
 				/money\.php/,
-				/neighbors\.php/
+				/neighbors\.php/,
+				/reward\.php/,
+				/sendmats\.php/,
+				/track\.php/,
+				/wishlist_give\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://www.farmville.com/gifts.php', label: 'Gifts'},
@@ -159,8 +169,10 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/fishville/,
 			exclude: new Array(
+				/giftaccept\.php/,
 				/gifts\.php/,
 				/gifts_send\.php/,
+				/giftwarehouse_sendgift\.php/,
 				/help\.php/,
 				/invite\.php/,
 				/money\.php/,
@@ -180,6 +192,37 @@ var SCRIPT = {
 			selector: '#flashapp',
 			hostname: /fishville\.zynga\.com/,
 			pathname: /public\/index\.php/,
+			exclude: new Array(
+			)
+		},
+		frv: {
+			name: 'FrontierVille',
+			styles: 'FrontierVille',
+			selector: '#app_content_201278444497 .canvas_iframe_util',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/frontierville/,
+			exclude: new Array(
+				/gifts\.php/,
+				/help\.php/,
+				/invite\.php/,
+				/money\.php/,
+				/neighbors\.php/
+			),
+			menuitems: new Array(
+				{href: 'http://fb-0.frontier.zynga.com/gifts.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Gifts'},
+				{href: 'http://fb-0.frontier.zynga.com/neighbors.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Neighbors'},
+				{href: 'http://fb-0.frontier.zynga.com/invite.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Invite Friends'},
+				{href: 'http://fb-0.frontier.zynga.com/help.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Help'},
+				{href: 'http://fb-0.frontier.zynga.com/money.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Sale on Horseshoes'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
+		},
+		frv_iframe: {
+			// #flashapp #flashOuterContrainer #flashDIV #flashFrame # appFrame
+			styles: 'FrontierVille',
+			selector: '#flashDIV',
+			hostname: /frontier\.zynga\.com/,
+			pathname: /flash\.php/,
 			exclude: new Array(
 			)
 		},
@@ -215,6 +258,9 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/petvillegame/,
 			exclude: new Array(
+				/addneighbor\.php/,
+				/askformore_accept\.php/,
+				/giftaccept\.php/,
 				/gifts\.php/,
 				/help\.php/,
 				/invite\.php/,
@@ -276,6 +322,7 @@ var SCRIPT = {
 			exclude: new Array(
 				/guidelines\.php/,
 				/helpframe\.php/,
+				/invite_gift_claim\.php/,
 				/settings\.php/
 			),
 			menuitems: new Array(
@@ -303,6 +350,8 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/treasureisle/,
 			exclude: new Array(
+				/ask_fruit\.php/,
+				/energy_pack\.php/,
 				/gift_accept\.php/,
 				/reward\.php/
 			),
@@ -316,8 +365,6 @@ var SCRIPT = {
 			hostname: /treasure\.zynga\.com/,
 			pathname: /\/flash.php/,
 			exclude: new Array(
-				/populateFbCache\.php/,
-				/xd_receiver\.htm/
 			)
 		},
 		wt: {
@@ -525,6 +572,7 @@ function Maximizer() {
 
 		switch(this.windowType) {
 			case 'fiv':
+			case 'frv':
 			case 'ti':
 				var $iframe = this.initMainwindow(settings);
 				$iframe.bind(
@@ -556,7 +604,7 @@ function Maximizer() {
 				} else {
 					jQuery(document.body).bind('elementCreated', {
 						selector: settings.selector
-					}, function(event){
+					}, function(event) {
 						self.initMainwindow(settings);
 					});
 				}
@@ -565,6 +613,7 @@ function Maximizer() {
 			case 'cw_iframe':
 			case 'fav_iframe':
 			case 'fiv_iframe':
+			case 'frv_iframe':
 			case 'pw_iframe':
 			case 'pv_iframe':
 			case 'rck_iframe':
@@ -579,7 +628,7 @@ function Maximizer() {
 				} else {
 					jQuery(document.body).bind('elementCreated', {
 						selector: settings.selector
-					}, function(event){
+					}, function(event) {
 						self.initMainwindow(settings);
 					});
 				}
@@ -606,8 +655,6 @@ function Maximizer() {
 			// trash to clean up
 			jQuery('#message_center_button')
 				.css('display', 'block');
-				//.detach()
-				//.appendTo(document.body);
 		}
 
 		return this;
@@ -629,10 +676,12 @@ function Maximizer() {
 			.removeAttr('class')
 			.css({
 				display: 'block',
-				visibility: 'visible',
 				height: '100%',
-				width: '100%',
-				position: 'absolute'
+				left: 0,
+				position: 'absolute',
+				top: 0,
+				visibility: 'visible',
+				width: '100%'
 			})
 			.parents()
 				.siblings()
@@ -641,7 +690,14 @@ function Maximizer() {
 					.end()
 				.removeAttr('style')
 				.removeAttr('class')
-				.addClass('block')
+				.css({
+					display: 'block',
+					height: '100%',
+					margin: '0',
+					position: 'absolute',
+					visibility: 'visible',
+					width: '100%'
+				})
 				.end();
 
 		return $element;
@@ -822,7 +878,6 @@ function Styles() {
 			}\n\
 \n\
 			.none { display: none; }\n\
-			.block { display: block; }\n\
 \n\
 			iframe,\n\
 			embed {\n\
@@ -918,11 +973,10 @@ function Styles() {
 				left: 0;\n\
 			}\n\
 \n\
-			.fb_resetstyles *,\n\
-			.fb_popupContainer *,\n\
+			/*.fb_resetstyles *,\n\
 			#FB_HiddenContainer *\n\ {\n\
 				display: block;\n\
-			}\n\
+			}*/\n\
 \n\
 			#message_center_button {\n\
 				display: block;\n\
@@ -1077,6 +1131,34 @@ function Styles() {
 \n\
 			.clearfix {\n\
 				display: none;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * Styles for FrontierVille
+	 *
+	 * @return	string
+	 */
+	this.getFrontierVilleStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 160px;\n\
+				top: 43px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #8e2b0d;\n\
+				border: 1px solid white;\n\
+				height: 24px;\n\
+			}\n\
+\n\
+			.clearfix {\n\
+				display: none;\n\
+			}\n\
+\n\
+			#flashDIV {\n\
+				display: block;\n\
 			}\n\
 		');
 	};
