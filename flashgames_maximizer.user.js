@@ -152,6 +152,7 @@ var SCRIPT = {
 				{href: 'http://www.farmville.com/neighbors.php', label: 'Neighbors'},
 				{href: 'http://www.farmville.com/invite.php', label: 'Invite Friends'},
 				{href: 'http://www.farmville.com/money.php', label: 'Coins & Cash'}
+				{href: 'http://www.farmville.com/settings.php', label: 'Settings'}
 			)
 		},
 		fav_iframe: {
@@ -202,18 +203,20 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/frontierville/,
 			exclude: new Array(
+				/giftaccept\.php/,
 				/gifts\.php/,
 				/help\.php/,
 				/invite\.php/,
 				/money\.php/,
+				/money2\.php/,
 				/neighbors\.php/
 			),
 			menuitems: new Array(
-				{href: 'http://fb-0.frontier.zynga.com/gifts.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Gifts'},
-				{href: 'http://fb-0.frontier.zynga.com/neighbors.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Neighbors'},
-				{href: 'http://fb-0.frontier.zynga.com/invite.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Invite Friends'},
-				{href: 'http://fb-0.frontier.zynga.com/help.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Help'},
-				{href: 'http://fb-0.frontier.zynga.com/money.php?ref=tab&zySnid=1&zySnuid=100000745954187&zy_user=100000745954187&zy_ts=&zy_session=&zySig=b6a6c27a686746bb66177e7bf20e6248', label: 'Sale on Horseshoes'},
+				{href: 'http://apps.facebook.com/frontierville/gifts.php', label: 'Gifts'},
+				{href: 'http://apps.facebook.com/frontierville/neighbors.php', label: 'Neighbors'},
+				{href: 'http://apps.facebook.com/frontierville/invite.php', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/frontierville/help.php', label: 'Help'},
+				{href: 'http://apps.facebook.com/frontierville/money.php', label: 'Sale on Horseshoes'},
 				{href: 'http://www.facebook.com/', label: 'Facebook'}
 			)
 		},
@@ -224,6 +227,7 @@ var SCRIPT = {
 			hostname: /frontier\.zynga\.com/,
 			pathname: /flash\.php/,
 			exclude: new Array(
+				/giftaccept\.php/
 			)
 		},
 		pw: {
@@ -571,6 +575,8 @@ function Maximizer() {
 			settings = self.settings;
 
 		switch(this.windowType) {
+			case 'favfb':
+			case 'favfv':
 			case 'fiv':
 			case 'frv':
 			case 'ti':
@@ -590,8 +596,6 @@ function Maximizer() {
 
 			case 'bj':
 			case 'cw':
-			case 'favfb':
-			case 'favfv':
 			case 'pw':
 			case 'pv':
 			case 'rck':
