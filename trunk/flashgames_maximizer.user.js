@@ -8,6 +8,8 @@
 // @include        *facebook.com/black_jack/*
 // @include        *facebook.com/cafeworld/*
 // @include        *cafe.zynga.com/*
+// @include        *apps.facebook.com/farmtown/*
+// @include        *.slashkey.com/*
 // @include        *facebook.com/onthefarm/*
 // @include        *farmville.com/*
 // @include        *facebook.com/fishville/*
@@ -97,6 +99,38 @@ var SCRIPT = {
 			exclude: new Array(
 			)
 		},
+		ft: {
+			name: 'Farm Town',
+			styles: 'FarmTown',
+			selector: '#app56748925791_game_ctr iframe',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/farmtown/,
+			exclude: new Array(
+				/\/send/,
+				/\/friends/,
+				/\/invite/,
+				/\/settings/,
+				/\/offers/
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/farmtown/send/', label: 'Send Gifts'},
+				{href: 'http://apps.facebook.com/farmtown/friends/', label: 'Neighbors'},
+				{href: 'http://apps.facebook.com/farmtown/invite/', label: 'Invite'},
+				{href: 'http://r1.slashkey.com/forum/forumdisplay.php?f=54', label: 'Forums & Help'},
+				{href: 'http://apps.facebook.com/farmtown/settings/', label: 'Account'},
+				{href: 'http://apps.facebook.com/farmtown/offers/', label: 'Earn Cash and Coins'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
+		},
+		ft_iframe: {
+			selector: '#FarmTown',
+			//styles: 'CafeWorld',
+			notice: '#game_shoutout',
+			hostname: /\.slashkey\.com/,
+			pathname: /\/play_flash/,
+			exclude: new Array(
+			)
+		},
 		favfb: {
 			name: 'FarmVille in Facebook',
 			styles: 'FarmVille',
@@ -151,7 +185,7 @@ var SCRIPT = {
 				{href: 'http://www.farmville.com/gifts.php', label: 'Gifts'},
 				{href: 'http://www.farmville.com/neighbors.php', label: 'Neighbors'},
 				{href: 'http://www.farmville.com/invite.php', label: 'Invite Friends'},
-				{href: 'http://www.farmville.com/money.php', label: 'Coins & Cash'}
+				{href: 'http://www.farmville.com/money.php', label: 'Coins & Cash'},
 				{href: 'http://www.farmville.com/settings.php', label: 'Settings'}
 			)
 		},
@@ -596,6 +630,7 @@ function Maximizer() {
 
 			case 'bj':
 			case 'cw':
+			case 'ft':
 			case 'pw':
 			case 'pv':
 			case 'rck':
@@ -615,6 +650,7 @@ function Maximizer() {
 				break;
 
 			case 'cw_iframe':
+			case 'ft_iframe':
 			case 'fav_iframe':
 			case 'fiv_iframe':
 			case 'frv_iframe':
@@ -1089,6 +1125,17 @@ function Styles() {
 				background-color: #fff;\n\
 				height: 26px;\n\
 				width: 26px;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * @return	string
+	 */
+	this.getFarmTownStyles = function() {
+		return this.trim('\n\
+			iframe {\n\
+				border: 0;\n\
 			}\n\
 		');
 	};
