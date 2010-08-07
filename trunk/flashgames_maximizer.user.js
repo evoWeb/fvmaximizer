@@ -30,6 +30,8 @@
 // @include        *74.201.93.101*
 // @include        *facebook.com/yoville/*
 // @include        *yoville.com/*
+// @include        *apps.facebook.com/zoo-paradise/*
+// @include        *zoo.crowdstar.com/*
 // @require        http://fvmaximizer.googlecode.com/files/jquerygmfix.js
 // @require        http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js
 // @require        http://sizzlemctwizzle.com/updater.php?id=73361&days=1
@@ -124,7 +126,6 @@ var SCRIPT = {
 		},
 		ft_iframe: {
 			selector: '#FarmTown',
-			//styles: 'CafeWorld',
 			notice: '#game_shoutout',
 			hostname: /\.slashkey\.com/,
 			pathname: /\/play_flash/,
@@ -166,6 +167,7 @@ var SCRIPT = {
 		favfv: {
 			name: 'FarmVille in farmville.com',
 			styles: 'FarmVille',
+			notice: '.noticebox',
 			selector: '#flashIframeWrapper iframe',
 			hostname: /farmville\.com/,
 			pathname: /\/+/,
@@ -194,7 +196,6 @@ var SCRIPT = {
 		},
 		fav_iframe: {
 			selector: '#flashapp',
-			notice: '.noticebox',
 			hostname: /farmville\.com/,
 			pathname: /\/flash.php/,
 			exclude: new Array(
@@ -474,10 +475,37 @@ var SCRIPT = {
 				{href: 'http://www.yoville.com/home/', label: 'Home'}
 			)
 		},
-		yv_frame: {
+		yv_iframe: {
 			selector: '#mylife',
 			hostname: /yoville.com/,
 			pathname: /indexnew\.php|play\.php/,
+			exclude: new Array(
+			)
+		},
+		zp: {
+			name: 'Zoo Paradise',
+			styles: 'ZooParadise',
+			selector: '#app_content_339444600959 .body iframe',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/zoo-paradise\//,
+			exclude: new Array(
+				/\?target=neighbors_page/,
+				/\?target=gift_page/,
+				/\?target=invite_friends/,
+				/\?target=support/
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/zoo-paradise/?target=neighbors_page', label: 'My Neighbors'},
+				{href: 'http://apps.facebook.com/zoo-paradise/?target=gift_page', label: 'Free Gifts'},
+				{href: 'http://apps.facebook.com/zoo-paradise/?target=invite_friends', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/zoo-paradise/?target=support', label: 'Help'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
+		},
+		zp_iframe: {
+			selector: '#flashcontent',
+			hostname: /zoo\.crowdstar\.com/,
+			pathname: /\/iframe\//,
 			exclude: new Array(
 			)
 		}
@@ -642,6 +670,7 @@ function Maximizer() {
 			case 'wt':
 			case 'yvfb':
 			case 'yvyv':
+			case 'zp':
 				if (jQuery(settings.selector).length > 0) {
 					this.initMainwindow(settings);
 				} else {
@@ -664,7 +693,8 @@ function Maximizer() {
 			case 'th_iframe':
 			case 'ti_iframe':
 			case 'wt_iframe':
-			case 'yv_frame':
+			case 'yv_iframe':
+			case 'zp_iframe':
 				this.styles.injectStyles(this.styles.getFlashframeStyles());
 
 				if (jQuery(settings.selector).length > 0) {
@@ -1416,6 +1446,28 @@ function Styles() {
 		');
 	};
 
+	/**
+	 * Get styles for Zoo Paradise
+	 *
+	 * @return	string
+	 */
+	this.getZooParadiseStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 45px;\n\
+				top: 5px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #936d5a;\n\
+				border: 1px solid #583e2d;\n\
+				color: #000;\n\
+				height: 24px;\n\
+			}\n\
+		');
+	};
+
+
 
 	/**
 	 * Styles for calculator
@@ -1459,6 +1511,7 @@ function Styles() {
 			}\
 		');
 	};
+
 
 
 	/**
