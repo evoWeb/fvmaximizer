@@ -134,6 +134,7 @@ var SCRIPT = {
 		favfb: {
 			name: 'FarmVille in Facebook',
 			styles: 'FarmVille',
+			notice: '.noticebox',
 			selector: '#app_content_102452128776 iframe[src*=/flash.php]',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/onthefarm/,
@@ -148,6 +149,7 @@ var SCRIPT = {
 				/neighbors\.php/,
 				/reward\.php/,
 				/sendmats\.php/,
+				/sentthankyougift\.php/,
 				/track\.php/,
 				/wishlist_give\.php/
 			),
@@ -178,6 +180,7 @@ var SCRIPT = {
 				/neighbors\.php/,
 				/reward\.php/,
 				/sendmats\.php/,
+				/sentthankyougift\.php/,
 				/track\.php/,
 				/wishlist_give\.php/
 			),
@@ -243,7 +246,8 @@ var SCRIPT = {
 				/invite\.php/,
 				/money\.php/,
 				/money2\.php/,
-				/neighbors\.php/
+				/neighbors\.php/,
+				/reward\.php/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/frontierville/gifts.php', label: 'Gifts'},
@@ -862,6 +866,8 @@ function Maximizer() {
 	this.createNoticebox = function(settings) {
 		var $notices = jQuery(settings.notice);
 
+		this.styles.injectStyles(this.styles.getMessageboxStyles());
+
 		if ($notices.length > 0) {
 			var $fvmmNotice = jQuery('<div id="fvmm_notice" />')
 					.append(
@@ -995,29 +1001,12 @@ function Styles() {
 	};
 
 	/**
-	 * General styles for farmville
+	 * Get Styles for the messagebox
 	 *
 	 * @return	string
 	 */
-	this.getFlashframeStyles = function() {
+	this.getMessageboxStyles = function() {
 		return this.trim('\n\
-			object,\n\
-			embed {\n\
-				border: none;\n\
-				height: 100%;\n\
-				padding-bottom: -2px;\n\
-				margin: 0;\n\
-				width: 100%;\n\
-				position: absolute;\n\
-				top: 0;\n\
-				left: 0;\n\
-			}\n\
-\n\
-			/*.fb_resetstyles *,\n\
-			#FB_HiddenContainer *\n\ {\n\
-				display: block;\n\
-			}*/\n\
-\n\
 			#message_center_button {\n\
 				display: block;\n\
 				position: absolute;\n\
@@ -1034,17 +1023,17 @@ function Styles() {
 				margin-top: 30px;\n\
 			}\n\
 \n\
-			#fvmm_notice {\n\
-				display: block;\n\
-				position: absolute;\n\
-				right: 236px;\n\
-				top: 41px;\n\
-				width: 300px;\n\
-				z-index: 1000000;\n\
-			}\n\
-			#fvmm_notice * {\n\
-				display: block;\n\
-			}\n\
+		#fvmm_notice {\n\
+			display: block;\n\
+			position: absolute;\n\
+			right: 236px;\n\
+			top: 41px;\n\
+			width: 300px;\n\
+			z-index: 1000000;\n\
+		}\n\
+		#fvmm_notice * {\n\
+			display: block;\n\
+		}\n\
 			#fvmm_notice .messages {\n\
 				background-color: #FFF4BF;\n\
 				border: 1px solid #FFD100;\n\
@@ -1069,6 +1058,27 @@ function Styles() {
 				float: right;\n\
 				height: 29px;\n\
 				width: 34px;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * General styles for farmville
+	 *
+	 * @return	string
+	 */
+	this.getFlashframeStyles = function() {
+		return this.trim('\n\
+			object,\n\
+			embed {\n\
+				border: none;\n\
+				height: 100%;\n\
+				padding-bottom: -2px;\n\
+				margin: 0;\n\
+				width: 100%;\n\
+				position: absolute;\n\
+				top: 0;\n\
+				left: 0;\n\
 			}\n\
 		');
 	};
