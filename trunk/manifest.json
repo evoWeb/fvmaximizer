@@ -7,8 +7,9 @@
 		{
 			"all_frames": true,
 			"js": [
-				"jquery/jquery.gmfix.js",
-				"jquery/jquery-ui.min.js",
+				"Resources/jquery.gmfix.js",
+				"Resources/jquery-ui.min.js",
+				"Resources/fgm-styles.js",
 				"gm/substitute.js",
 				"flashgames_maximizer.user.js"
 			],
