@@ -34,6 +34,8 @@ function Styles() {
 	};
 
 	/**
+	 * Get general styles for menu
+	 *
 	 * @return	string
 	 */
 	this.getMenuStyles = function() {
@@ -45,7 +47,7 @@ function Styles() {
 				right: 0;\n\
 				top: 41px;\n\
 				width: 165px;\n\
-				z-index: 1000001;\n\
+				z-index: 100001;\n\
 			}\n\
 			#fvmm_menu * {\n\
 				display: block;\n\
@@ -109,7 +111,7 @@ function Styles() {
 				position: absolute;\n\
 				top: 44px;\n\
 				right: 13px;\n\
-				z-index: 1000002;\n\
+				z-index: 100002;\n\
 			}\n\
 \n\
 			#social_exchange {\n\
@@ -120,17 +122,17 @@ function Styles() {
 				margin-top: 30px;\n\
 			}\n\
 \n\
-		#fvmm_notice {\n\
-			display: block;\n\
-			position: absolute;\n\
-			right: 236px;\n\
-			top: 41px;\n\
-			width: 300px;\n\
-			z-index: 1000000;\n\
-		}\n\
-		#fvmm_notice * {\n\
-			display: block;\n\
-		}\n\
+			#fvmm_notice {\n\
+				display: block;\n\
+				position: absolute;\n\
+				right: 236px;\n\
+				top: 41px;\n\
+				width: 300px;\n\
+				z-index: 100003;\n\
+			}\n\
+			#fvmm_notice * {\n\
+				display: block;\n\
+			}\n\
 			#fvmm_notice .messages {\n\
 				background-color: #FFF4BF;\n\
 				border: 1px solid #FFD100;\n\
@@ -325,7 +327,6 @@ function Styles() {
 			#fvmm_notice {\n\
 				right: 10px;\n\
 				width: 480px;\n\
-				z-index: 2;\n\
 			}\n\
 \n\
 			#fvmm_noticebutton {\n\
@@ -461,6 +462,10 @@ function Styles() {
 			#appFrame,\n\
 			#flashFrame {\n\
 				position: static;\n\
+			}\n\
+\n\
+			#tabs {\n\
+				display: none;\n\
 			}\n\
 		');
 	};
