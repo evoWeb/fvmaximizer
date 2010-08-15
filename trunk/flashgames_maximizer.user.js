@@ -6,6 +6,8 @@
 // @version        3.0.0.$Rev$
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
 // @include        *facebook.com/black_jack/*
+// @include        *facebook.com/cartown/*
+// @include        *cartown.com/cartown/*
 // @include        *facebook.com/cafeworld/*
 // @include        *cafe.zynga.com/*
 // @include        *apps.facebook.com/farmtown/*
@@ -63,6 +65,31 @@ var SCRIPT = {
 			)
 		},
 		bj_iframe: {},
+		ct: {
+			name: 'Car Town',
+			styles: 'Cartown',
+			selector: '#app256799621935_main_body iframe',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/cartown/,
+			exclude: new Array(
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/cartown/invite.jsp', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/cartown/addCredits.jsp', label: 'Get Coins & Points'},
+				{href: 'http://www.facebook.com/CarTown/', label: 'We love Car Town!'},
+				{href: 'http://www.cartown.com/faq.html', label: 'Help'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
+		},
+		ct_iframe: {
+			selector: '#game_div',
+			//styles: 'CarTown',
+			//notice: '#game_shoutout',
+			hostname: /game\.cartown\.com/,
+			pathname: /\/cartown\/flashIFrame\.jsp/,
+			exclude: new Array(
+			)
+		},
 		cw: {
 			name: 'Cafe World',
 			styles: 'CafeWorld',
@@ -72,6 +99,7 @@ var SCRIPT = {
 			exclude: new Array(
 				/accept_chef_special\.php/,
 				/accept_request\.php/,
+				/build_a_stove_friend_helping_page\.php/,
 				/gift_cards\.php/,
 				/help\.php/,
 				/invite\.php/,
@@ -241,6 +269,7 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/frontierville/,
 			exclude: new Array(
+				/gift_request_accept\.php/,
 				/giftaccept\.php/,
 				/gifts\.php/,
 				/help\.php/,
@@ -661,6 +690,7 @@ function Maximizer() {
 				break;
 
 			case 'bj':
+			case 'ct':
 			case 'cw':
 			case 'ft':
 			case 'pw':
@@ -682,6 +712,7 @@ function Maximizer() {
 				}
 				break;
 
+			case 'ct_iframe':
 			case 'cw_iframe':
 			case 'ft_iframe':
 			case 'fav_iframe':
@@ -735,6 +766,8 @@ function Maximizer() {
 	};
 
 	/**
+	 * Initialize the window self
+	 *
 	 * @param	array
 	 * @return	void
 	 */
