@@ -208,6 +208,31 @@ function Styles() {
 	/**
 	 * @return	string
 	 */
+	this.getCartownStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 450px;\n\
+				margin: 0;\n\
+				top: 20px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #ccc;\n\
+				border: 1px solid #000;\n\
+				color: #000;\n\
+				float: right;\n\
+				height: 28px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton span {\n\
+				padding: 3px 3px 6px 13px;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * @return	string
+	 */
 	this.getCafeWorldStyles = function() {
 		return this.trim('\n\
 			#fvmm_menu {\n\
