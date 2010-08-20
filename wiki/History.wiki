@@ -1,6 +1,19 @@
 #summary Version History
 
 <dl>
+
+<dt>v3.0.68</dt>
+<dd>
+*Maintenance release.*
+ * Fixed styles for PetVille
+</dd>
+
+<dt>v3.0.66</dt>
+<dd>
+*Maintenance release.*
+ * Fixed styles for Farmville Menu button
+</dd>
+
 <dt>v2.0.9</dt>
 <dd>
 *Maintenance release.*
