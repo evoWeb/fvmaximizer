@@ -338,7 +338,7 @@ var SCRIPT = {
 		pv: {
 			name: 'PetVille',
 			styles: 'PetVille',
-			selector: '#app_content_163576248142 iframe[src*=/flash.php]',
+			selector: '#app163576248142_mainframe',
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/petvillegame/,
 			exclude: new Array(
@@ -365,6 +365,15 @@ var SCRIPT = {
 			selector: '#flashapp',
 			hostname: /petville\.zynga\.com/,
 			pathname: /\/current\/flash\.php/,
+			exclude: new Array(
+			)
+		},
+		pv_outerframe: {
+			styles: 'PetVille',
+			notice: '.noticebox',
+			selector: '#flashiframe',
+			hostname: /petville\.zynga\.com/,
+			pathname: /\/current\/main\.php/,
 			exclude: new Array(
 			)
 		},
@@ -583,6 +592,7 @@ if (typeof(GM_getValue) != 'undefined' &&
 
 
 if (active) {
+	var debug = true;
 	var mmObj = new Maximizer()
 		.injectDefaultStyles();
 
@@ -686,6 +696,7 @@ function Maximizer() {
 			case 'favfv':
 			case 'fiv':
 			case 'frv':
+			case 'pv':
 			case 'ti':
 				self.manipulateElement(settings.selector)
 					.bind(
@@ -721,8 +732,8 @@ function Maximizer() {
 			case 'ct':
 			case 'cw':
 			case 'ft':
+			case 'pv_outerframe':
 			case 'pw':
-			case 'pv':
 			case 'rck':
 			case 'th':
 			case 'wt':
@@ -852,6 +863,10 @@ function Maximizer() {
 					}
 				}
 			}
+		}
+
+		if (debug && this.windowType != null) {
+			console.log(href + " " + this.windowType);
 		}
 
 		return this.windowType;
