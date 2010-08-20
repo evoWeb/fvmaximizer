@@ -14,6 +14,12 @@
  * Fixed styles for Farmville Menu button
 </dd>
 
+<dt>v3.0.0</dt>
+<dd>
+*Workover release.*
+ * Since this version not only Farmville is supported but also: Black Jack, Car Town, Cafe World, FarmTown, FishVille, Path Words, PetVille, Roller Coaster Kingdom, Texas Holdem, TreasureIsle, Word Twist, YoVille and Zoo Paradise
+</dd>
+
 <dt>v2.0.9</dt>
 <dd>
 *Maintenance release.*
