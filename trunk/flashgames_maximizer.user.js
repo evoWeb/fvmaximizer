@@ -183,7 +183,10 @@ var SCRIPT = {
 				/sendmats\.php/,
 				/sentthankyougift\.php/,
 				/track\.php/,
-				/wishlist_give\.php/
+				/wishlist_give\.php/,
+
+				/session\.php/,
+				/xd_receiver\.htm/
 			),
 			menuitems: new Array(
 				{href: 'http://apps.facebook.com/onthefarm/gifts.php', label: 'Gifts'},
@@ -215,7 +218,12 @@ var SCRIPT = {
 				/sendmats\.php/,
 				/sentthankyougift\.php/,
 				/track\.php/,
-				/wishlist_give\.php/
+				/wishlist_give\.php/,
+
+				/populateFbCache\.php/,
+				/promo_bar\.php/,
+				/session\.php/,
+				/xd_receiver\.htm/
 			),
 			menuitems: new Array(
 				{href: 'http://www.farmville.com/gifts.php', label: 'Gifts'},
@@ -547,11 +555,9 @@ var SCRIPT = {
 
 
 
-var active = true,
-	isGM = (typeof(GM_getValue) != 'undefined' &&
-		typeof(GM_getValue('a', 'b')) != 'undefined');
-
-if (isGM) {
+var active = true;
+if (typeof(GM_getValue) != 'undefined' &&
+		typeof(GM_getValue('a', 'b')) != 'undefined') {
 	active = GM_getValue('active', true);
 
 	function activate() {
@@ -574,15 +580,15 @@ if (isGM) {
 	}
 }
 
-if (active) {
-	(function($) {
-		var mmObj = new Maximizer();
-		mmObj.injectDefaultStyles();
 
-		jQuery(document).ready(function() {
-			mmObj.maximizeWindow();
-		});
-	})(jQuery);
+
+if (active) {
+	var mmObj = new Maximizer()
+		.injectDefaultStyles();
+
+	jQuery(document).ready(function() {
+		mmObj.maximizeWindow();
+	});
 }
 
 
@@ -647,21 +653,23 @@ function Maximizer() {
 	 *
 	 * @return	boolean
 	 */
-	this.init = function() {
-		this.windowType = this.getWindowType();
+	this.__construct = function() {
 		this.styles = new Styles();
+		this.windowType = this.getWindowType();
 		this.settings = SCRIPT.games[this.windowType];
 	};
 
 	/**
 	 * Inject the common styles into the head node
 	 *
-	 * @return	void
+	 * @return	object
 	 */
 	this.injectDefaultStyles = function() {
 		if (this.windowType != null) {
 			this.styles.injectStyles(this.styles.getDefaultStyles());
 		}
+
+		return this;
 	};
 
 	/**
@@ -673,47 +681,24 @@ function Maximizer() {
 		var self = this,
 			settings = self.settings;
 
-		switch(this.windowType) {
+		switch(self.windowType) {
 			case 'favfb':
 			case 'favfv':
 			case 'fiv':
 			case 'frv':
 			case 'ti':
-				var $iframe = this.initMainwindow(settings);
-				$iframe.bind(
+				self.manipulateElement(settings.selector)
+					.bind(
 					'stylesChanged',
 					{height: '100%', width: '100%'},
 					function(event, property) {
 						for (var key in event.data) {
-							if ($(this).css(key) != event.data[key]) {
-								$(this).css(key, event.data[key]);
+							if (jQuery(this).css(key) != event.data[key]) {
+								jQuery(this).css(key, event.data[key]);
 							}
 						}
 					}
 				);
-				break;
-
-			case 'bj':
-			case 'ct':
-			case 'cw':
-			case 'ft':
-			case 'pw':
-			case 'pv':
-			case 'rck':
-			case 'th':
-			case 'wt':
-			case 'yvfb':
-			case 'yvyv':
-			case 'zp':
-				if (jQuery(settings.selector).length > 0) {
-					this.initMainwindow(settings);
-				} else {
-					jQuery(document.body).bind('elementCreated', {
-						selector: settings.selector
-					}, function(event) {
-						self.initMainwindow(settings);
-					});
-				}
 				break;
 
 			case 'ct_iframe':
@@ -730,40 +715,49 @@ function Maximizer() {
 			case 'wt_iframe':
 			case 'yv_iframe':
 			case 'zp_iframe':
-				this.styles.injectStyles(this.styles.getFlashframeStyles());
+				self.styles.injectStyles(self.styles.getFlashframeStyles());
 
+			case 'bj':
+			case 'ct':
+			case 'cw':
+			case 'ft':
+			case 'pw':
+			case 'pv':
+			case 'rck':
+			case 'th':
+			case 'wt':
+			case 'yvfb':
+			case 'yvyv':
+			case 'zp':
 				if (jQuery(settings.selector).length > 0) {
-					this.initMainwindow(settings);
+					self.manipulateElement(settings.selector);
 				} else {
 					jQuery(document.body).bind('elementCreated', {
-						selector: settings.selector
-					}, function(event) {
-						self.initMainwindow(settings);
-					});
+							selector: settings.selector
+						}, function(event) {
+							self.manipulateElement(settings.selector);
+						}
+					);
 				}
 				break;
 		}
 
 			// use this only if a valid type was found
-		if (this.windowType != null) {
+		if (self.windowType != null) {
 				// create menu if menuitems are available
 			if (typeof(settings.menuitems) != 'undefined') {
-				this.createMenu(settings);
+				self.createMenu(settings);
 			}
 
 				// if notice selector is set
 			if (typeof(settings.notice) != 'undefined') {
-				this.createNoticebox(settings);
+				self.createNoticebox(settings);
 			}
 
 				// inject specific styles
 			if (typeof(settings.styles) != 'undefined') {
-				this.styles.appendStyles(this.styles['get' + settings.styles + 'Styles']());
+				self.styles.appendStyles(self.styles['get' + settings.styles + 'Styles']());
 			}
-
-			// trash to clean up
-			jQuery('#message_center_button')
-				.css('display', 'block');
 		}
 
 		return this;
@@ -775,25 +769,12 @@ function Maximizer() {
 	 * @param	array
 	 * @return	void
 	 */
-	this.initMainwindow = function(settings) {
-		var $element = jQuery(settings.selector)
+	this.manipulateElement = function(selector) {
+		var $element = jQuery(selector)
 			.siblings()
 				.removeAttr('style')
 				.addClass('none')
 				.end()
-			.removeAttr('height')
-			.removeAttr('width')
-			.removeAttr('style')
-			.removeAttr('class')
-			.css({
-				display: 'block',
-				height: '100%',
-				left: 0,
-				position: 'absolute',
-				top: 0,
-				visibility: 'visible',
-				width: '100%'
-			})
 			.parents()
 				.siblings()
 					.removeAttr('style')
@@ -809,7 +790,21 @@ function Maximizer() {
 					visibility: 'visible',
 					width: '100%'
 				})
-				.end();
+				.end()
+			.removeAttr('height')
+			.removeAttr('width')
+			.removeAttr('style')
+			.removeAttr('class')
+			.css({
+				display: 'block',
+				height: '100%',
+				visibility: 'visible',
+				width: '100%'
+			});
+
+		if (this.windowType.match(/_iframe/)) {
+			$element.find('param[name=wmode]').attr('value', 'opaque');
+		}
 
 		return $element;
 	};
@@ -963,5 +958,5 @@ function Maximizer() {
 	};
 
 
-	this.init();
+	this.__construct();
 }
