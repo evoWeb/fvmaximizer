@@ -211,9 +211,10 @@ function Styles() {
 	this.getCartownStyles = function() {
 		return this.trim('\n\
 			#fvmm_menu {\n\
-				left: 450px;\n\
+				left: 490px;\n\
 				margin: 0;\n\
 				top: 20px;\n\
+				width: 120px;\n\
 			}\n\
 \n\
 			#fvmm_menubutton {\n\
@@ -226,6 +227,10 @@ function Styles() {
 \n\
 			#fvmm_menubutton span {\n\
 				padding: 3px 3px 6px 13px;\n\
+			}\n\
+\n\
+			#fvmm_menu menu {\n\
+				clear: both;\n\
 			}\n\
 		');
 	};
