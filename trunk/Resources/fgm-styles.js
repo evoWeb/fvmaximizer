@@ -407,7 +407,7 @@ function Styles() {
 	this.getPetVilleStyles = function() {
 		return this.trim('\n\
 			#fvmm_menu {\n\
-				left: 5px;\n\
+				left: 130px;\n\
 				top: 50px;\n\
 			}\n\
 \n\
@@ -416,6 +416,31 @@ function Styles() {
 				border: 1px solid #775839;\n\
 				color: #000;\n\
 				height: 24px;\n\
+			}\n\
+\n\
+			#fvmm_menu menu {\n\
+				width: 130px;\n\
+			}\n\
+\n\
+			#gTabs {\n\
+				display: none;\n\
+			}\n\
+\n\
+			#fvmm_notice {\n\
+				left: 130px;\n\
+				top: 80px;\n\
+				width: 400px;\n\
+			}\n\
+\n\
+			#fvmm_noticebutton {\n\
+				background-color: #f1e49c;\n\
+				border: 1px solid #582a09;\n\
+				float: left;\n\
+			}\n\
+\n\
+			#fvmm_notice .messages {\n\
+				float: right;\n\
+				width: 353px;\n\
 			}\n\
 		');
 	};
