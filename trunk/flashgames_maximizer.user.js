@@ -565,12 +565,9 @@ var SCRIPT = {
 
 
 
-var active = true,
-	isGM = (
-		typeof(GM_getValue) != 'undefined' &&
-		typeof(GM_getValue('a', 'b')) != 'undefined'
-	);
-if (isGM) {
+var active = true;
+if (typeof(GM_getValue) != 'undefined' &&
+		typeof(GM_getValue('a', 'b')) != 'undefined') {
 	active = GM_getValue('active', true);
 
 	function activate() {
