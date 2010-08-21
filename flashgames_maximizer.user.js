@@ -170,6 +170,7 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/onthefarm/,
 			exclude: new Array(
+				/askcredits\.php/,
 				/askmats\.php/,
 				/fans\.php/,
 				/giftaccept.php/,
