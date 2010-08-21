@@ -3,7 +3,6 @@
  *
  * @return	void
  */
-alert('test');
 function FarmvilleTool() {
 	this.$panel = null;
 	this.mouseDelta = null;
@@ -19,29 +18,28 @@ function FarmvilleTool() {
 				styles = new Styles();
 			styles.injectStyles(styles.getCalculatorStyles());
 
-			this.$panel = jQuery('<div id="calculatorpanel" class="show"/>')
-				.css(this.getPanelStartPosition())
+			self.$panel = jQuery('<div id="calculatorpanel" class="show"/>')
+				.css(self.getPanelStartPosition())
 				.draggable({
 					handle: 'div.header',
-					start: this.panelDragStart,
-					drag: this.panelDrag,
-					stop: this.panelDragStop
+					start:	self.panelDragStart,
+					drag:	self.panelDrag,
+					stop:	self.panelDragStop
 				})
 				.append(
 					jQuery('<div class="header"/>')
-						.text('Tools')
+						.text('Seed Calculator')
 				)
 				.append(
 					jQuery('<div class="close"/>')
 						.bind('click', function() {
 							self.$panel.removeClass('show');
 						})
-						.text('[x]')
-				);
-
-			this.$panel.appendTo('body');
+						.text('X')
+				)
+				.appendTo('body');
 		} else {
-			this.$panel.addClass('show');
+			self.$panel.addClass('show');
 		}
 	};
 
@@ -53,6 +51,8 @@ function FarmvilleTool() {
 	 * @return	void
 	 */
 	this.panelDragStart = function(event, ui) {
+console.log(event);
+console.log(ui);
 		this.screenSize = {
 			width: jQuery(window).width(),
 			height: jQuery(window).height()
@@ -63,6 +63,11 @@ function FarmvilleTool() {
 		};
 	};
 
+	/**
+	 * Check wether the panel should be dragged or not
+	 *
+	 * return	boolean
+	 */
 	this.panelDrag = function(event, ui) {
 		var panelHeight = jQuery(this).height(),
 			panelWidth = jQuery(this).width(),
@@ -119,6 +124,8 @@ function FarmvilleTool() {
 	};
 
 	/**
+	 * Get panel position on first show
+	 *
 	 * @return	{object}	position
 	 */
 	this.getPanelStartPosition = function() {
@@ -132,7 +139,6 @@ function FarmvilleTool() {
 				left: GM_getValue('panelLeft', 200),
 				top: GM_getValue('panelTop', 100)
 			};
-		} else {
 		}
 
 		return position;
@@ -140,3 +146,5 @@ function FarmvilleTool() {
 
 	this.init();
 }
+
+FarmvilleTool();

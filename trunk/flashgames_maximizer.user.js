@@ -195,8 +195,8 @@ var SCRIPT = {
 				{href: 'http://apps.facebook.com/onthefarm/invite.php', label: 'Invite Friends'},
 				{href: 'http://apps.facebook.com/onthefarm/money.php', label: 'Coins & Cash'},
 				{href: 'http://apps.facebook.com/onthefarm/fans.php', label: 'Love FarmVille?'},
-				{href: 'http://www.facebook.com/', label: 'Facebook'}
-			//	{click: function() {new FarmvilleTool();}, label: 'Seed Calc'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'},
+				{click: function() {new FarmvilleTool();}, label: 'Seed Calc'}
 			)
 		},
 		favfv: {
@@ -565,9 +565,12 @@ var SCRIPT = {
 
 
 
-var active = true;
-if (typeof(GM_getValue) != 'undefined' &&
-		typeof(GM_getValue('a', 'b')) != 'undefined') {
+var active = true,
+	isGM = (
+		typeof(GM_getValue) != 'undefined' &&
+		typeof(GM_getValue('a', 'b')) != 'undefined'
+	);
+if (isGM) {
 	active = GM_getValue('active', true);
 
 	function activate() {
@@ -593,7 +596,7 @@ if (typeof(GM_getValue) != 'undefined' &&
 
 
 if (active) {
-	var debug = true;
+	var debug = false;
 	var mmObj = new Maximizer()
 		.injectDefaultStyles();
 
