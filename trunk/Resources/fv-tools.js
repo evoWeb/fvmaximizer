@@ -59,7 +59,11 @@ function FarmvilleTool() {
 		var $contentDiv = jQuery('<div class="content"/>'),
 			$form = jQuery('<form/>');
 
-		$form.append(this.getSeedSelect());
+		$form.append(
+			jQuery('<div/>')
+				.append(jQuery('<label>Seed</label>'))
+				.append(this.getSeedSelect())
+		);
 
 		$contentDiv.append($form);
 
@@ -72,8 +76,9 @@ function FarmvilleTool() {
 	this.getSeedSelect = function() {
 		var $select = jQuery('<select/>');
 
-		for (var key in seedData) {
-			$select.append(this.getSelectOption(key, seedData[key]));
+		var keys = this.getSortedKeys(seedData);
+		for (var index in keys) {
+			$select.append(this.getSelectOption(keys[index], seedData[keys[index]]));
 		}
 
 		return $select;
@@ -88,6 +93,23 @@ function FarmvilleTool() {
 		return jQuery('<option value="' + key + '">' + values.title + '</option>');
 	};
 
+	/**
+	 * Get sorted array keys
+	 *
+	 * @param	array
+	 * @return	array
+	 */
+	this.getSortedKeys = function(data) {
+		var keys = new Array();
+
+		for (var key in data) {
+			keys.push(key);
+		}
+
+		keys.sort();
+
+		return keys;
+	};
 
 	/**
 	 * Compares the current position of the panel and stores the normalized onscreen position

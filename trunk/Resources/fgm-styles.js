@@ -606,6 +606,7 @@ function Styles() {
 			#calculatorpanel {\
 				background: #ccc;\
 				border: 1px solid #000;\
+				color: #000;\
 				display: none;\
 				height: 300px;\
 				left: 200px;\
@@ -622,7 +623,6 @@ function Styles() {
 			#calculatorpanel .header {\
 				background: #bbb;\
 				border-bottom: 1px solid #000;\
-				color: #000;\
 				font-size: 13px;\
 				padding: 8px 3px 5px 29px;\
 			}\
@@ -639,6 +639,26 @@ function Styles() {
 				text-align: center;\
 				top: 7px;\
 				width: 29px;\
+			}\
+\
+			#calculatorpanel form {\
+				margin: 10px;\
+			}\
+\
+			#calculatorpanel label {\
+				clear: left;\
+				color: #000;\
+				display: block;\
+				float: left;\
+				font-weight: normal;\
+				margin: 5px 10px 0px 0px;\
+				padding-top: 2px;\
+				text-align: right;\
+				width: 80px;\
+			}\
+\
+			#calculatorpanel select {\
+				margin: 3px 0 0 0;\
 			}\
 		');
 	};
