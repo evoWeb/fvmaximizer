@@ -11,31 +11,46 @@ var isGM = (
 function FarmvilleTool() {
 	this.$panel = null;
 
+	this.$gain = $('<div id="gain" class="value"/>');
+	this.$hours = $('<div id="hours" class="value"/>');
+	this.$experience = $('<div id="experience" class="value"/>');
+	this.$price = $('<div id="price" class="value"/>');
+	this.$mastery1 = $('<div id="mastery1"/>');
+	this.$mastery2 = $('<div id="mastery2"/>');
+	this.$mastery3 = $('<div id="mastery3"/>');
+	this.$masterysum = $('<div id="sum"/>');
+
+	this.$percentage = $('<input id="percentage" maxlength="2"/>');
+	this.$lefttime = $('<div id="lefttime" class="value"/>');
+	this.$readytime = $('<div id="readytime" class="value"/>');
+
+	this.selectedSeed = '';
+
 	/**
 	 * Initialize the panel with all contents
 	 *
 	 * @return void
 	 */
 	this.init = function() {
-		this.$panel = jQuery('#calculatorpanel');
+		this.$panel = $('#calculatorpanel');
 
 		if (this.$panel.length == 0) {
 			var self = this,
 				styles = new Styles();
 			styles.injectStyles(styles.getCalculatorStyles());
 
-			self.$panel = jQuery('<div id="calculatorpanel" class="show"/>')
+			self.$panel = $('<div id="calculatorpanel" class="show"/>')
 				.draggable({
 					handle: 'div.header',
 					containment: 'window',
 					stop: self.panelDragStop
 				})
 				.append(
-					jQuery('<div class="header"/>')
+					$('<div class="header"/>')
 						.text('Seed Calculator')
 				)
 				.append(
-					jQuery('<div class="close"/>')
+					$('<div class="close"/>')
 						.bind('click', function() {
 							self.$panel.removeClass('show');
 						})
@@ -56,32 +71,89 @@ function FarmvilleTool() {
 	 * @return	DOMNodes
 	 */
 	this.getContent = function() {
-		var $contentDiv = jQuery('<div class="content"/>'),
-			$form = jQuery('<form/>');
+		var self = this,
+			$form = $('<form/>'),
+			$selectbox = this.getSeedSelect();
 
-		$form.append(
-			jQuery('<div/>')
-				.append(jQuery('<label>Seed</label>'))
-				.append(this.getSeedSelect())
+		$form.append($('<div/>')
+			.append($('<label>Seed</label>'))
+			.append($selectbox)
+		).append($('<div class="left"/>')
+			.append($('<h2>Infos</h2>'))
+			.append($('<div/>')
+				.append($('<label>Hours</label>'))
+				.append(this.$hours)
+			)
+			.append($('<div/>')
+				.append($('<label>Experience</label>'))
+				.append(this.$experience)
+			)
+			.append($('<div/>')
+				.append($('<label>Purchasing Price</label>'))
+				.append(this.$price)
+			)
+			.append($('<div/>')
+				.append($('<label>Sales Price</label>'))
+				.append(this.$gain)
+			)
+		).append($('<div class="right"/>')
+			.append($('<h2>Harvest</h2>'))
+			.append($('<table class="threecols"/>')
+				.append($('<tr/>')
+					.append($('<td>Percentage</td>'))
+					.append($('<td>left Time</td>'))
+					.append($('<td>ready at</td>'))
+					.append($('<td>&nbsp;</td>'))
+				)
+				.append($('<tr/>')
+					.append($('<td/>').append(
+						this.$percentage.keyup(function() {
+							self.calculateHarvestTime();
+						})
+					))
+					.append($('<td/>').append(this.$lefttime))
+					.append($('<td colspan="2"/>').append(this.$readytime))
+				)
+			)
+			.append($('<h2>Mastery</h2>'))
+			.append($('<table class="threecols"/>')
+				.append($('<tr/>')
+					.append($('<td>I</td>'))
+					.append($('<td>II</td>'))
+					.append($('<td>III</td>'))
+					.append($('<td>Sum</td>'))
+				)
+				.append($('<tr/>')
+					.append($('<td/>').append(this.$mastery1))
+					.append($('<td/>').append(this.$mastery2))
+					.append($('<td/>').append(this.$mastery3))
+					.append($('<td/>').append(this.$masterysum))
+				)
+			)
 		);
 
-		$contentDiv.append($form);
+		this.changeSeed($selectbox.find('option:first').attr('value'));
 
-		return $contentDiv;
+		return $('<div class="content"/>').append($form);
 	};
 
 	/**
+	 * Get Selectbox with seeds
+	 *
 	 * @return	DOMNode
 	 */
 	this.getSeedSelect = function() {
-		var $select = jQuery('<select/>');
+		var self = this,
+			$select = $('<select/>');
 
 		var keys = this.getSortedKeys(seedData);
 		for (var index in keys) {
 			$select.append(this.getSelectOption(keys[index], seedData[keys[index]]));
 		}
 
-		return $select;
+		return $select.bind('change keyup', function() {
+			self.changeSeed($(this).attr('value'));
+		});
 	};
 
 	/**
@@ -90,7 +162,78 @@ function FarmvilleTool() {
 	 * @return DOMNode
 	 */
 	this.getSelectOption = function(key, values) {
-		return jQuery('<option value="' + key + '">' + values.title + '</option>');
+		return $('<option value="' + key + '">' + values.title + '</option>');
+	};
+
+
+	/**
+	 * Change the displayed data to the seed given by key
+	 *
+	 * @return	void
+	 */
+	this.changeSeed = function(key) {
+		var seed = seedData[key];
+		this.selectedSeed = seed;
+
+		this.$gain.text(seed.gain + ' coins');
+		this.$hours.text(seed.hours);
+		this.$experience.text(seed.experience);
+		this.$price.text(seed.price + ' coins');
+		this.$mastery1.text(seed.mastery[0]);
+		this.$mastery2.text(seed.mastery[1]);
+		this.$mastery3.text(seed.mastery[2]);
+		this.$masterysum.text(seed.mastery[0] + seed.mastery[1] + seed.mastery[2]);
+
+		this.calculateHarvestTime();
+	};
+
+	/**
+	 * Calculate the harvest time based on percentage, duration and current time
+	 *
+	 * @return	void
+	 */
+	this.calculateHarvestTime = function() {
+		var duration = this.selectedSeed.hours * 60 * 60,
+			leftDuration = duration - Math.floor(duration / 100 * this.$percentage.val()),
+			leftHours = Math.floor(leftDuration / (60 * 60)),
+			leftMinutes = Math.floor((leftDuration - (leftHours * 60 * 60)) / 60),
+			readyTime = new Date(),
+			readyString = '';
+
+		if (leftMinutes < 10) {
+			leftMinutes = '0' + leftMinutes;
+		}
+		this.$lefttime.text(leftHours + ':' + leftMinutes);
+
+		readyTime.setHours(readyTime.getHours() + leftHours);
+		readyTime.setMinutes(readyTime.getMinutes() + leftMinutes);
+		this.$readytime.text(this.getFormatedDate(readyTime));
+	};
+
+	/**
+	 * Format date and return the string
+	 *
+	 * @return	string
+	 */
+	this.getFormatedDate = function(date) {
+		var $result = '';
+
+		$result = (date.getMonth() + 1) + '.';
+		$result += date.getDate() + '.';
+		if (date.getYear() < 999) {
+			$result += (date.getYear() + 1900) + ' ';
+		} else {
+			$result += date.getYear() + ' ';
+		}
+
+		$result += date.getHours() + ':';
+		if (date.getMinutes() < 10) {
+			$result += '0' + date.getMinutes();
+		}else {
+			$result += date.getMinutes();
+		}
+
+		return $result;
 	};
 
 	/**
@@ -137,12 +280,12 @@ function FarmvilleTool() {
 			var left = GM_getValue('panelLeft', 200),
 				top = GM_getValue('panelTop', 100);
 
-			if (left + this.$panel.width() > jQuery(window).width()) {
-				left = jQuery(window).width() - this.$panel.outerWidth();
+			if (left + this.$panel.width() > $(window).width()) {
+				left = $(window).width() - this.$panel.outerWidth();
 			}
 
-			if (top + this.$panel.height() > jQuery(window).height()) {
-				top = jQuery(window).height() - this.$panel.outerHeight();
+			if (top + this.$panel.height() > $(window).height()) {
+				top = $(window).height() - this.$panel.outerHeight();
 			}
 
 			position.left = left;
@@ -165,6 +308,7 @@ var seedData = {
 	lilac:			{ title: 'Lilac',			gain: 75,	price: 35,	experience: 1, hours: 10,	event: false,	mastery: {0: 450, 1: 900, 2: 1350} },
 	pumpkin:		{ title: 'Pumpkins',		gain: 68,	price: 30,	experience: 1, hours: 8,	event: false,	mastery: {0: 500, 1: 1000, 2: 1500} },
 
+	spinach:		{ title: 'Spinach',			gain: 95,	price: 35,	experience: 2, hours: 14,	event: false,	mastery: {0: 300, 1: 600, 2: 900} },
 	artichokes:		{ title: 'Artichokes',		gain: 204,	price: 70,	experience: 2, hours: 96,	event: false,	mastery: {0: 125, 1: 250, 2: 375} },
 	rice:			{ title: 'Rice',			gain: 96,	price: 45,	experience: 1, hours: 12,	event: false,	mastery: {0: 400, 1: 400, 2: 2000} },
 	raspberries:	{ title: 'Raspberries',		gain: 46,	price: 20,	experience: 0, hours: 2,	event: false,	mastery: {0: 1500, 1: 3000, 2: 4500} },
@@ -232,6 +376,3 @@ var seedData = {
 	whiteroses:		{ title: 'White Roses',		gain: 777,	price: 620,	experience: 3, hours: 24,	event: false,	mastery: {0: 900, 1: 1800, 2: 2700} },
 	forgetmenot:	{ title: 'Forget me not',	gain: 900,	price: 725,	experience: 2, hours: 18,	event: false,	mastery: {0: 1100, 1: 2200, 2: 3300} }
 };
-/*
-	:			{ title: '',			gain: ,	price: ,	experience: , hours: ,	event: false,	mastery: {0: , 1: , 2: } },
- */

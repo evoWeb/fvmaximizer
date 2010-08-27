@@ -608,7 +608,6 @@ function Styles() {
 				border: 1px solid #000;\
 				color: #000;\
 				display: none;\
-				height: 300px;\
 				left: 200px;\
 				position: absolute;\
 				top: 100px;\
@@ -616,9 +615,7 @@ function Styles() {
 				z-index: 1000;\
 			}\
 \
-			#calculatorpanel.show {\
-				display: block;\
-			}\
+			#calculatorpanel.show { display: block; }\
 \
 			#calculatorpanel .header {\
 				background: #bbb;\
@@ -641,8 +638,9 @@ function Styles() {
 				width: 29px;\
 			}\
 \
-			#calculatorpanel form {\
+			#calculatorpanel .content {\
 				margin: 10px;\
+				overflow: hidden;\
 			}\
 \
 			#calculatorpanel label {\
@@ -657,9 +655,27 @@ function Styles() {
 				width: 80px;\
 			}\
 \
-			#calculatorpanel select {\
-				margin: 3px 0 0 0;\
+			#calculatorpanel select { margin: 3px 0 0 0; }\
+\
+			#calculatorpanel .left { clear: left; float: left; width: 145px; }\
+\
+			#calculatorpanel .right { clear: right; float: right; width: 225px; }\
+\
+			#calculatorpanel .value {\
+				float: left;\
+				margin: 5px 0 0 0;\
+				padding-top: 2px;\
 			}\
+\
+			#calculatorpanel .threecols td {\
+				border-collapse: collapse;\
+				padding: 0;\
+				width: 55px;\
+			}\
+\
+			#calculatorpanel #percentage { border: none; width: 20px; }\
+\
+			#calculatorpanel #lefttime { text-align: right; }\
 		');
 	};
 
