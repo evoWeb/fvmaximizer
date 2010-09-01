@@ -1,6 +1,6 @@
 {
 	"name": "Farmville maximizer",
-	"version": "3.0.0.$Rev$",
+	"version": "3.1.2.$Rev$",
 	"description": "This script maximizes the game to the complete browser window. Both on facebook and farmville.com it removes all unwanted boxes.",
 	"minimum_chrome_version": "4.1.249.1045",
 	"content_scripts": [
