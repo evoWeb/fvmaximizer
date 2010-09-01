@@ -208,6 +208,36 @@ function Styles() {
 	/**
 	 * @return	string
 	 */
+	this.getCountrylifeStyles = function() {
+		return this.trim('\n\
+			#fvmm_menu {\n\
+				left: 50%;\n\
+				margin-left: 250px;\n\
+				top: 50px;\n\
+				width: 120px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton {\n\
+				background-color: #fcca73;\n\
+				border: 1px solid #f4a330;\n\
+				color: #8c410f;\n\
+				float: right;\n\
+				height: 28px;\n\
+			}\n\
+\n\
+			#fvmm_menubutton span {\n\
+				padding: 3px 3px 6px 13px;\n\
+			}\n\
+\n\
+			#fvmm_menu menu {\n\
+				clear: both;\n\
+			}\n\
+		');
+	};
+
+	/**
+	 * @return	string
+	 */
 	this.getCartownStyles = function() {
 		return this.trim('\n\
 			#fvmm_menu {\n\
