@@ -6,6 +6,8 @@
 // @version        3.0.0.$Rev$
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
 // @include        *facebook.com/black_jack/*
+// @include        *facebook.com/backyardmonsters/*
+// @include        *fb.casualcollective.com/*
 // @include        *facebook.com/cartown/*
 // @include        *facebook.com/countrylife/*
 // @include        *countrylife.joyeurs.com/my_ranch/*
@@ -69,6 +71,30 @@ var SCRIPT = {
 			)
 		},
 		bj_iframe: {},
+		bm: {
+			name: 'Backyard Monsters',
+			styles: 'Backyardmonsters',
+			selector: '#app342684208824_content-iframe',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/backyardmonsters/,
+			exclude: new Array(
+			),
+			menuitems: new Array(
+				{href: 'http://bm.lb4.fb.casualcollective.com/canvas/playiframe', label: 'Free Gifts'},
+				{href: 'http://bm.lb4.fb.casualcollective.com/canvas/attacklogiframe', label: 'Attack Log'},
+				{href: 'http://bm.lb4.fb.casualcollective.com/canvas/playiframe', label: 'Invite Friends'},
+				{href: 'http://forums.casualcollective.com/forums/2-Backyard-Monsters', label: 'Discuss'},
+				{href: 'http://bm.lb4.fb.casualcollective.com/canvas/topupiframe', label: 'Get More Shiny'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
+		},
+		bm_iframe: {
+			selector: '#gameswf',
+			hostname: /\.fb\.casualcollective\.com/,
+			pathname: /canvas\/playiframe/,
+			exclude: new Array(
+			)
+		},
 		cl: {
 			name: 'Country Life',
 			styles: 'Countrylife',
@@ -738,6 +764,7 @@ function Maximizer() {
 				);
 				break;
 
+			case 'bm_iframe':
 			case 'cl_iframe':
 			case 'ct_iframe':
 			case 'cw_iframe':
@@ -756,6 +783,7 @@ function Maximizer() {
 				self.styles.injectStyles(self.styles.getFlashframeStyles());
 
 			case 'bj':
+			case 'bm':
 			case 'cl':
 			case 'ct':
 			case 'cw':
