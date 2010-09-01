@@ -7,6 +7,8 @@
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
 // @include        *facebook.com/black_jack/*
 // @include        *facebook.com/cartown/*
+// @include        *facebook.com/countrylife/*
+// @include        *countrylife.joyeurs.com/my_ranch/*
 // @include        *cartown.com/cartown/*
 // @include        *facebook.com/cafeworld/*
 // @include        *cafe.zynga.com/*
@@ -67,6 +69,29 @@ var SCRIPT = {
 			)
 		},
 		bj_iframe: {},
+		cl: {
+			name: 'Country Life',
+			styles: 'Countrylife',
+			selector: '#app26947445683_container > iframe',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/countrylife/,
+			exclude: new Array(
+			),
+			menuitems: new Array(
+				{href: 'http://apps.facebook.com/countrylife/gifts', label: 'Free Gifts'},
+				{href: 'http://apps.facebook.com/countrylife/neighbors', label: 'My Neighbors'},
+				{href: 'http://apps.facebook.com/countrylife/invite', label: 'Invite Friends'},
+				{href: 'http://apps.facebook.com/countrylife/offers', label: 'Add Ranch Cash'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
+		},
+		cl_iframe: {
+			selector: '#game_div',
+			hostname: /countrylife\.joyeurs\.com/,
+			pathname: /my_ranch\/iframe_content_/,
+			exclude: new Array(
+			)
+		},
 		ct: {
 			name: 'Car Town',
 			styles: 'Cartown',
@@ -713,6 +738,7 @@ function Maximizer() {
 				);
 				break;
 
+			case 'cl_iframe':
 			case 'ct_iframe':
 			case 'cw_iframe':
 			case 'ft_iframe':
@@ -730,6 +756,7 @@ function Maximizer() {
 				self.styles.injectStyles(self.styles.getFlashframeStyles());
 
 			case 'bj':
+			case 'cl':
 			case 'ct':
 			case 'cw':
 			case 'ft':
