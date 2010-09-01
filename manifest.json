@@ -10,6 +10,7 @@
 				"Resources/jquery.gmfix.js",
 				"Resources/jquery-ui.min.js",
 				"Resources/fgm-styles.js",
+				"Resources/fv-tools.js",
 				"gm/substitute.js",
 				"flashgames_maximizer.user.js"
 			],
@@ -19,12 +20,22 @@
 			],
 			"include_globs": [
 				"*facebook.com/black_jack/*",
+				"*facebook.com/backyardmonsters/*",
+				"*fb.casualcollective.com/*",
+				"*facebook.com/cartown/*",
+				"*facebook.com/countrylife/*",
+				"*countrylife.joyeurs.com/my_ranch/*",
+				"*cartown.com/cartown/*",
 				"*facebook.com/cafeworld/*",
 				"*cafe.zynga.com/*",
+				"*apps.facebook.com/farmtown/*",
+				"*.slashkey.com/*",
 				"*facebook.com/onthefarm/*",
 				"*farmville.com/*",
 				"*facebook.com/fishville/*",
 				"*fishville.zynga.com/*",
+				"*facebook.com/frontierville/*",
+				"*frontier.zynga.com/*",
 				"*facebook.com/pathwords/*",
 				"*74.201.93.95/*",
 				"*facebook.com/petvillegame/*",
@@ -38,7 +49,9 @@
 				"*facebook.com/wordtwist/*",
 				"*74.201.93.101*",
 				"*facebook.com/yoville/*",
-				"*yoville.com/*"
+				"*yoville.com/*",
+				"*apps.facebook.com/zoo-paradise/*",
+				"*zoo.crowdstar.com/*"
 			],
 			"exclude_globs": [],
 			"run_at": "document_end"
