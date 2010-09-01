@@ -744,7 +744,7 @@ function Styles() {
 	 * add styles to head
 	 *
 	 * @param	css		string
-	 * @return	object
+	 * @return	void
 	 */
 	this.injectStyles = function(css) {
 		var heads = document.getElementsByTagName('head');
@@ -757,10 +757,10 @@ function Styles() {
 	};
 
 	/**
-	 * add styles to head
+	 * append styles to end of body to overwrite styles set earlier
 	 *
 	 * @param	css		string
-	 * @return	object
+	 * @return	void
 	 */
 	this.appendStyles = function(css) {
 		var bodys = document.getElementsByTagName('body');
