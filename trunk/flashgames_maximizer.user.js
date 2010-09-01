@@ -42,7 +42,7 @@
 // @require        http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js
 // @require        http://fvmaximizer.googlecode.com/files/fgm-styles.js
 // @require        http://fvmaximizer.googlecode.com/files/fv-tools.js
-// @require        http://sizzlemctwizzle.com/updater.php?id=73361&days=1
+// @require        http://sizzlemctwizzle.com/updater.php?id=73361&days=1&var=FGM&show
 // ==/UserScript==
 
 var SCRIPT = {
