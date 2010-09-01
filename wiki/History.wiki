@@ -1,14 +1,21 @@
 #summary Version History
 
 <dl>
+<dt>v3.1.2.78</dt>
+<dd>
+*Workover release.*
+ * Added Country Live
+ * Added Backyard Monsters
+ * Added Farmville Tools
+</dd>
 
-<dt>v3.0.68</dt>
+<dt>v3.0.0.68</dt>
 <dd>
 *Maintenance release.*
  * Fixed styles for PetVille
 </dd>
 
-<dt>v3.0.66</dt>
+<dt>v3.0.0.66</dt>
 <dd>
 *Maintenance release.*
  * Fixed styles for Farmville Menu button
