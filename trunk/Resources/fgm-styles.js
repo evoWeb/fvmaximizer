@@ -55,6 +55,7 @@ function Styles() {
 			#fvmm_menu menu {\n\
 				background-color: #ffffff;\n\
 				border-bottom: 1px solid #333333;\n\
+				clear: both;\n\
 				display: none;\n\
 				font-size: 12px;\n\
 				list-style: none;\n\
@@ -208,6 +209,32 @@ function Styles() {
 	/**
 	 * @return	string
 	 */
+	this.getBackyardmonstersStyles = function() {
+		return this.trim('\n\
+				#fvmm_menu {\n\
+					right: 5px;\n\
+					margin: 0;\n\
+					top: 42px;\n\
+					width: 120px;\n\
+				}\n\
+	\n\
+				#fvmm_menubutton {\n\
+					background-color: #8d764d;\n\
+					border: 1px solid #3c291b;\n\
+					color: #fff;\n\
+					float: right;\n\
+					height: 28px;\n\
+				}\n\
+	\n\
+				#fvmm_menubutton span {\n\
+					padding: 3px 3px 6px 13px;\n\
+				}\n\
+			');
+	};
+
+	/**
+	 * @return	string
+	 */
 	this.getCountrylifeStyles = function() {
 		return this.trim('\n\
 			#fvmm_menu {\n\
@@ -227,10 +254,6 @@ function Styles() {
 \n\
 			#fvmm_menubutton span {\n\
 				padding: 3px 3px 6px 13px;\n\
-			}\n\
-\n\
-			#fvmm_menu menu {\n\
-				clear: both;\n\
 			}\n\
 		');
 	};
@@ -257,10 +280,6 @@ function Styles() {
 \n\
 			#fvmm_menubutton span {\n\
 				padding: 3px 3px 6px 13px;\n\
-			}\n\
-\n\
-			#fvmm_menu menu {\n\
-				clear: both;\n\
 			}\n\
 		');
 	};
