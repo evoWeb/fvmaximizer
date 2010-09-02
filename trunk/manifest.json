@@ -1,7 +1,7 @@
 {
-	"name": "Farmville maximizer",
+	"name": "Flashgames maximizer",
 	"version": "3.1.2.$Rev$",
-	"description": "This script maximizes the game to the complete browser window. Both on facebook and farmville.com it removes all unwanted boxes.",
+	"description": "This script maximizes the flash of Farmville, Blackjack, Backyard Monsters, Country Life, Car Town, Cafe World, Farm Town, FishVille, FrontierVille, Path Words, PetVille, Roller Coaster Kingdom, Texas HoldEm Poker, Treasure Isle, Word Twist, YoVille and Zoo Paradise to the complete browser window. If a version of a game outside of facebook is available this is maximized too.",
 	"minimum_chrome_version": "4.1.249.1045",
 	"content_scripts": [
 		{
