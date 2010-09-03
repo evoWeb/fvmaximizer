@@ -3,7 +3,7 @@
 // @namespace      http://userscripts.org/users/144415
 // @description    Maximizes flashgames. Removes all anoying boxes and whitespaces around the flash in facebook and some external sites.
 // @Copyright      Sebastian Fischer
-// @version        3.1.2.$Rev$
+// @version        3.1.3.$Rev$
 // @license        http://creativecommons.org/licenses/by-nc-nd/3.0/us/
 // @include        *facebook.com/black_jack/*
 // @include        *facebook.com/backyardmonsters/*
