@@ -424,6 +424,37 @@ function Styles() {
 	};
 
 	/**
+	 * Styles for Island Paradise
+	 *
+	 * @return	string
+	 */
+	this.getIslandParadiseStyles = function() {
+		return this.trim('\n\
+				#fvmm_menu {\n\
+					left: 5px;\n\
+					margin: 0;\n\
+					top: 50px;\n\
+					width: 150px;\n\
+				}\n\
+\n\
+				#fvmm_menubutton {\n\
+					background-color: #ccc;\n\
+					border: 1px solid #000;\n\
+					color: #000;\n\
+					height: 28px;\n\
+				}\n\
+				\n\
+				#fvmm_menu menu {\n\
+					width: 150px;\n\
+				}\n\
+\n\
+				ul#tipbar {\n\
+					display: none;\n\
+				}\n\
+			');
+	};
+
+	/**
 	 * Styles for Path Words
 	 *
 	 * @return	string

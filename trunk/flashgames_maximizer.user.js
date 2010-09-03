@@ -22,6 +22,8 @@
 // @include        *fishville.zynga.com/*
 // @include        *facebook.com/frontierville/*
 // @include        *frontier.zynga.com/*
+// @include        *apps.facebook.com/myownisland/*
+// @include        *apps.meteorgames.com/facebook/island/*
 // @include        *facebook.com/pathwords/*
 // @include        *74.201.93.95/*
 // @include        *facebook.com/petvillegame/*
@@ -136,7 +138,6 @@ var SCRIPT = {
 		},
 		ct_iframe: {
 			selector: '#game_div',
-			//styles: 'CarTown',
 			//notice: '#game_shoutout',
 			hostname: /game\.cartown\.com/,
 			pathname: /\/cartown\/flashIFrame\.jsp/,
@@ -360,6 +361,32 @@ var SCRIPT = {
 			exclude: new Array(
 				/giftaccept\.php/,
 				/gifts\.php/
+			)
+		},
+		ip: {
+			name: 'Island Paradise',
+			styles: 'IslandParadise',
+			selector: '#app94483022361_iframe_canvas',
+			hostname: /apps\.facebook\.com/,
+			pathname: /\/myownisland\//,
+			exclude: new Array(
+			),
+			menuitems: new Array(
+				{href: 'http://apps.meteorgames.com/facebook/island/gift/send_index', label: 'Send Gifts'},
+				{href: 'http://apps.meteorgames.com/facebook/island/friends/invite', label: 'Invite'},
+				{href: 'http://apps.meteorgames.com/facebook/island/language/index', label: 'Language'},
+				{href: 'http://apps.meteorgames.com/facebook/island/meteorstore/earn_credits', label: '+ Add Coins and Credits'},
+				{href: 'http://apps.meteorgames.com/facebook/island/help/index', label: 'Help'},
+				{href: 'http://www.facebook.com/', label: 'Facebook'}
+			)
+		},
+		ip_iframe: {
+			styles: 'IslandParadise',
+			selector: '#island',
+			notice: '.noticebox',
+			hostname: /apps\.meteorgames\.com/,
+			pathname: /facebook\/island\//,
+			exclude: new Array(
 			)
 		},
 		pw: {
@@ -748,6 +775,7 @@ function Maximizer() {
 			case 'favfv':
 			case 'fiv':
 			case 'frv':
+			case 'ip':
 			case 'pv':
 			case 'ti':
 				self.manipulateElement(settings.selector)
@@ -772,6 +800,7 @@ function Maximizer() {
 			case 'fav_iframe':
 			case 'fiv_iframe':
 			case 'frv_iframe':
+			case 'ip_iframe':
 			case 'pw_iframe':
 			case 'pv_iframe':
 			case 'rck_iframe':
