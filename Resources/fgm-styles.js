@@ -433,7 +433,7 @@ function Styles() {
 				#fvmm_menu {\n\
 					left: 5px;\n\
 					margin: 0;\n\
-					top: 50px;\n\
+					top: 70px;\n\
 					width: 150px;\n\
 				}\n\
 \n\
