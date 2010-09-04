@@ -1,6 +1,12 @@
 #summary Version History
 
 <dl>
+<dt>v3.1.3.86</dt>
+<dd>
+*Workover release.*
+ * Added Island Paradise
+</dd>
+
 <dt>v3.1.2.78</dt>
 <dd>
 *Workover release.*
