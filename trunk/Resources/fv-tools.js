@@ -388,5 +388,6 @@ var seedData = {
 	whiteroses:		{ title: 'White Roses',		gain: 777,	price: 620,	experience: 3, hours: 24,	event: false,	mastery: {0: 900, 1: 1800, 2: 2700} },
 	forgetmenot:	{ title: 'Forget me not',	gain: 900,	price: 725,	experience: 2, hours: 18,	event: false,	mastery: {0: 1100, 1: 2200, 2: 3300} },
 
-	pintobeans:		{ title: 'Pinto Beans',		gain: 110,	price: 65,	experience: 1, hours: 6,	event: true,	mastery: {0: 750, 1: 1500, 2: 2250} }
+	pintobeans:		{ title: 'Pinto Beans',		gain: 110,	price: 65,	experience: 1, hours: 6,	event: true,	mastery: {0: 750, 1: 1500, 2: 2250} },
+	lupine:			{ title: 'Lupine',			gain: 155,	price: 75,	experience: 1, hours: 12,	event: true,	mastery: {0: 610, 1: 1220, 2: 1830} }
 };

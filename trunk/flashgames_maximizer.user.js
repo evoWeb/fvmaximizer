@@ -80,6 +80,7 @@ var SCRIPT = {
 			hostname: /apps\.facebook\.com/,
 			pathname: /\/backyardmonsters/,
 			exclude: new Array(
+				/\/acceptgift\?/
 			),
 			menuitems: new Array(
 				{href: 'http://bm.lb4.fb.casualcollective.com/canvas/playiframe', label: 'Free Gifts'},
@@ -771,6 +772,7 @@ function Maximizer() {
 			settings = self.settings;
 
 		switch(self.windowType) {
+			case 'bm':
 			case 'favfb':
 			case 'favfv':
 			case 'fiv':
@@ -812,7 +814,6 @@ function Maximizer() {
 				self.styles.injectStyles(self.styles.getFlashframeStyles());
 
 			case 'bj':
-			case 'bm':
 			case 'cl':
 			case 'ct':
 			case 'cw':
