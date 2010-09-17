@@ -333,7 +333,14 @@ function Styles() {
 	 */
 	this.getFarmVilleStyles = function() {
 		return this.trim('\n\
+			#fvmm_menu {\n\
+				margin-right: 270px;\n\
+				top: 10px;\n\
+				width: 120px;\n\
+			}\n\
+\n\
 			#fvmm_menubutton {\n\
+				float: right;\n\
 				background-position: top right;\n\
 				background-repeat: no-repeat;\n\
 				background-image: url(data:image/gif;base64,R0lGODlhDAAfAOZtAHJKLr2gg7SfgLihgsmvi8KqiM+0j6+bfcalfndSL8KlhqWAX8iricCph7yjg7+mhbGdftC1j8esirGQccWtibKdf8GlhcCkhb6ihMisisWpiNa6ksasiqiFYtC0j8arib2jhMWsiaSAX7GQcNi7k8asiXRRLsaqiHdTL7Odf66MbcClhaqKaX5aN0EjFLGdf8WqiMCjhC8RBsKgeaR8V3hUMKuHY8iriqaCYcelfqWDYb6hgNa6k72ggqJ/Xsatip9+Xde7k5hvTaB/Xi4UCryig8Glhp53VrGPcL+lhcGkhWY/GrORbnVSLpV0UKqNanVRLqmFYsKlhb+jhJ19XJ59XYVZOLuYcti8kycXCDwaC8qvjFMyHpx0UKaCYKCAYLaZdXZSL7CbfcCoh6aEYde6k8emfqWCYKaIZb6hg4teOygPB2A4E////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAG0ALAAAAAAMAB8AAAf5gGqCg4NthgiICDlmMzSChhsbPGVBJCRYV49SMT0BAWmgaUJqbSw7GqgwJydbNqRsbE4lHBwStlFqWrBsX1MXvys4amu7NWMNyA06w7soICAY0SLMsAmfoQvUbFAV3SkpQNomB+QHYlTiEOoQL1Xa1qFp2cSwTQL390PaYQP9/T7vroGa16yIg4MOptFjAw+bthZJHkh8cEbbkwIYMZJhtgTNDwogQ4ToMAwMgZMnS3z4QHKNEgswjSiYqcDLMA8eIug0wNNAl2EMgjK4kaEoE0FrkIwYMaGpiiNI1xAaZMXFmqsAsmrlQuTqmjZew3rNAlbsVRmG2gQCADs%3D);\n\
