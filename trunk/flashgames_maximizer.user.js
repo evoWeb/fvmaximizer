@@ -229,6 +229,7 @@ var SCRIPT = {
 				/giftaccept.php/,
 				/gifts\.php/,
 				/gifts_send\.php/,
+				/haiti_campaign\.php/,
 				/invite\.php/,
 				/money\.php/,
 				/neighbors\.php/,
