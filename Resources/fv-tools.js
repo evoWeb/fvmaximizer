@@ -352,9 +352,10 @@ var seedData = {
 	ghostchili:		{ title: 'Ghost Chili',		gain: 136,	price: 80,	experience: 1, hours: 6,	event: false,	mastery: {0: 1200, 1: 2400, 2: 9000} },
 	cabbage:		{ title: 'Cabbage',			gain: 388,	price: 140,	experience: 2, hours: 48,	event: false,	mastery: {0: 500, 1: 375, 2: 665} },
 	zucchini:		{ title: 'Zucchini',		gain: 220,	price: 120,	experience: 2, hours: 16,	event: false,	mastery: {0: 550, 1: 1100, 2: 1650} },
+	gladiolus:		{ title: 'Gladiolus',		gain: 260,	price: 200,	experience: 1, hours: 6,	event: false,	mastery: {0: 1600, 1: 3200, 2: 4800} },
 	greentea:		{ title: 'Green Tea',		gain: 191,	price: 105,	experience: 1, hours: 10,	event: false,	mastery: {0: 750, 1: 1500, 2: 2250} },
-	whitegrapes:	{ title: 'White Grapes',	gain: 360,	price: 245,	experience: 2, hours: 12,	event: false,	mastery: {0: 1200, 1: 2400, 2: 3600} },
 
+	whitegrapes:	{ title: 'White Grapes',	gain: 360,	price: 245,	experience: 2, hours: 12,	event: false,	mastery: {0: 1200, 1: 2400, 2: 3600} },
 	blackberries:	{ title: 'Black Berries',	gain: 117,	price: 75,	experience: 1, hours: 4,	event: false,	mastery: {0: 1200, 1: 2400, 2: 3600} },
 	redwheat:		{ title: 'Red Wheat',		gain: 449,	price: 180,	experience: 2, hours: 72,	event: false,	mastery: {0: 250, 1: 500, 2: 750} },
 	lavender:		{ title: 'Lavender',		gain: 384,	price: 160,	experience: 2, hours: 48,	event: false,	mastery: {0: 450, 1: 338, 2: 590} },
@@ -362,8 +363,8 @@ var seedData = {
 	peas:			{ title: 'Peas',			gain: 381,	price: 190,	experience: 3, hours: 24,	event: false,	mastery: {0: 600, 1: 1200, 2: 1800} },
 	yellowmelon:	{ title: 'Yellow Melon',	gain: 528,	price: 205,	experience: 2, hours: 96,	event: false,	mastery: {0: 150, 1: 300, 2: 450} },
 	onion:			{ title: 'Onion',			gain: 275,	price: 170,	experience: 1, hours: 12,	event: false,	mastery: {0: 825, 1: 825, 2: 4125} },
-	broccoli:		{ title: 'Broccoli',		gain: 473,	price: 200,	experience: 2, hours: 48,	event: false,	mastery: {0: 550, 1: 1100, 2: 1650} },
 
+	broccoli:		{ title: 'Broccoli',		gain: 473,	price: 200,	experience: 2, hours: 48,	event: false,	mastery: {0: 550, 1: 1100, 2: 1650} },
 	lilies:			{ title: 'Lilies',			gain: 369,	price: 195,	experience: 2, hours: 24,	event: false,	mastery: {0: 500, 1: 1000, 2: 1500} },
 	acornsquash:	{ title: 'Acorn Squash',	gain: 258,	price: 175,	experience: 1, hours: 10,	event: false,	mastery: {0: 1000, 1: 2000, 2: 3000} },
 	asparagus:		{ title: 'Asparagus',		gain: 357,	price: 220,	experience: 2, hours: 16,	event: false,	mastery: {0: 825, 1: 825, 2: 4125} },
@@ -371,17 +372,18 @@ var seedData = {
 	elderberries:	{ title: 'Elderberries',	gain: 270,	price: 195,	experience: 2, hours: 12,	event: false,	mastery: {0: 825, 1: 1650, 2: 5775} },
 	purplepodpeas:	{ title: 'Purple Pod Peas',	gain: 300,	price: 210,	experience: 3, hours: 24,	event: false,	mastery: {0: 525, 1: 1050, 2: 1575} },
 	ginger:			{ title: 'Ginger',			gain: 320,	price: 170,	experience: 2, hours: 18,	event: false,	mastery: {0: 650, 1: 1300, 2: 1950} },
-	cucumber:		{ title: 'Cucumber',		gain: 450,	price: 290,	experience: 2, hours: 24,	event: false,	mastery: {0: 820, 1: 1640, 2: 2460} },
 
+	cucumber:		{ title: 'Cucumber',		gain: 450,	price: 290,	experience: 2, hours: 24,	event: false,	mastery: {0: 820, 1: 1640, 2: 2460} },
 	iris:			{ title: 'Iris',			gain: 520,	price: 400,	experience: 2, hours: 24,	event: false,	mastery: {0: 600, 1: 1200, 2: 1800} },
 	basil:			{ title: 'Basil',			gain: 400,	price: 300,	experience: 1, hours: 10,	event: false,	mastery: {0: 12000, 1: 2400, 2: 3600} },
 	lemonbalm:		{ title: 'Lemon Balm',		gain: 290,	price: 230,	experience: 1, hours: 6,	event: false,	mastery: {0: 2200, 1: 4400, 2: 6600} },
+	squaremelon:	{ title: 'Square Melon',	gain: 590,	price: 410,	experience: 2, hours: 24,	event: false,	mastery: {0: 700, 1: 1400, 2: 2100} },
 	oats:			{ title: 'Oats',			gain: 310,	price: 225,	experience: 1, hours: 8,	event: false,	mastery: {0: 1850, 1: 3700, 2: 5550} },
 	posolecorn:		{ title: 'Posole Corn',		gain: 370,	price: 280,	experience: 1, hours: 12,	event: false,	mastery: {0: 1500, 1: 3000, 2: 4500} },
 	heirloomcarrot:	{ title: 'Heirloom Carrot',	gain: 210,	price: 110,	experience: 1, hours: 12,	event: false,	mastery: {0: 1400, 1: 2800, 2: 4200} },
+
 	bamboo:			{ title: 'Bamboo',			gain: 550,	price: 420,	experience: 2, hours: 16,	event: false,	mastery: {0: 1200, 1: 2400, 2: 3600} },
 	carnivalsquash:	{ title: 'Carnival Squash',	gain: 435,	price: 355,	experience: 1, hours: 8,	event: false,	mastery: {0: 2000, 1: 4000, 2: 6000} },
-
 	saffron:		{ title: 'Saffron',			gain: 450,	price: 365,	experience: 1, hours: 10,	event: false,	mastery: {0: 1500, 1: 3000, 2: 4500} },
 	clover:			{ title: 'Clover',			gain: 368,	price: 325,	experience: 1, hours: 4,	event: false,	mastery: {0: 2500, 1: 5000, 2: 7500} },
 	amaranth:		{ title: 'Amaranth',		gain: 350,	price: 220,	experience: 2, hours: 16,	event: false,	mastery: {0: 1200, 1: 2400, 2: 3600} },
@@ -389,5 +391,6 @@ var seedData = {
 	forgetmenot:	{ title: 'Forget me not',	gain: 900,	price: 725,	experience: 2, hours: 18,	event: false,	mastery: {0: 1100, 1: 2200, 2: 3300} },
 
 	pintobeans:		{ title: 'Pinto Beans',		gain: 110,	price: 65,	experience: 1, hours: 6,	event: true,	mastery: {0: 750, 1: 1500, 2: 2250} },
-	lupine:			{ title: 'Lupine',			gain: 155,	price: 75,	experience: 1, hours: 12,	event: true,	mastery: {0: 610, 1: 1220, 2: 1830} }
+	lupine:			{ title: 'Lupine',			gain: 155,	price: 75,	experience: 1, hours: 12,	event: true,	mastery: {0: 610, 1: 1220, 2: 1830} },
+	dogrose:		{ title: 'Dog Rose',		gain: 190,	price: 105,	experience: 1, hours: 10,	event: true,	mastery: {0: 550, 1: 1100, 2: 1700} }
 };
